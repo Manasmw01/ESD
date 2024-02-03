@@ -47,13 +47,13 @@ module range
          cgo <= 1;
          din <= 1;    
       end
-
-       if(done)  
+      
+      if(done)  
       begin
          done <= 0;
       end
-
-       if(cgo)  
+      
+      if(cgo)  
       begin
          cgo <= 0;
          din <= 1;
@@ -61,45 +61,41 @@ module range
 
       if(we)
       begin 
-	we <= 0;
-	cgo <= 1;
-         num <= num +   1;
-         n <= n+1;
-
-
+         we <= 0;
+         if(num != 15)
+         begin
+            cgo <= 1;
+         end
+      else
+      begin
+         cgo <= 0;
+      end;
+      
+      num <= num +   1;
+      n <= n+1;
+      
       if(num == 15)
       begin
          running <= 0;
-	done <= 1;
+         done <= 1;
       end
-
       end
-
-
 
       if(running)
       begin
-
          if(dout_ == 2)
          begin
-         we <= 1;
+            we <= 1;
          end
-
-
          if(cdone == 0 && cgo == 0)
          begin
          din <= din + 1;
          end
-
-
-
       end
-
    end
 
    /* Replace this comment and the code above with your solution */
-
-//   logic 			 we_temp;                    // Write din to addr
+   //   logic 			 we_temp;                    // Write din to addr
    logic 			 we;                    // Write din to addr
    logic [15:0] 		 din;                   // Data to write
    logic [15:0] 		 mem[RAM_WORDS - 1:0];  // The RAM itself
@@ -111,5 +107,6 @@ module range
       if (we) mem[addr] <= din;
       count <= mem[addr];      
    end
+
 endmodule
 	     
