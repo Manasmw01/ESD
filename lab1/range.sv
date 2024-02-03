@@ -11,6 +11,7 @@ module range
    logic 		cgo;    // "go" for the Collatz iterator
    logic                cdone;  // "done" from the Collatz iterator
    logic [31:0] 	n;      // number to start the Collatz iterator
+   logic [31:0] 	dout_;      // number to start the Collatz iterator
 
 // verilator lint_off PINCONNECTEMPTY
    
@@ -19,19 +20,23 @@ module range
 	      .go(cgo),
 	      .n(n),
 	      .done(cdone),
-	      .dout());
+	      .dout(dout_));
 
    logic [RAM_ADDR_BITS - 1:0] 	 num;         // The RAM address to write
    logic 			 running = 0; // True during the iterations
    /* Replace this comment and the code below with your solution,
       which should generate running, done, cgo, n, num, we, and din */
-   assign done = cdone;
+//   assign done = cdone;
+
    // assign cgo = go;
    // assign n = start;
    // assign din = 16'h0;
    // assign num = 0;
    // assign we = running;   
    
+
+
+
    always_ff @(posedge clk) 
    begin
       if(go)
@@ -42,36 +47,59 @@ module range
          cgo <= 1;
          din <= 1;    
       end
-      if(cgo)  
+
+       if(done)  
+      begin
+         done <= 0;
+      end
+
+       if(cgo)  
       begin
          cgo <= 0;
+         din <= 1;
       end
+
+      if(we)
+      begin 
+	we <= 0;
+	cgo <= 1;
+         num <= num +   1;
+         n <= n+1;
+
+
+      if(num == 15)
+      begin
+         running <= 0;
+	done <= 1;
+      end
+
+      end
+
+
 
       if(running)
       begin
-         if(we)  
+
+         if(dout_ == 2)
          begin
-            we <= 0;
+         we <= 1;
          end
 
-         if(cdone != 1)
+
+         if(cdone == 0 && cgo == 0)
          begin
          din <= din + 1;
          end
 
-         else if (cdone)
-         begin
-         we <= 1;    
-         n <= n+1;
-         cgo <= 1;
-         num <= num +   1;
-         end
+
+
       end
 
    end
 
    /* Replace this comment and the code above with your solution */
 
+//   logic 			 we_temp;                    // Write din to addr
    logic 			 we;                    // Write din to addr
    logic [15:0] 		 din;                   // Data to write
    logic [15:0] 		 mem[RAM_WORDS - 1:0];  // The RAM itself
