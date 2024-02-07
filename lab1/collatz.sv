@@ -7,25 +7,25 @@ module collatz( input logic     	clk,   // Clock
    /* Replace this comment and the code below with your solution */
    always_ff @(posedge clk)
    begin
-    if(go == 1)
-    begin
-        dout <= n;
-        end
-    else
-    begin
-        if(dout > 1)
-        begin
+      if(go == 1)
+      begin
+         dout <= n;
+      end
+      else
+      begin
+         if(dout > 1)
+         begin
             if(dout%2 == 1)
             begin
-                dout <= 3*dout + 1;
+               dout <= 3*dout + 1;
             end
    			else
             begin
-                dout <= dout/2;
+               dout <= dout/2;
             end
-        end
-    end
-    end
+         end
+      end
+   end
 
 assign done = (dout==1) ? 1'b1 : 1'b0;
 /* Replace this comment and the code above with your solution */

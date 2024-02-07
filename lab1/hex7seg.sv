@@ -21,6 +21,6 @@ module hex7seg(input logic  [3:0] a,
    4'hd: y = 7'h21;
    4'he: y = 7'h06;
    4'hf: y = 7'h0E;
-   default: y = 7'h19;
-   endcase;
+   default: y = 7'h00;
+   endcase
 endmodule
