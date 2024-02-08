@@ -105,6 +105,7 @@ VL_INLINE_OPT void Vrange::_sequent__TOP__1(Vrange__Syms* __restrict vlSymsp) {
     __Vdly__range__DOT__n = vlTOPp->range__DOT__n;
     __Vdly__range__DOT__running = vlTOPp->range__DOT__running;
     __Vdly__range__DOT__num = vlTOPp->range__DOT__num;
+    vlTOPp->count = vlTOPp->range__DOT__mem[vlTOPp->range__DOT__addr];
     if (vlTOPp->range__DOT__cgo) {
         __Vdly__range__DOT__dout_ = vlTOPp->range__DOT__n;
     } else {
@@ -118,7 +119,6 @@ VL_INLINE_OPT void Vrange::_sequent__TOP__1(Vrange__Syms* __restrict vlSymsp) {
                                              >> 1U));
         }
     }
-    vlTOPp->count = vlTOPp->range__DOT__mem[vlTOPp->range__DOT__addr];
     if (vlTOPp->range__DOT__we) {
         __Vdlyvval__range__DOT__mem__v0 = vlTOPp->range__DOT__din;
         __Vdlyvset__range__DOT__mem__v0 = 1U;
@@ -170,6 +170,9 @@ VL_INLINE_OPT void Vrange::_sequent__TOP__1(Vrange__Syms* __restrict vlSymsp) {
     vlTOPp->range__DOT__din = __Vdly__range__DOT__din;
     vlTOPp->range__DOT__running = __Vdly__range__DOT__running;
     vlTOPp->range__DOT__num = __Vdly__range__DOT__num;
+    vlTOPp->range__DOT__addr = ((IData)(vlTOPp->range__DOT__we)
+                                 ? (0xfU & (IData)(vlTOPp->range__DOT__num))
+                                 : 0U);
 }
 
 void Vrange::_initial__TOP__2(Vrange__Syms* __restrict vlSymsp) {
@@ -179,13 +182,13 @@ void Vrange::_initial__TOP__2(Vrange__Syms* __restrict vlSymsp) {
     vlTOPp->range__DOT__running = 0U;
 }
 
-VL_INLINE_OPT void Vrange::_settle__TOP__3(Vrange__Syms* __restrict vlSymsp) {
+void Vrange::_settle__TOP__3(Vrange__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vrange::_settle__TOP__3\n"); );
     Vrange* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->range__DOT__addr = (0xfU & ((IData)(vlTOPp->range__DOT__we)
-                                         ? (IData)(vlTOPp->range__DOT__num)
-                                         : vlTOPp->start));
+    vlTOPp->range__DOT__addr = ((IData)(vlTOPp->range__DOT__we)
+                                 ? (0xfU & (IData)(vlTOPp->range__DOT__num))
+                                 : 0U);
 }
 
 void Vrange::_eval(Vrange__Syms* __restrict vlSymsp) {
@@ -196,8 +199,6 @@ void Vrange::_eval(Vrange__Syms* __restrict vlSymsp) {
         vlTOPp->_sequent__TOP__1(vlSymsp);
         vlTOPp->__Vm_traceActivity = (2U | vlTOPp->__Vm_traceActivity);
     }
-    vlTOPp->_settle__TOP__3(vlSymsp);
-    vlTOPp->__Vm_traceActivity = (4U | vlTOPp->__Vm_traceActivity);
     // Final
     vlTOPp->__Vclklast__TOP__clk = vlTOPp->clk;
 }

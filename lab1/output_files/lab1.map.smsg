@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at lab1.sv(72): always construct contains both blocking and non-blocking assignments File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 72

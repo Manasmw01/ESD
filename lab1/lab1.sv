@@ -24,17 +24,24 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
    logic [11:0] 		n;
    
    // New
-   //logic [11:0] 		n;
    assign clk = CLOCK_50;
 
-   hex7seg h1 (.a({2'b0,SW[9:8]}), .y(HEX5)); // h1 is leftmost
+/*   hex7seg h1 (.a({2'b0,SW[9:8]}), .y(HEX5)); // h1 is leftmost
    hex7seg h2 (.a(SW[7:4]), .y(HEX4));
    hex7seg h3 (.a(SW[3:0]), .y(HEX3));
    hex7seg h4 (.a(count[11:8]), .y(HEX2));
    hex7seg h5 (.a(count[7:4]), .y(HEX1));
    hex7seg h6 (.a(count[3:0]), .y(HEX0)); //h6 is rightmost
+*/
+
+   hex7seg h1 (.a({counter[11:8]}), .y(HEX5)); // h1 is leftmost
+   hex7seg h2 (.a(counter[7:4]), .y(HEX4));
+   hex7seg h3 (.a(counter[3:0]), .y(HEX3));
+   hex7seg h4 (.a(count[11:8]), .y(HEX2));
+   hex7seg h5 (.a(count[7:4]), .y(HEX1));
+   hex7seg h6 (.a(count[3:0]), .y(HEX0)); //h6 is rightmost
    
-   //   range #(256, 8) // RAM_WORDS = 256, RAM_ADDR_BITS = 8)
+   //   range #(256, 8) // RAM_WORcounterDS = 256, RAM_ADDR_BITS = 8)
    //         r ( .* ); // Connect everything with matching names
 
 
@@ -51,8 +58,84 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
    //assign HEX5 = HEX2;
    //assign LEDR = SW;
    assign LEDR[0] = go;
+   logic [11:0] 		counter;
+   logic [21:0] 		millis;
+   logic [7:0] 		offset;
    assign go = !KEY[3];
+   logic pressed;
    //assign start = {SW[1:0], SW, SW, SW};
-   assign start = {22'b0, SW};
+   //assign start = {22'b0, SW};
+   assign start = {20'b0, counter};
    //assign n = {SW[1:0], SW};
+ 
+
+   always_ff @(posedge clk) 
+   begin
+
+
+    if(pressed == 0)   
+        begin
+           counter <= {20'b0, SW};
+           millis <= 0;
+           offset <= 0;
+     end 
+
+
+      if(!KEY[0])
+      begin 
+           pressed = 1;
+           millis <= millis + 1;
+           if(millis == 22'h2FFFFF)
+           begin
+               millis <= 0;
+               if(counter < SW + 255)
+               begin
+                   counter <= counter + 1;
+	       end
+           end
+      end
+
+      if(!KEY[1])
+      begin 
+           pressed = 1;
+           millis <= millis + 1;
+           if(millis == 22'h2FFFFF)
+           begin
+               millis <= 0;
+               if(counter > SW)
+               begin
+                   counter <= counter - 1;
+	       end
+           end
+      end
+
+      if(!KEY[2])
+      begin 
+//           counter <= SW;
+//           millis <= 0;
+//           offset <= 0;
+           pressed = 0;
+      end
+
+
+   end
+
 endmodule
+
+
+/*
+make hex7seg
+
+make obj_dir/Vcollatz
+
+make collatz.vcd
+
+make obj_dir/Vrange
+
+make range.vcd
+
+make lab1.qpf
+
+make output_files/lab1.sof
+
+*/
