@@ -38,6 +38,7 @@ module range
       begin
          running <= 1;
          n <= start;
+//         num <= n[RAM_ADDR_BITS - 1:0]; //CHANGED  
          num <= 0;  
          cgo <= 1;
          din <= 1;    
@@ -101,8 +102,8 @@ module range
    logic [15:0] 		 mem[RAM_WORDS - 1:0];  // The RAM itself
    logic [RAM_ADDR_BITS - 1:0] 	 addr;                  // Address to read/write
 
- //  assign addr = we ? num : start[RAM_ADDR_BITS-1:0];
-  assign addr = we ? num : 0;
+   assign addr = we ? num : start[RAM_ADDR_BITS-1:0];
+  //assign addr = we ? num : 0;
    
    always_ff @(posedge clk) begin
       if (we) mem[addr] <= din;

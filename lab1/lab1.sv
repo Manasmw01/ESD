@@ -19,6 +19,7 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
 
    logic 			clk, go, done;   
    logic [31:0] 		start;
+   logic [31:0] 		start_flag;
    logic [15:0] 		count;
 
    logic [11:0] 		n;
@@ -33,6 +34,14 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
    hex7seg h5 (.a(count[7:4]), .y(HEX1));
    hex7seg h6 (.a(count[3:0]), .y(HEX0)); //h6 is rightmost
 */
+
+ //  hex7seg h1 (.a({counter[11:8]}), .y(HEX5)); // h1 is leftmost
+//   hex7seg h2 (.a(counter[7:4]), .y(HEX4));
+ //  hex7seg h3 (.a(counter[3:0]), .y(HEX3));
+  // hex7seg h4 (.a(count[11:8]), .y(HEX2));
+  // hex7seg h5 (.a(count[7:4]), .y(HEX1));
+  // hex7seg h6 (.a(count[3:0]), .y(HEX0)); //h6 is rightmost
+
 
    hex7seg h1 (.a({counter[11:8]}), .y(HEX5)); // h1 is leftmost
    hex7seg h2 (.a(counter[7:4]), .y(HEX4));
@@ -61,60 +70,99 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
    logic [11:0] 		counter;
    logic [21:0] 		millis;
    logic [7:0] 		offset;
-   assign go = !KEY[3];
+   //assign go = !KEY[3];
+
    logic pressed;
+   logic doneflag;
    //assign start = {SW[1:0], SW, SW, SW};
    //assign start = {22'b0, SW};
-   assign start = {20'b0, counter};
+   //assign start = {20'b0, counter};
    //assign n = {SW[1:0], SW};
- 
 
    always_ff @(posedge clk) 
    begin
+	  if (done)
+	begin 
+	doneflag<= 1;
+	start <= 0;
+	counter <= n;
+	end
 
+	if( KEY [3] == 1'b0)
+	begin
+	n <= {2'b00, SW};
+	start <= {22'd0, SW};
+	go <= 1'b1;
+	counter <= 12'd0;
+doneflag <= 0;
+	end
+
+	if (go == 1'b1) begin
+		go <= 1'b0;
+	end
+
+/*	if (doneflag)begin
+	start <= 0; // CHANGED
+	end
+	else
+	begin
+	start <= {20'b0, counter};
+	end
+*/
 
     if(pressed == 0)   
         begin
-           counter <= {20'b0, SW};
            millis <= 0;
            offset <= 0;
-     end 
+           counter <= {20'b0, SW};
 
+     end 
 
       if(!KEY[0])
       begin 
-           pressed = 1;
+           pressed <= 1;
+
            millis <= millis + 1;
            if(millis == 22'h2FFFFF)
            begin
                millis <= 0;
                if(counter < SW + 255)
                begin
-                   counter <= counter + 1;
+                   counter <= n + {20'd0, start} + 12'd1;
+		   start <= start + 1;
 	       end
            end
       end
 
       if(!KEY[1])
       begin 
-           pressed = 1;
+           pressed <= 1;
            millis <= millis + 1;
            if(millis == 22'h2FFFFF)
            begin
                millis <= 0;
                if(counter > SW)
                begin
-                   counter <= counter - 1;
+                   counter <= n + {20'd0, start} + 12'd1;
+		   start <= start - 1;
 	       end
            end
       end
 
       if(!KEY[2])
       begin 
-//           counter <= SW;
+          pressed <= 1;
+           millis <= millis + 1;
+           if(millis == 22'h2FFFFF)
+           begin
+               millis <= 0;
+	       start <=0 ;
+               counter <= n + {20'd0, start};
+	   end
+           //doneflag <= 0;
 //           millis <= 0;
 //           offset <= 0;
-           pressed = 0;
+           pressed <= 0;
       end
 
 

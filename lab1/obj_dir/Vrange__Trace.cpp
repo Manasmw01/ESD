@@ -29,10 +29,15 @@ void Vrange::traceChgThis(Vrange__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, 
                                   >> 1U))))) {
             vlTOPp->traceChgThis__2(vlSymsp, vcdp, code);
         }
-        if (VL_UNLIKELY((2U & vlTOPp->__Vm_traceActivity))) {
+        if (VL_UNLIKELY((1U & (vlTOPp->__Vm_traceActivity 
+                               | (vlTOPp->__Vm_traceActivity 
+                                  >> 2U))))) {
             vlTOPp->traceChgThis__3(vlSymsp, vcdp, code);
         }
-        vlTOPp->traceChgThis__4(vlSymsp, vcdp, code);
+        if (VL_UNLIKELY((2U & vlTOPp->__Vm_traceActivity))) {
+            vlTOPp->traceChgThis__4(vlSymsp, vcdp, code);
+        }
+        vlTOPp->traceChgThis__5(vlSymsp, vcdp, code);
     }
     // Final
     vlTOPp->__Vm_traceActivity = 0U;
@@ -45,11 +50,20 @@ void Vrange::traceChgThis__2(Vrange__Syms* __restrict vlSymsp, VerilatedVcd* vcd
     // Body
     {
         vcdp->chgBit(c+1,(vlTOPp->range__DOT__running));
-        vcdp->chgBus(c+9,(vlTOPp->range__DOT__addr),4);
     }
 }
 
 void Vrange::traceChgThis__3(Vrange__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) {
+    Vrange* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    int c = code;
+    if (0 && vcdp && c) {}  // Prevent unused
+    // Body
+    {
+        vcdp->chgBus(c+9,(vlTOPp->range__DOT__addr),4);
+    }
+}
+
+void Vrange::traceChgThis__4(Vrange__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) {
     Vrange* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     int c = code;
     if (0 && vcdp && c) {}  // Prevent unused
@@ -81,7 +95,7 @@ void Vrange::traceChgThis__3(Vrange__Syms* __restrict vlSymsp, VerilatedVcd* vcd
     }
 }
 
-void Vrange::traceChgThis__4(Vrange__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) {
+void Vrange::traceChgThis__5(Vrange__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) {
     Vrange* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     int c = code;
     if (0 && vcdp && c) {}  // Prevent unused

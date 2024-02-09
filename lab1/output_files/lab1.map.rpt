@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab1
-Wed Feb  7 23:16:34 2024
+Thu Feb  8 22:18:32 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -27,7 +27,6 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
  19. Post-Synthesis Netlist Statistics for Top Partition
  20. Elapsed Time Per Partition
  21. Analysis & Synthesis Messages
- 22. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -54,13 +53,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Feb  7 23:16:34 2024       ;
+; Analysis & Synthesis Status     ; Successful - Thu Feb  8 22:18:32 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; lab1                                        ;
 ; Top-level Entity Name           ; lab1                                        ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 118                                         ;
+; Total registers                 ; 162                                         ;
 ; Total pins                      ; 67                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 192                                         ;
@@ -207,16 +206,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 154            ;
+; Estimate of Logic utilization (ALMs needed) ; 226            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 277            ;
+; Combinational ALUT usage for logic          ; 385            ;
 ;     -- 7 input functions                    ; 0              ;
-;     -- 6 input functions                    ; 30             ;
-;     -- 5 input functions                    ; 17             ;
-;     -- 4 input functions                    ; 55             ;
-;     -- <=3 input functions                  ; 175            ;
+;     -- 6 input functions                    ; 64             ;
+;     -- 5 input functions                    ; 18             ;
+;     -- 4 input functions                    ; 57             ;
+;     -- <=3 input functions                  ; 246            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 118            ;
+; Dedicated logic registers                   ; 162            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 67             ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -225,9 +224,9 @@ https://fpgasoftware.intel.com/eula.
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 130            ;
-; Total fan-out                               ; 1577           ;
-; Average fan-out                             ; 2.91           ;
+; Maximum fan-out                             ; 174            ;
+; Total fan-out                               ; 2144           ;
+; Average fan-out                             ; 3.09           ;
 +---------------------------------------------+----------------+
 
 
@@ -236,17 +235,17 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                               ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------+-----------------+--------------+
-; |lab1                                     ; 277 (103)           ; 118 (35)                  ; 192               ; 0          ; 67   ; 0            ; |lab1                                                             ; lab1            ; work         ;
+; |lab1                                     ; 385 (211)           ; 162 (78)                  ; 192               ; 0          ; 67   ; 0            ; |lab1                                                             ; lab1            ; work         ;
 ;    |hex7seg:h1|                           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1|hex7seg:h1                                                  ; hex7seg         ; work         ;
 ;    |hex7seg:h2|                           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1|hex7seg:h2                                                  ; hex7seg         ; work         ;
 ;    |hex7seg:h3|                           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1|hex7seg:h3                                                  ; hex7seg         ; work         ;
 ;    |hex7seg:h4|                           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1|hex7seg:h4                                                  ; hex7seg         ; work         ;
 ;    |hex7seg:h5|                           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1|hex7seg:h5                                                  ; hex7seg         ; work         ;
 ;    |hex7seg:h6|                           ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |lab1|hex7seg:h6                                                  ; hex7seg         ; work         ;
-;    |range:r|                              ; 132 (61)            ; 83 (51)                   ; 192               ; 0          ; 0    ; 0            ; |lab1|range:r                                                     ; range           ; work         ;
+;    |range:r|                              ; 132 (60)            ; 84 (52)                   ; 192               ; 0          ; 0    ; 0            ; |lab1|range:r                                                     ; range           ; work         ;
 ;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 192               ; 0          ; 0    ; 0            ; |lab1|range:r|altsyncram:mem_rtl_0                                ; altsyncram      ; work         ;
 ;          |altsyncram_s2n1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 192               ; 0          ; 0    ; 0            ; |lab1|range:r|altsyncram:mem_rtl_0|altsyncram_s2n1:auto_generated ; altsyncram_s2n1 ; work         ;
-;       |collatz:c1|                        ; 71 (71)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |lab1|range:r|collatz:c1                                          ; collatz         ; work         ;
+;       |collatz:c1|                        ; 72 (72)             ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |lab1|range:r|collatz:c1                                          ; collatz         ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -260,14 +259,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; range:r|din[12..15]                   ; Lost fanout        ;
-; Total Number of Removed Registers = 4 ;                    ;
-+---------------------------------------+--------------------+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; n[10,11]                              ; Stuck at GND due to stuck port data_in ;
+; range:r|din[12..15]                   ; Lost fanout                            ;
+; Total Number of Removed Registers = 6 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------------------------------------------+
@@ -284,12 +284,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 118   ;
-; Number of registers using Synchronous Clear  ; 42    ;
-; Number of registers using Synchronous Load   ; 56    ;
+; Total registers                              ; 162   ;
+; Number of registers using Synchronous Clear  ; 64    ;
+; Number of registers using Synchronous Load   ; 76    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 104   ;
+; Number of registers using Clock Enable       ; 147   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -308,14 +308,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |lab1|range:r|n[31]               ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |lab1|range:r|n[9]                ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |lab1|range:r|n[9]                ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lab1|range:r|num[0]              ;
-; 4:1                ; 22 bits   ; 44 LEs        ; 0 LEs                ; 44 LEs                 ; Yes        ; |lab1|millis[6]                   ;
-; 4:1                ; 29 bits   ; 58 LEs        ; 58 LEs               ; 0 LEs                  ; Yes        ; |lab1|range:r|collatz:c1|dout[20] ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |lab1|range:r|din[4]              ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |lab1|counter[11]                 ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |lab1|counter[8]                  ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |lab1|range:r|din[15]             ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 0 LEs                ; 44 LEs                 ; Yes        ; |lab1|millis[0]                   ;
+; 4:1                ; 29 bits   ; 58 LEs        ; 58 LEs               ; 0 LEs                  ; Yes        ; |lab1|range:r|collatz:c1|dout[10] ;
+; 6:1                ; 22 bits   ; 88 LEs        ; 22 LEs               ; 66 LEs                 ; Yes        ; |lab1|start[11]                   ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |lab1|start[4]                    ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |lab1|counter[11]                 ;
+; 7:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |lab1|counter[8]                  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
 
 
@@ -425,8 +426,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port          ; Type   ; Severity ; Details                                                                             ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
-; start[31..12] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; done          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; count[15..12] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -436,30 +435,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 118                         ;
-;     ENA               ; 9                           ;
-;     ENA SCLR          ; 42                          ;
-;     ENA SLD           ; 53                          ;
+; arriav_ff             ; 162                         ;
+;     ENA               ; 10                          ;
+;     ENA SCLR          ; 64                          ;
+;     ENA SLD           ; 73                          ;
 ;     SLD               ; 3                           ;
-;     plain             ; 11                          ;
-; arriav_lcell_comb     ; 284                         ;
-;     arith             ; 133                         ;
+;     plain             ; 12                          ;
+; arriav_lcell_comb     ; 391                         ;
+;     arith             ; 197                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 101                         ;
-;         2 data inputs ; 31                          ;
-;     normal            ; 151                         ;
+;         1 data inputs ; 155                         ;
+;         2 data inputs ; 41                          ;
+;     normal            ; 194                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 7                           ;
+;         1 data inputs ; 6                           ;
 ;         2 data inputs ; 7                           ;
-;         3 data inputs ; 34                          ;
-;         4 data inputs ; 55                          ;
-;         5 data inputs ; 17                          ;
-;         6 data inputs ; 30                          ;
+;         3 data inputs ; 41                          ;
+;         4 data inputs ; 57                          ;
+;         5 data inputs ; 18                          ;
+;         6 data inputs ; 64                          ;
 ; boundary_port         ; 67                          ;
 ; stratixv_ram_block    ; 12                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.70                        ;
-; Average LUT depth     ; 3.17                        ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.65                        ;
 +-----------------------+-----------------------------+
 
 
@@ -478,7 +477,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Feb  7 23:16:19 2024
+    Info: Processing started: Thu Feb  8 22:18:15 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab1 -c lab1
 Info (20032): Parallel compilation is enabled and will use up to 4 processors
 Info (12021): Found 1 design units, including 1 entities, in source file hex7seg.sv
@@ -490,18 +489,20 @@ Info (12021): Found 1 design units, including 1 entities, in source file range.s
 Info (12021): Found 1 design units, including 1 entities, in source file lab1.sv
     Info (12023): Found entity 1: lab1 File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 8
 Info (12127): Elaborating entity "lab1" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at lab1.sv(63): object "offset" assigned a value but never read File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 63
-Warning (10230): Verilog HDL assignment warning at lab1.sv(78): truncated value with size 30 to match size of target (12) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 78
-Warning (10230): Verilog HDL assignment warning at lab1.sv(87): truncated value with size 32 to match size of target (22) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 87
-Warning (10230): Verilog HDL assignment warning at lab1.sv(93): truncated value with size 32 to match size of target (12) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 93
-Warning (10230): Verilog HDL assignment warning at lab1.sv(101): truncated value with size 32 to match size of target (22) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 101
-Warning (10230): Verilog HDL assignment warning at lab1.sv(107): truncated value with size 32 to match size of target (12) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 107
+Warning (10036): Verilog HDL or VHDL warning at lab1.sv(72): object "offset" assigned a value but never read File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 72
+Warning (10036): Verilog HDL or VHDL warning at lab1.sv(76): object "doneflag" assigned a value but never read File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 76
+Warning (10230): Verilog HDL assignment warning at lab1.sv(117): truncated value with size 30 to match size of target (12) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 117
+Warning (10230): Verilog HDL assignment warning at lab1.sv(125): truncated value with size 32 to match size of target (22) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 125
+Warning (10230): Verilog HDL assignment warning at lab1.sv(131): truncated value with size 52 to match size of target (12) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 131
+Warning (10230): Verilog HDL assignment warning at lab1.sv(140): truncated value with size 32 to match size of target (22) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 140
+Warning (10230): Verilog HDL assignment warning at lab1.sv(146): truncated value with size 52 to match size of target (12) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 146
+Warning (10230): Verilog HDL assignment warning at lab1.sv(155): truncated value with size 32 to match size of target (22) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 155
+Warning (10230): Verilog HDL assignment warning at lab1.sv(160): truncated value with size 52 to match size of target (12) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 160
 Warning (10034): Output port "LEDR[9..1]" at lab1.sv(18) has no driver File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 18
-Info (12128): Elaborating entity "hex7seg" for hierarchy "hex7seg:h1" File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 37
-Info (12128): Elaborating entity "range" for hierarchy "range:r" File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 48
-Warning (10230): Verilog HDL assignment warning at range.sv(72): truncated value with size 32 to match size of target (4) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/range.sv Line: 72
-Warning (10230): Verilog HDL assignment warning at range.sv(92): truncated value with size 32 to match size of target (16) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/range.sv Line: 92
-Warning (10230): Verilog HDL assignment warning at range.sv(105): truncated value with size 32 to match size of target (4) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/range.sv Line: 105
+Info (12128): Elaborating entity "hex7seg" for hierarchy "hex7seg:h1" File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 46
+Info (12128): Elaborating entity "range" for hierarchy "range:r" File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 57
+Warning (10230): Verilog HDL assignment warning at range.sv(73): truncated value with size 32 to match size of target (4) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/range.sv Line: 73
+Warning (10230): Verilog HDL assignment warning at range.sv(93): truncated value with size 32 to match size of target (16) File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/range.sv Line: 93
 Info (12128): Elaborating entity "collatz" for hierarchy "range:r|collatz:c1" File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/range.sv Line: 22
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "range:r|mem_rtl_0" 
@@ -551,24 +552,17 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[9]" is stuck at GND File: /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/lab1.sv Line: 18
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/output_files/lab1.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 356 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 475 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 277 logic cells
+    Info (21061): Implemented 396 logic cells
     Info (21064): Implemented 12 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
-    Info: Peak virtual memory: 812 megabytes
-    Info: Processing ended: Wed Feb  7 23:16:34 2024
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:26
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in /homes/user/stud/fall23/mmp2248/Desktop/ESD/ESD/lab1/output_files/lab1.map.smsg.
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 817 megabytes
+    Info: Processing ended: Thu Feb  8 22:18:32 2024
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:29
 
 
