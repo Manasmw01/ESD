@@ -59,7 +59,7 @@ module range
       if(we)
       begin 
          we <= 0;
-         if(num != 15)
+         if(num != 2**RAM_ADDR_BITS - 1)
          begin
             cgo <= 1;
          end
@@ -68,14 +68,14 @@ module range
             cgo <= 0;
          end;
          
-         if(num != 15)
+         if(num != 2**RAM_ADDR_BITS - 1)
          begin
             num <= num +   1;
          end
          
          n <= n+1;
          
-         if(num == 15)
+         if(num == 2**RAM_ADDR_BITS - 1)
          begin
             running <= 0;
             done <= 1;

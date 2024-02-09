@@ -27,20 +27,7 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
    // New
    assign clk = CLOCK_50;
 
-/*   hex7seg h1 (.a({2'b0,SW[9:8]}), .y(HEX5)); // h1 is leftmost
-   hex7seg h2 (.a(SW[7:4]), .y(HEX4));
-   hex7seg h3 (.a(SW[3:0]), .y(HEX3));
-   hex7seg h4 (.a(count[11:8]), .y(HEX2));
-   hex7seg h5 (.a(count[7:4]), .y(HEX1));
-   hex7seg h6 (.a(count[3:0]), .y(HEX0)); //h6 is rightmost
-*/
 
- //  hex7seg h1 (.a({counter[11:8]}), .y(HEX5)); // h1 is leftmost
-//   hex7seg h2 (.a(counter[7:4]), .y(HEX4));
- //  hex7seg h3 (.a(counter[3:0]), .y(HEX3));
-  // hex7seg h4 (.a(count[11:8]), .y(HEX2));
-  // hex7seg h5 (.a(count[7:4]), .y(HEX1));
-  // hex7seg h6 (.a(count[3:0]), .y(HEX0)); //h6 is rightmost
 
 
    hex7seg h1 (.a({counter[11:8]}), .y(HEX5)); // h1 is leftmost
@@ -50,11 +37,11 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
    hex7seg h5 (.a(count[7:4]), .y(HEX1));
    hex7seg h6 (.a(count[3:0]), .y(HEX0)); //h6 is rightmost
    
-   //   range #(256, 8) // RAM_WORcounterDS = 256, RAM_ADDR_BITS = 8)
-   //         r ( .* ); // Connect everything with matching names
+   range #(256, 8) // RAM_WORcounterDS = 256, RAM_ADDR_BITS = 8)
+         r ( .* ); // Connect everything with matching names
 
 
-   range #(16, 4) r(.clk(clk), .go(go), .start(start), .done(done), .count(count));
+//   range #(16, 4) r(.clk(clk), .go(go), .start(start), .done(done), .count(count));
 
    // Replace this comment and the code below it with your own code;
    // The code below is merely to suppress Verilator lint warnings
@@ -81,12 +68,6 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
 
    always_ff @(posedge clk) 
    begin
-	  if (done)
-	begin 
-	doneflag<= 1;
-	start <= 0;
-	counter <= n;
-	end
 
 	if( KEY [3] == 1'b0)
 	begin
@@ -97,31 +78,21 @@ module lab1( input logic        CLOCK_50,  // 50 MHz Clock input
 doneflag <= 0;
 	end
 
-	if (go == 1'b1) begin
+	else if (go == 1'b1) begin
 		go <= 1'b0;
 	end
 
-/*	if (doneflag)begin
-	start <= 0; // CHANGED
+	else  if (done)
+	begin 
+	doneflag<= 1;
+	start <= 0;
+	counter <= n;
 	end
-	else
-	begin
-	start <= {20'b0, counter};
-	end
-*/
 
-    if(pressed == 0)   
-        begin
-           millis <= 0;
-           offset <= 0;
-           counter <= {20'b0, SW};
 
-     end 
-
-      if(!KEY[0])
+      else if(!KEY[0] && doneflag == 1'b1)
       begin 
            pressed <= 1;
-
            millis <= millis + 1;
            if(millis == 22'h2FFFFF)
            begin
@@ -134,7 +105,7 @@ doneflag <= 0;
            end
       end
 
-      if(!KEY[1])
+      else if(!KEY[1] && doneflag == 1'b1)
       begin 
            pressed <= 1;
            millis <= millis + 1;
@@ -143,13 +114,13 @@ doneflag <= 0;
                millis <= 0;
                if(counter > SW)
                begin
-                   counter <= n + {20'd0, start} + 12'd1;
+                   counter <= n + {20'd0, start} - 12'd1;
 		   start <= start - 1;
 	       end
            end
       end
 
-      if(!KEY[2])
+      else if(!KEY[2] && doneflag == 1'b1)
       begin 
           pressed <= 1;
            millis <= millis + 1;
@@ -164,6 +135,18 @@ doneflag <= 0;
 //           offset <= 0;
            pressed <= 0;
       end
+//      else 
+//	begin 
+//           counter <= {20'b0, SW};
+//	end
+
+    if(pressed == 0)   
+        begin
+           millis <= 0;
+           offset <= 0;
+           counter <= {20'b0, SW};
+
+     end 
 
 
    end
