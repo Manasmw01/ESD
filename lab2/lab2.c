@@ -40,7 +40,12 @@ uint8_t endpoint_address;
 
 pthread_t network_thread;
 void *network_thread_f(void *);
-
+int keycode_to_ascii(int modifiers,int keycode0,
+	      int keycode1){
+          if( keycode0 >= 04 && keycode0<= 0x1d && modifiers == 0 ){
+            return keycode0+93
+          }
+        }
 int main()
 {
   int err, col;
@@ -100,8 +105,9 @@ int main()
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
     if (transferred == sizeof(packet)) {
-      sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
+      int c = keycode_to_ascii(acket.modifiers, packet.keycode[0],
 	      packet.keycode[1]);
+      sprintf(keystate, "%c", c);
       printf("%s\n", keystate);
       fbputs(keystate, 6, 0);
       if (packet.keycode[0] == 0x29) { /* ESC pressed? */
