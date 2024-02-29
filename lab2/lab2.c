@@ -50,7 +50,16 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
     return keycode0+19;
   }
   if( keycode0 == 0x27 && modifiers == 0){
-    return keycode0+10;
+    return keycode0+9;
+  }
+  if( keycode0 == 0x36 && modifiers == 0){
+    return 44;
+  }
+  if( keycode0 == 0x37 && modifiers == 0){
+    return 46;
+  }
+  if( keycode0 == 0x34 && modifiers == 0){
+    return 39;
   }
   if(keycode0== 0x2a){
     return -1;
