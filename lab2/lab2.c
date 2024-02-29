@@ -111,6 +111,8 @@ int main()
       printf("%s\n", keystate);
       fbputs(keystate, 6, i);
       i++;
+      printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
+	      packet.keycode[1]);
       if (packet.keycode[0] == 0x29) { /* ESC pressed? */
 	break;
       }
