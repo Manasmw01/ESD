@@ -148,7 +148,7 @@ void *network_thread_f(void *ignored)
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-      for (col = 0 ; col < 64 ; col++) {
+  for (int col = 0 ; col < 64 ; col++) {
     fbputchar(' ', j, col);
   }
     fbputs(recvBuf, j, 0);
