@@ -153,17 +153,17 @@ int main()
         SENDbuff[size++] = c;
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
-        if(cursor!=cols)
-        {
-          fbputs(keystate, rows, cursor);
-            cursor++;
-        }
-        else
-        {
+        // if(cursor!=cols)
+        // {
+        //   fbputs(keystate, rows, cursor);
+        //     cursor++;
+        // }
+        // else
+        // {
           fbputs(keystate, rows, cols);
           cols++;
          cursor = cols;
-        }
+        // }
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
       }
@@ -194,13 +194,13 @@ int main()
         }
         size = 0;
       }
-      else if (c == -3){
-        if(cursor != 0)
-        {
-          cursor--;
-        }
-       fbputs("|", rows, cursor);        
-      }
+      // else if (c == -3){ // LEFT
+      //   if(cursor != 0)
+      //   {
+      //     cursor--;
+      //   }
+      //  fbputs("|", rows, cursor);        
+      // }
 
       if (cols == 64){
         rows++;
