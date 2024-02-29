@@ -138,7 +138,8 @@ int main()
           continue; 
         }
         cols--;
-        if(cols == -1){
+        if(cols == -1)
+        {
           cols = 63;
           rows--;
         }
@@ -156,7 +157,8 @@ int main()
         rows++;
         cols = 0;
       }
-      if(rows == 24){
+      if(rows == 24)
+      {
         rows = 13;
       }
       
