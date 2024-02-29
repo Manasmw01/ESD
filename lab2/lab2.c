@@ -130,7 +130,11 @@ int main()
       else{
         if(cols>0){
           fbputs(" ", rows, --cols);
-        } 
+        }
+        if (cols == 0){
+          cols = 63;
+          rows -= 1;
+        }
       }
       if (cols == 64){
         rows++;
