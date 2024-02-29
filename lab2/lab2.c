@@ -107,7 +107,7 @@ int main()
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
       
-    if (transferred == sizeof(packet) && packet.keycode[1] != 0 && packet.keycode[1] != 0 && packet.modifiers!= 0 ) {
+    if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) ) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	      packet.keycode[1]);
       sprintf(keystate, "%c", c);
