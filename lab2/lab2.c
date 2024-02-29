@@ -3,7 +3,6 @@
  * CSEE 4840 Lab 2 for 2019
  *
  * Name/UNI: Please Changeto Yourname (pcy2301)
- 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
  */
 #include "fbputchar.h"
 #include <stdio.h>
