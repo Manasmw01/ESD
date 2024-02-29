@@ -119,7 +119,8 @@ int main()
     if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x20) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x02)  ) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
-      if(c != -1){
+      if(c != -1)
+      {
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
         fbputs(keystate, rows, cols);
@@ -127,22 +128,28 @@ int main()
         packet.keycode[1]);
         cols++;
       }
-      else{
-        if(cols == 0 && rows == 13){
+      else if (c == -1)
+      {
+        if(cols == 0 && rows == 13)
+        {
           continue; 
         }
         cols--;
-        if(cols == -1){
+        if(cols == -1)
+        {
           cols = 63;
           rows--;
         }
         fbputs(" ", rows, cols);
       }
-      if (cols == 64){
+
+      if (cols == 64)
+      {
         rows++;
         cols = 0;
       }
-      if(rows == 24){
+      if(rows == 24)
+      {
         rows = 13;
         cols = 0;
       }
