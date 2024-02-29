@@ -218,7 +218,13 @@ void *network_thread_f(void *ignored)
     j++;
     if (j ==11){
       j = 0;
+      for (int i = 0 ; i<11; i++){
+        for(int j = 0; j<64; j++){
+          fbputs(" ", i, j);
+        }
+      }
     }
+
   }
 
   return NULL;
