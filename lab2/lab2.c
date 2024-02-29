@@ -128,6 +128,9 @@ int main()
         cols++;
       }
       else{
+        if(cols == 0 && rows == 13){
+          continue; 
+        }
         cols--;
         if(cols == -1){
           cols = 63;
