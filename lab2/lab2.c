@@ -65,8 +65,7 @@ int main()
 
   /* Draw rows of asterisks across the top and bottom of the screen */
   for (col = 0 ; col < 64 ; col++) {
-    fbputchar('*', 0, col);
-    fbputchar('*', 23, col);
+    fbputchar('*', 12, col);
   }
 
   fbputs("Hello CSEE 4840 World!", 4, 10);
@@ -112,7 +111,7 @@ int main()
 	      packet.keycode[1]);
       sprintf(keystate, "%c", c);
       printf("%s\n", keystate);
-      fbputs(keystate, 6, i);
+      fbputs(keystate, 13, i);
       i++;
       printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
 	      packet.keycode[1]);
@@ -139,7 +138,7 @@ void *network_thread_f(void *ignored)
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-    fbputs(recvBuf, 8, 0);
+    fbputs(recvBuf, 0, 0);
   }
 
   return NULL;
