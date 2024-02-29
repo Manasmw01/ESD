@@ -199,7 +199,7 @@ int main()
         {
           cursor--;
         }
-       fbputs("|", rows, cols);        
+       fbputs("|", rows, cursor);        
       }
 
       if (cols == 64){
