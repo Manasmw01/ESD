@@ -68,13 +68,14 @@ int main()
     fprintf(stderr, "Error: Could not open framebuffer: %d\n", err);
     exit(1);
   }
+  for (int i = 0 ; i<24; i++){
+    fbputs("                          ", i, 0);
+  }
 
   /* Draw rows of asterisks across the top and bottom of the screen */
   for (col = 0 ; col < 64 ; col++) {
     fbputchar('*', 12, col);
   }
-
-  fbputs("Hello CSEE 4840 World!", 4, 10);
 
   /* Open the keyboard */
   if ( (keyboard = openkeyboard(&endpoint_address)) == NULL ) {
@@ -141,10 +142,15 @@ void *network_thread_f(void *ignored)
   char recvBuf[BUFFER_SIZE];
   int n;
   /* Receive data */
+  j = 0;
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-    fbputs(recvBuf, 0, 0);
+    fbputs(recvBuf, j, 0);
+    j++;
+    if (j ==11){
+      j = 0;
+    }
   }
 
   return NULL;
