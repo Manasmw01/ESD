@@ -128,13 +128,12 @@ int main()
         cols++;
       }
       else{
-        if(cols>0){
-          fbputs(" ", rows, --cols);
-        }
-        if (cols == 0){
+        cols--;
+        if(cols == -1){
           cols = 63;
-          rows -= 1;
+          rows--;
         }
+        fbputs(" ", rows, cols);
       }
       if (cols == 64){
         rows++;
