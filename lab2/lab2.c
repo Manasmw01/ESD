@@ -53,6 +53,9 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   if(keycode0== 0x2c){
     return 32;
   }
+  if(keycode0== 0x28){
+    return -2;
+  }
 }
 int main()
 {
@@ -111,6 +114,8 @@ int main()
   int cols= 0;
   int rows = 13;
   /* Look for and handle keypresses */
+  char SENDbuff[128] = "";
+  int size = 0;
   for (;;) {
     libusb_interrupt_transfer(keyboard, endpoint_address,
 			      (unsigned char *) &packet, sizeof(packet),
@@ -119,7 +124,8 @@ int main()
     if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x20) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x02)  ) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
-      if(c != -1){
+      if(c >= 0){
+        SENDbuff[size++] = c;
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
         fbputs(keystate, rows, cols);
@@ -127,7 +133,7 @@ int main()
         packet.keycode[1]);
         cols++;
       }
-      else{
+      else if (c == -1){
         if(cols == 0 && rows == 13){
           continue; 
         }
@@ -138,13 +144,20 @@ int main()
         }
         fbputs(" ", rows, cols);
       }
+      else if (c == -2){
+        write(sockfd, SENDbuff, size);
+        for (int i = 0; i < size; i++){
+          SENDbuff[i] = "";
+        }
+        size = 0;
+      }
+
       if (cols == 64){
         rows++;
         cols = 0;
       }
       if(rows == 24){
         rows = 13;
-        cols = 0;
       }
       
       if (packet.keycode[0] == 0x29) { /* ESC pressed? */
