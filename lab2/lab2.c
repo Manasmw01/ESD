@@ -149,8 +149,9 @@ int main()
         for (int r = 13; r < 24; r++){
           for (int co = 0; co < 64; co++){
             fbputs(" ", r, co);
-
           }
+          rows = 13;
+          cols = 0;
         }
         write(sockfd, SENDbuff, size);
         for (int i = 0; i < size; i++){
