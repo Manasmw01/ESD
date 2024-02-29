@@ -135,6 +135,9 @@ int main()
   pthread_create(&network_thread, NULL, network_thread_f, NULL);
   int cols= 0;
   int rows = 13;
+
+
+  int cursor= 0;
   /* Look for and handle keypresses */
   char SENDbuff[128] = "";
   int size = 0;
@@ -150,10 +153,14 @@ int main()
         SENDbuff[size++] = c;
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
-        fbputs(keystate, rows, cols);
+        if(cursor!=cols)
+          fbputs(keystate, rows, cursor);
+        else
+          fbputs(keystate, rows, cols);
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
         cols++;
+        cursor = cols;
       }
       else if (c == -1){
         if(cols == 0 && rows == 13){
@@ -183,7 +190,10 @@ int main()
         size = 0;
       }
       else if (c == -3){
-       cols--;
+        if(cursor != 0)
+        {
+          cursor--;
+        }
        fbputs("|", rows, cols);        
       }
 
