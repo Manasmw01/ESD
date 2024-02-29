@@ -69,7 +69,9 @@ int main()
     exit(1);
   }
   for (int i = 0 ; i<24; i++){
-    fbputs("                                                                     ", i, 0);
+    for(int j = 0; j<64; j++){
+      fbputs(" ", i, j);
+    }
   }
 
   /* Draw rows of asterisks across the top and bottom of the screen */
