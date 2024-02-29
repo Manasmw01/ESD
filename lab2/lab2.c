@@ -49,7 +49,7 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   if( keycode0 >= 0x1e && keycode0<= 0x26 && modifiers == 0){
     return keycode0+19;
   }
-  if( keycode0 == 0x26 && modifiers == 0){
+  if( keycode0 == 0x27 && modifiers == 0){
     return keycode0+10;
   }
   if(keycode0== 0x2a){
