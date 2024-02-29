@@ -142,16 +142,34 @@ int main()
 void *network_thread_f(void *ignored)
 {
   char recvBuf[BUFFER_SIZE];
+  char recvBuf2[BUFFER_SIZE/2];
   int n;
   /* Receive data */
   int j = 0;
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-  for (int col = 0 ; col < 64 ; col++) {
-    fbputchar(' ', j, col);
-  }
-    fbputs(recvBuf, j, 0);
+    if (n <64){
+      for (int col = 0 ; col < 64 ; col++) {
+        fbputchar(' ', j, col);
+      }
+      fbputs(recvBuf, j, 0);
+    }
+    else{
+      for (int col = 0 ; col < 64 ; col++) {
+        fbputchar(' ', j, col);
+      }
+      for (int col = 0 ; col < 64 ; col++) {
+        fbputchar(' ', j+1, col);
+      }
+      for (int i = 0; i<64; i++){
+        recvBuf2[i] = recvBuf[i];
+        recvBuf[i] = recvBuf[i+64];
+      }
+
+      fbputs(recvBuf2, j, 0);
+      fbputs(recvBuf, ++j, 0);
+    }
     j++;
     if (j ==11){
       j = 0;
