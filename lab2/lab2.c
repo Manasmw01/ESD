@@ -12,7 +12,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include "usbkeyboard.h"
+// #include "usbkeyboard.h"
 #include <pthread.h>
 
 /* Update SERVER_HOST to be the IP address of
@@ -40,12 +40,11 @@ uint8_t endpoint_address;
 
 pthread_t network_thread;
 void *network_thread_f(void *);
-int keycode_to_ascii(int modifiers,int keycode0,
-	      int keycode1){
-          if( keycode0 >= 04 && keycode0<= 0x1d && modifiers == 0 ){
-            return keycode0+93
-          }
-        }
+int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
+  if( keycode0 >= 04 && keycode0<= 0x1d && modifiers == 0 ){
+    return keycode0+93;
+  }
+}
 int main()
 {
   int err, col;
