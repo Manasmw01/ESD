@@ -192,6 +192,14 @@ void *network_thread_f(void *ignored)
   /* Receive data */
   int j = 0;
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
+    if(j == 0)
+    {
+      for (int i = 0 ; i<12; i++){
+        for(int j = 0; j<64; j++){
+          fbputs(" ", i, j);
+        }
+      }
+    }
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
     // if (n <64){
@@ -217,12 +225,9 @@ void *network_thread_f(void *ignored)
     // }
     j++;
     if (j ==12){
+    if (j ==12)
+    {
       j = 0;
-      for (int i = 0 ; i<12; i++){
-        for(int j = 0; j<64; j++){
-          fbputs(" ", i, j);
-        }
-      }
     }
 
   }
