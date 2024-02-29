@@ -97,18 +97,20 @@ int main()
 
   /* Start the network thread */
   pthread_create(&network_thread, NULL, network_thread_f, NULL);
-
+  int i = 0;
   /* Look for and handle keypresses */
   for (;;) {
     libusb_interrupt_transfer(keyboard, endpoint_address,
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
+      
     if (transferred == sizeof(packet)) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	      packet.keycode[1]);
       sprintf(keystate, "%c", c);
       printf("%s\n", keystate);
-      fbputs(keystate, 6, 0);
+      fbputs(keystate, 6, i);
+      i++;
       if (packet.keycode[0] == 0x29) { /* ESC pressed? */
 	break;
       }
