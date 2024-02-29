@@ -12,7 +12,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-// #include "usbkeyboard.h"
+#include "usbkeyboard.h"
 #include <pthread.h>
 
 /* Update SERVER_HOST to be the IP address of
@@ -104,7 +104,7 @@ int main()
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
     if (transferred == sizeof(packet)) {
-      int c = keycode_to_ascii(acket.modifiers, packet.keycode[0],
+      int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	      packet.keycode[1]);
       sprintf(keystate, "%c", c);
       printf("%s\n", keystate);
