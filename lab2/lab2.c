@@ -216,7 +216,7 @@ void *network_thread_f(void *ignored)
     //   fbputs(recvBuf, ++j, 0);
     // }
     j++;
-    if (j ==13){
+    if (j ==12){
       j = 0;
       for (int i = 0 ; i<12; i++){
         for(int j = 0; j<64; j++){
