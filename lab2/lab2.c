@@ -61,6 +61,14 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   if( keycode0 == 0x34 && modifiers == 0){
     return 39;
   }
+
+  if( keycode0 == 0x50 && modifiers == 0){
+    return -3; // LEFT
+  }
+  if( keycode0 == 0x4F && modifiers == 0){
+    return -4; // RIGHT
+  }
+
   if(keycode0== 0x2a){
     return -1;
   }
@@ -173,6 +181,10 @@ int main()
           SENDbuff[i] = "";
         }
         size = 0;
+      }
+      else if (c == -3){
+       cols--;
+       fbputs("|", rows, cols);        
       }
 
       if (cols == 64){
