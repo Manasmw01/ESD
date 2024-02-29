@@ -48,7 +48,7 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
     return keycode0+61;
   }
   if(keycode0== 0x2a){
-    return 8;
+    return -1;
   }
   if(keycode0== 0x2c){
     return 32;
@@ -108,7 +108,8 @@ int main()
 
   /* Start the network thread */
   pthread_create(&network_thread, NULL, network_thread_f, NULL);
-  int i = 0;
+  int cols= 0;
+  int rows = 13
   /* Look for and handle keypresses */
   for (;;) {
     libusb_interrupt_transfer(keyboard, endpoint_address,
@@ -118,12 +119,29 @@ int main()
     if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x20) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x02)  ) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
-      sprintf(keystate, "%c", c);
-      printf("%s\n", keystate);
-      fbputs(keystate, 13, i);
-      i++;
-      printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
-	      packet.keycode[1]);
+      if(c != -1){
+        sprintf(keystate, "%c", c);
+        printf("%s\n", keystate);
+        fbputs(keystate, rows, cols);
+        printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
+          packet.keycode[1]);
+      }
+      else{
+        if(cols>0){
+          fbputs(" ", rows, --cols);
+        }
+        
+      }
+      cols++;
+      if (cols == 64){
+        rows++;
+        cols = 0;
+      }
+      if(rows == 24){
+        rows = 13;
+        cols = 0;
+      }
+      
       if (packet.keycode[0] == 0x29) { /* ESC pressed? */
 	break;
       }
