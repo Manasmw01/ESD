@@ -146,6 +146,12 @@ int main()
         fbputs(" ", rows, cols);
       }
       else if (c == -2){
+        for (int r = 13; r < 24; r++){
+          for (int co = 0; co < 64; co++){
+            fbputs(" ", r, co);
+
+          }
+        }
         write(sockfd, SENDbuff, size);
         for (int i = 0; i < size; i++){
           SENDbuff[i] = "";
