@@ -154,8 +154,10 @@ int main()
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
         if(cursor!=cols)
+        {
           fbputs(keystate, rows, cursor);
             cursor++;
+        }
         else
         {
           fbputs(keystate, rows, cols);
