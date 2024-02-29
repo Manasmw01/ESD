@@ -155,12 +155,15 @@ int main()
         printf("%s\n", keystate);
         if(cursor!=cols)
           fbputs(keystate, rows, cursor);
+            cursor++;
         else
+        {
           fbputs(keystate, rows, cols);
+          cols++;
+         cursor = cols;
+        }
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
-        cols++;
-        cursor = cols;
       }
       else if (c == -1){
         if(cols == 0 && rows == 13){
