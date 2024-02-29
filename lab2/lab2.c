@@ -144,6 +144,7 @@ int main()
           rows--;
         }
         fbputs(" ", rows, cols);
+        SENDbuff[--size] = "";
       }
       else if (c == -2){
         for (int r = 13; r < 24; r++){
