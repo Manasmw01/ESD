@@ -44,7 +44,7 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   if( keycode0 >= 04 && keycode0<= 0x1d && modifiers == 0 ){
     return keycode0+93;
   }
-  if( keycode0 >= 04 && keycode0<= 0x1d && modifiers == 2 ){
+  if( keycode0 >= 04 && keycode0<= 0x1d && (modifiers == 2||modifiers == 0x20)){
     return keycode0+61;
   }
   if(keycode0== 0x2a){
@@ -115,7 +115,7 @@ int main()
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
       
-    if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) ) {
+    if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) && !(packet.keycode[0] == 0x20 && packet.keycode[1] == 0 && packet.modifiers == 0) && !(packet.keycode[0] == 0x02 && packet.keycode[1] == 0 && packet.modifiers == 0)  ) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	      packet.keycode[1]);
       sprintf(keystate, "%c", c);
