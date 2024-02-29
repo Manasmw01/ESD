@@ -124,15 +124,14 @@ int main()
         printf("%s\n", keystate);
         fbputs(keystate, rows, cols);
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
-          packet.keycode[1]);
+        packet.keycode[1]);
+        cols++;
       }
       else{
         if(cols>0){
           fbputs(" ", rows, --cols);
-        }
-        
+        } 
       }
-      cols++;
       if (cols == 64){
         rows++;
         cols = 0;
