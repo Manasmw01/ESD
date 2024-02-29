@@ -47,7 +47,6 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   if( keycode0 >= 04 && keycode0<= 0x1d && modifiers == 2 ){
     return keycode0+61;
   }
-  if 
   if(keycode0== 0x2a){
     return 8;
   }
