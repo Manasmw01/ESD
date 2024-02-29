@@ -224,7 +224,6 @@ void *network_thread_f(void *ignored)
     //   fbputs(recvBuf, ++j, 0);
     // }
     j++;
-    if (j ==12){
     if (j ==12)
     {
       j = 0;
