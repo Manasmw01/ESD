@@ -87,9 +87,37 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   }
 
 
-if( keycode >= 0x1e && keycode<= 0x27 && modifiers == 2||modifiers == 0x20){
-    return keycode+3;
+if( keycode == 0x1e  && modifiers == 2||modifiers == 0x20){
+    return 33;
   }
+  if( keycode == 0x1f  && modifiers == 2||modifiers == 0x20){
+    return 64;
+  }
+  if( keycode == 0x20  && modifiers == 2||modifiers == 0x20){
+    return 35;
+  }
+  if( keycode == 0x21  && modifiers == 2||modifiers == 0x20){
+    return 36;
+  }
+  if( keycode == 0x22  && modifiers == 2||modifiers == 0x20){
+    return 37;
+  }
+  if( keycode == 0x23  && modifiers == 2||modifiers == 0x20){
+    return 94;
+  }
+  if( keycode == 0x24  && modifiers == 2||modifiers == 0x20){
+    return 38;
+  }
+  if( keycode == 0x25  && modifiers == 2||modifiers == 0x20){
+    return 42;
+  }
+  if( keycode == 0x26  && modifiers == 2||modifiers == 0x20){
+    return 40;
+  }
+  if( keycode == 0x27  && modifiers == 2||modifiers == 0x20){
+    return 41;
+  }
+
   //-
   if( keycode == 0x2d && modifiers == 0){
     return keycode;
