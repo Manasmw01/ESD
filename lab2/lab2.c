@@ -85,6 +85,80 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   if(keycode== 0x28){
     return -2;
   }
+
+
+
+
+
+if( keycode >= 0x1e && keycode<= 0x27 && modifiers == 2||modifiers == 0x20){
+    return keycode+3;
+  }
+  //-
+  if( keycode == 0x2d && modifiers == 0){
+    return keycode;
+  }
+  //=
+    if( keycode == 0x2e && modifiers == 0){
+    return keycode+15;}
+  //_
+  if( keycode == 0x2d && modifiers == 2||modifiers == 0x20){
+    return keycode+50;
+  }
+    //+
+    if( keycode == 0x2e && modifiers == 2||modifiers == 0x20){
+        return keycode-3; }
+     //[
+     if( keycode == 0x2f && modifiers == 0){
+    return keycode+44;}
+    //]
+    if( keycode == 0x30 && modifiers == 0){
+    return keycode+45;}
+    //{
+     if( keycode == 0x2f && modifiers == 2||modifiers == 0x20){
+        return keycode+76;}
+     //}
+     if( keycode == 0x30 && modifiers == 2||modifiers == 0x20){
+        return keycode+77; }
+
+    //;
+     if( keycode == 0x33 && modifiers == 0){
+    return 59;}
+    //'
+    if( keycode == 0x34 && modifiers == 0){
+    return 39;}
+    //"\"
+    if( keycode == 0x31 && modifiers == 0){
+    return 92;}
+    //:
+     if( keycode == 0x33 && modifiers == 2||modifiers == 0x20){
+        return 58;}
+     //""
+     if( keycode == 0x34 && modifiers == 2||modifiers == 0x20){
+        return 34; }
+    //|
+     if( keycode == 0x31 && modifiers == 2||modifiers == 0x20){
+        return 124; }
+
+     //,
+     if( keycode == 0x36 && modifiers == 0){
+    return 44;}
+    //.
+    if( keycode == 0x37 && modifiers == 0){
+    return 46;}
+    ///
+    if( keycode == 0x38 && modifiers == 0){
+    return 47;}
+    //<
+     if( keycode == 0x36 && modifiers == 2||modifiers == 0x20){
+        return 60;}
+     //>
+     if( keycode == 0x37 && modifiers == 2||modifiers == 0x20){
+        return 62; }
+    //?
+     if( keycode == 0x38 && modifiers == 2||modifiers == 0x20){
+        return 63; }
+
+
 }
 int main()
 {
