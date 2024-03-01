@@ -400,9 +400,9 @@ int main()
         if(cursor == cols){
           continue;
         }
-          char temp = keystate[cursor+1];
-          keystate[cursor+1] =  keystate[cursor];
-          keystate[cursor] = temp;
+          char temp = keystate[cursor];
+          keystate[cursor] =  keystate[cursor+1];
+          keystate[cursor+1] = temp;
           if(cursor != cols)
           {
             cursor++;
