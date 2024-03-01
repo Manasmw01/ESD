@@ -187,7 +187,7 @@ int main()
         {
           printf("%s\n",keystate );
 
-          fbputs(keystate, rows, cols);
+          fbputs(keystate, rows, 0);
           cols++;
          cursor++;
         }
