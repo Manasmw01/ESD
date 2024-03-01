@@ -190,8 +190,8 @@ int main()
         if(cursor!=cols)
         {
           fbputs(keystate, rows, cursor);
-            cursor++;
             cols++;
+         cursor = cols;
         }
         else
         {
