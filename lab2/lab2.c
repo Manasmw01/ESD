@@ -190,17 +190,17 @@ int main()
         if(cursor!=cols)
         {
         printf("%s\n",keystate );
-        fbputs(keystate, rows, 0);
+        fbputs(keystate, rows, cursor);
         cols++;
         cursor++;
         }
         else
         {
-                  printf("%s\n",keystate );
+          printf("%s\n",keystate );
 
           fbputs(keystate, rows, cols);
           cols++;
-         cursor = cols;
+         cursor++;
         }
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
