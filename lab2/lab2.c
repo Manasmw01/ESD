@@ -340,8 +340,8 @@ int main()
         else
         {
         size--;
-        SENDbuff[size] = '\0';
-        keystate[size] = '\0';
+        SENDbuff[size] = ' ';
+        keystate[size] = ' ';
         if(size <64){
           fbputs(keystate, rows, 0);
         }
