@@ -308,6 +308,7 @@ void *network_thread_f(void *ignored)
     //   fbputs(recvBuf2, j, 0);
     //   fbputs(recvBuf, ++j, 0);
     // }
+    printf("Value of n: %d, j: \n", n, j);
     j++;
     if (j ==12)
     {
