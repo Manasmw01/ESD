@@ -200,6 +200,9 @@ int main()
         }
         if(cursor != cols)
         {
+          char SENDbuff_tmp[128];
+          strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
+
         fbputs(" ", rows, cursor);
           for(int i = cursor; i<= cols; i++)
           {
