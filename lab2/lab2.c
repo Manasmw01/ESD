@@ -347,7 +347,7 @@ void *network_thread_f(void *ignored)
       j = 0;
     }
 
-  // }
+   }
 
   return NULL;
 }
