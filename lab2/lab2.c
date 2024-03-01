@@ -87,7 +87,7 @@ int main()
 
   struct usb_keyboard_packet packet;
   int transferred;
-  char keystate[12];
+  char keystate[128];
 
   if ((err = fbopen()) != 0) {
     fprintf(stderr, "Error: Could not open framebuffer: %d\n", err);
@@ -156,7 +156,7 @@ int main()
           // SENDbuff_tmp = SENDbuff;
           strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
           size++;
-          char keystate_tmp[12];
+          char keystate_tmp[128];
           strncpy(keystate_tmp, keystate, sizeof(keystate_tmp));
           for(int i = cols; i>= cursor; i--)
           {
