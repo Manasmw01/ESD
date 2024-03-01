@@ -178,39 +178,7 @@ int main()
           keystate[size] = c;
           size++;
         }
-        // for (int col = 0 ; col < 64 ; col++) {
-        // fbputchar(' ', rows, col);
-        // }
-        // for (int col = 0 ; col < 64 ; col++) {
-        // fbputchar(' ', rows+1, col);
-        // }
-    printf("Value of size is: %d\n", size);
-    if(size < 64)
-    {
         fbputs(keystate, rows, 0);
-    }
-    else
-    {
-      char keystate0[64] =  "";
-      strncpy(keystate0, keystate, 64*sizeof(char));
-      fbputs(keystate0, rows, 0);
-      fbputs(&keystate[64], rows+1, 0);
-      // for (int col = 0 ; col < 64 ; col++) {
-      //   fbputchar(' ', rows, col);
-      // }
-      // for (int col = 0 ; col < 64 ; col++) {
-      //   fbputchar(' ', rows+1, col);
-      // }
-
-      // char keystate2[128] = "";
-      // for (int i = 0; i<64; i++){
-      //   keystate2[i] = keystate[i];
-      //   keystate[i] = keystate[i+64];
-      // }
-
-      // fbputs(keystate2, rows, 0);
-      // fbputs(keystate, ++rows, 0);
-    }
         cols++;
         cursor++;
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
@@ -277,14 +245,14 @@ int main()
         }
       }
 
-      // if (cols == 64){
-      //   rows++;
-      //   cols = 0;
-      // }
-      // if(rows == 24)
-      // {
-      //   rows = 13;
-      // }
+      if (cols == 64){
+        rows++;
+        cols = 0;
+      }
+      if(rows == 24)
+      {
+        rows = 13;
+      }
       
       if (packet.keycode[0] == 0x29) { /* ESC pressed? */
 	break;
@@ -319,36 +287,34 @@ void *network_thread_f(void *ignored)
     }
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-    //if (n <43){
+    // if (n <64){
       for (int col = 0 ; col < 64 ; col++) {
         fbputchar(' ', j, col);
       }
       fbputs(recvBuf, j, 0);
-  //   }
-  //   else{
-  //     for (int col = 0 ; col < 64 ; col++) {
-  //       fbputchar(' ', j, col);
-  //     }
-  //     for (int col = 0 ; col < 64 ; col++) {
-  //       fbputchar(' ', j+1, col);
-  //     }
-  //     for (int i = 0; i<64; i++){
-  //       recvBuf2[i] = recvBuf[i];
-  //       recvBuf[i] = recvBuf[i+64];
-  //     }
+    // }
+    // else{
+    //   for (int col = 0 ; col < 64 ; col++) {
+    //     fbputchar(' ', j, col);
+    //   }
+    //   for (int col = 0 ; col < 64 ; col++) {
+    //     fbputchar(' ', j+1, col);
+    //   }
+    //   for (int i = 0; i<64; i++){
+    //     recvBuf2[i] = recvBuf[i];
+    //     recvBuf[i] = recvBuf[i+64];
+    //   }
 
-  //     fbputs(recvBuf2, j, 0);
-  //     fbputs(recvBuf, ++j, 0);
-  //   }
-  //   printf("Value of n: %d, j: \n", n, j);
+    //   fbputs(recvBuf2, j, 0);
+    //   fbputs(recvBuf, ++j, 0);
+    // }
     j++;
     if (j ==12)
     {
       j = 0;
     }
 
-   }
+  }
 
   return NULL;
 }
-
