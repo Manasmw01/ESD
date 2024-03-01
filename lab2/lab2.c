@@ -172,8 +172,7 @@ int main()
         }
         else
         {
-        // sprintf(keystate, "%c", c);
-        keystate[size++] = c;
+        sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
         SENDbuff[size++] = c;
         }
