@@ -158,9 +158,9 @@ int main()
           size++;
           for(int i = cols; i>= cursor; i--)
           {
-            SENDbuff[i] = SENDbuff_tmp[i-1];          
+            SENDbuff[i+1] = SENDbuff_tmp[i-1];          
             SENDbuff[cursor] = c;
-          }
+            }
         }
         else
         {
