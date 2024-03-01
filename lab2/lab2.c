@@ -189,7 +189,7 @@ int main()
         }
         else{
           char keystate0[64] = "";
-          strncpy(keystate0, keystate, 64*char(char));
+          strncpy(keystate0, keystate, 64*sizeof(char));
           fbputs(keystate0, rows, 0);
           fbputs(&keystate[64], rows+1, 0);
         }
