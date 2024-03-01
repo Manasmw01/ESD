@@ -155,19 +155,27 @@ int main()
           char SENDbuff_tmp[128];
           // SENDbuff_tmp = SENDbuff;
           strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
+          char keystate_tmp[12];
+          // SENDbuff_tmp = SENDbuff;
+          strncpy(keystate_tmp, keystate, sizeof(keystate_tmp));
+
           size++;
           for(int i = cols; i>= cursor; i--)
           {
             SENDbuff[i] = SENDbuff_tmp[i-1];          
             SENDbuff[cursor] = c;
+            keystate[i] = keystate_tmp[i-1];          
+            keystate[cursor] = c;
           }
+        // sprintf(keystate, "%c", c);
+        printf("%s\n", keystate);
         }
         else
         {
-        SENDbuff[size++] = c;
-        }
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
+        SENDbuff[size++] = c;
+        }
         if(cursor!=cols)
         {
           fbputs(keystate, rows, cursor);
