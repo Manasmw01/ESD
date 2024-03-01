@@ -178,7 +178,28 @@ int main()
           keystate[size] = c;
           size++;
         }
+        // for (int col = 0 ; col < 64 ; col++) {
+        // fbputchar(' ', rows, col);
+        // }
+        // for (int col = 0 ; col < 64 ; col++) {
+        // fbputchar(' ', rows+1, col);
+        // }
+    printf("Value of size is: %d\n", size);
+    if(size < 64)
+    {
         fbputs(keystate, rows, 0);
+    }
+    else
+    {
+  char keystate2[128] = "";
+      for (int i = 0; i<64; i++){
+        keystate2[i] = keystate[i];
+        keystate[i] = keystate[i+64];
+      }
+
+      fbputs(keystate2, rows, 0);
+      fbputs(keystate, ++rows, 0);
+    }
         cols++;
         cursor++;
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
