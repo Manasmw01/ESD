@@ -42,17 +42,17 @@ void *network_thread_f(void *);
 int keycode_prev = 0;
 int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   int keycode; 
-//  if(keycode0!= 0 && keycode1!= 0 ){
-//    keycode = keycode1;
-//  }
+ if(keycode0!= 0 && keycode1!= 0 ){
+   keycode = keycode1;
+ }
   // keycode_prev = keycode;
-  if(keycode1!= 0){
-    keycode = keycode1;
-  }
-  else if (keycode_prev == keycode){
-    keycode = keycode0;
-  }
-  keycode_prev = keycode;
+  // if(keycode1!= 0){
+  //   keycode = keycode1;
+  // }
+  // else if (keycode1 != keycode_prev == keycode){
+  //   keycode = keycode0;
+  // }
+  // keycode_prev = keycode;
   if( keycode >= 04 && keycode<= 0x1d && modifiers == 0 ){
     return keycode+93;
   }
