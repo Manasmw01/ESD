@@ -155,7 +155,6 @@ int main()
         printf("\n");
         if(cursor!=cols)
         {
-          size++;
           for(int i = cols; i>= cursor; i--)
           {
             keystate[i] = keystate[i-1];          
@@ -164,6 +163,7 @@ int main()
             SENDbuff[cursor] = c;
             keystate[cursor] = c;
             printf("%c\n", keystate[cursor]);
+            size++;
 
         }
         else
@@ -171,13 +171,15 @@ int main()
         SENDbuff[size] = c;
         keystate[size] = c;
         size++;
+        //sprintf(keystate, "%c", c);
+
         printf("\n");
         }
 
         if(cursor!=cols)
         {
         printf("%s\n",keystate );
-        fbputs(keystate, rows, cursor);
+        fbputs(keystate, rows, 0);
         cols++;
         cursor++;
         }
