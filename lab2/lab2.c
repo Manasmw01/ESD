@@ -444,7 +444,7 @@ void *network_thread_f(void *ignored)
       strncpy(recBuf0, recvBuf, 63);
       recBuf0[64] = '\0';
       fbputs(recBuf0, j, 0);
-      fbputs(&recvBuf[], ++j, 0);
+      fbputs(&recvBuf[64], ++j, 0);
 
     }
     else{
