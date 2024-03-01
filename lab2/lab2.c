@@ -382,7 +382,9 @@ int main()
         size = 0;
       }
       else if (c == -3){ // LEFT
-
+        if(cursor == 0){
+          continue;
+        }
           char temp = keystate[cursor-1];
           keystate[cursor-1] =  keystate[cursor];
           keystate[cursor] = temp;
@@ -395,6 +397,16 @@ int main()
 
       }
       else if (c == -4){ // right 
+        if(cursor == cols){
+          continue;
+        }
+          char temp = keystate[cursor+1];
+          keystate[cursor+1] =  keystate[cursor];
+          keystate[cursor] = temp;
+          if(cursor != cols)
+          {
+            cursor++;
+          }
         if(cursor != cols)
         {
           cursor++;
