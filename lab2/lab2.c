@@ -442,7 +442,7 @@ void *network_thread_f(void *ignored)
     else if (n>64 && n<128){
       char recBuf0[65] = "";
       strncpy(recBuf0, recvBuf, 64);
-      recBuf0[64] = '\0';1
+      recBuf0[64] = '\0';
       fbputs(recBuf0, j, 0);
       if(j == 11){
         j = 0;
@@ -454,9 +454,20 @@ void *network_thread_f(void *ignored)
       }
     }
     else{
-      char recBuf0[44] = "";
-      strncpy(recBuf0, recvBuf, 43);
-      recBuf0[43] = '\0';
+      // char recBuf0[65] = "";
+      // char recBuf0[6] = "";
+
+      // strncpy(recBuf0, recvBuf, 64);
+      // recBuf0[64] = '\0';1
+      // fbputs(recBuf0, j, 0);
+      // if(j == 11){
+      //   j = 0;
+      //   fbputs(&recvBuf[64], j, 0);
+      // }
+      // else{
+      //   fbputs(&recvBuf[64], ++j, 0);
+
+      // }
 
     }
     // else{
