@@ -87,9 +87,6 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   }
 
 
-
-
-
 if( keycode >= 0x1e && keycode<= 0x27 && modifiers == 2||modifiers == 0x20){
     return keycode+3;
   }
@@ -348,6 +345,13 @@ int main()
           cursor--;
         }
       }
+      else if (c == -4){ // right 
+        if(cursor != cols)
+        {
+          cursor++;
+        }
+      }
+
 
       // if (cols == 64){
       //   rows++;
