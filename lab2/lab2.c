@@ -154,6 +154,7 @@ int main()
         {
           char SENDbuff_tmp[128];
           SENDbuff_tmp = SENDbuff;
+          strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
           size++;
           for(int i = cols; i>= cursor; i--)
             SENDbuff_tmp[i] = SENDbuff_tmp[i-1];          
