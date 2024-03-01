@@ -160,49 +160,27 @@ int main()
             keystate[i] = keystate[i-1];          
             SENDbuff[i] = SENDbuff[i-1];          
           }
-            SENDbuff[cursor] = c;
-            keystate[cursor] = c;
-            printf("%c\n", keystate[cursor]);
-            size++;
-
+          SENDbuff[cursor] = c;
+          keystate[cursor] = c;
+          size++;
         }
         else
         {
-        SENDbuff[size] = c;
-        keystate[size] = c;
-        size++;
-        //sprintf(keystate, "%c", c);
-
-        printf("\n");
+          SENDbuff[size] = c;
+          keystate[size] = c;
+          size++;
         }
-
-        if(cursor!=cols)
-        {
-        printf("%s\n",keystate );
         fbputs(keystate, rows, 0);
         cols++;
         cursor++;
-        }
-        else
-        {
-          printf("%s\n",keystate );
-
-          fbputs(keystate, rows, 0);
-          cols++;
-         cursor++;
-        }
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
       }
-
-
 
       else if (c == -1){
         if(cols == 0 && rows == 13){
           continue; 
         }
-        cols--;
-        cursor--;
         if(cols == -1)
         {
           cols = 63;
@@ -211,29 +189,23 @@ int main()
         }
         if(cursor != cols)
         {
-          char SENDbuff_tmp[128];
-          strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
-
-          char keystate_tmp[128];
-          strncpy(keystate_tmp, keystate, sizeof(keystate_tmp));
-
-        fbputs(" ", rows, cursor);
           for(int i = cursor; i<= cols; i++)
           {
-            SENDbuff[i] = SENDbuff_tmp[i+1];          
-            keystate[i] = keystate_tmp[i+1];          
-            // SENDbuff[cursor] = c;
+            SENDbuff[i] = SENDbuff[i-1];          
+            keystate[i] = keystate[i-1];          
           }
           size--;
         // SENDbuff[cursor] = "";
         }
         else
         {
-        fbputs(" ", rows, cols);
+        fbputs(keystate, rows, 0);
         size--;
         SENDbuff[size] = "";
         keystate[size] = "";
         }
+        cols--;
+        cursor--;
       }
       else if (c == -2){
         for (int r = 13; r < 24; r++){
