@@ -140,6 +140,7 @@ int main()
 
   /* Look for and handle keypresses */
   char SENDbuff[128] = "";
+  
   char keystate[128] = "";
   int size = 0;
   for (;;) {
@@ -201,7 +202,7 @@ int main()
       }
 
 
-      
+
       else if (c == -1){
         if(cols == 0 && rows == 13){
           continue; 
