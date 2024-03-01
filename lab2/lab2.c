@@ -319,35 +319,35 @@ void *network_thread_f(void *ignored)
     }
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-    if (n <43){
+    //if (n <43){
       for (int col = 0 ; col < 64 ; col++) {
         fbputchar(' ', j, col);
       }
       fbputs(recvBuf, j, 0);
-    }
-    else{
-      for (int col = 0 ; col < 64 ; col++) {
-        fbputchar(' ', j, col);
-      }
-      for (int col = 0 ; col < 64 ; col++) {
-        fbputchar(' ', j+1, col);
-      }
-      for (int i = 0; i<64; i++){
-        recvBuf2[i] = recvBuf[i];
-        recvBuf[i] = recvBuf[i+64];
-      }
+  //   }
+  //   else{
+  //     for (int col = 0 ; col < 64 ; col++) {
+  //       fbputchar(' ', j, col);
+  //     }
+  //     for (int col = 0 ; col < 64 ; col++) {
+  //       fbputchar(' ', j+1, col);
+  //     }
+  //     for (int i = 0; i<64; i++){
+  //       recvBuf2[i] = recvBuf[i];
+  //       recvBuf[i] = recvBuf[i+64];
+  //     }
 
-      fbputs(recvBuf2, j, 0);
-      fbputs(recvBuf, ++j, 0);
-    }
-    printf("Value of n: %d, j: \n", n, j);
+  //     fbputs(recvBuf2, j, 0);
+  //     fbputs(recvBuf, ++j, 0);
+  //   }
+  //   printf("Value of n: %d, j: \n", n, j);
     j++;
     if (j ==12)
     {
       j = 0;
     }
 
-  }
+  // }
 
   return NULL;
 }
