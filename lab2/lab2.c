@@ -422,7 +422,7 @@ void *network_thread_f(void *ignored)
   /* Receive data */
   int j = 1;
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
-    if(j == 0)
+    if(j == 1)
     {
       for (int i = 0 ; i<12; i++){
         for(int j = 0; j<64; j++){
