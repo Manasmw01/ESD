@@ -248,6 +248,8 @@ int main()
           SENDbuff[i] = " ";
           keystate[i] = " ";
         }
+        SENDbuff[129] = '';
+        keystate[129] = '';
         size = 0;
       }
       else if (c == -3){ // LEFT
