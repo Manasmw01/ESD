@@ -248,10 +248,10 @@ int main()
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        // for (int i = 0; i <= 128; i++){
-        //   SENDbuff[i] = "\0";
-        //   keystate[i] = "\0";
-        // }
+        for (int i = 0; i <= size; i++){
+          SENDbuff[i] = " ";
+          keystate[i] = " ";
+        }
         size = 0;
       }
       else if (c == -3){ // LEFT
