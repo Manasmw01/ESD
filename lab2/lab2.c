@@ -159,6 +159,9 @@ int main()
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
       if(c >= 0){
+        if( size == 128){
+          continue;
+        }
         printf("\n");
         if(cursor!=cols)
         {
