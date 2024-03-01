@@ -203,6 +203,7 @@ int main()
           }
           rows = 13;
           cols = 0;
+          cursor = 0;
         }
         write(sockfd, SENDbuff, size);
         for (int i = 0; i < size; i++){
