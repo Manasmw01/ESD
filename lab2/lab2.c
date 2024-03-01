@@ -249,8 +249,8 @@ int main()
             printf("%c", keystate[i]);
         }
         for (int i = 0; i <= 128; i++){
-          SENDbuff[i] = " ";
-          keystate[i] = " ";
+          SENDbuff[i] = "\0";
+          keystate[i] = "\0";
         }
         size = 0;
       }
