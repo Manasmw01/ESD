@@ -387,11 +387,11 @@ int main()
           cursor--;
         }
 
-        for(int i = cols; i>= cursor+1; i--)
+        for(int i = cols; i>= cursor+2; i--)
           {
             //keystate[i] = keystate[i-1];          
             //SENDbuff[i] = SENDbuff[i-1]; 
-            keystate[i+1] = keystate[i-1];          
+            keystate[i] = keystate[i-1];          
                      
           }
           keystate[cursor] = '_'; 
