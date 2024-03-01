@@ -135,9 +135,9 @@ int main()
   pthread_create(&network_thread, NULL, network_thread_f, NULL);
   int cols= 0;
   int rows = 13;
-
-
   int cursor= 0;
+
+
   /* Look for and handle keypresses */
   char SENDbuff[128] = "";
   char keystate[128] = "";
@@ -250,6 +250,9 @@ int main()
           cursor = 0;
         }
         write(sockfd, SENDbuff, size);
+        for (int i = 0; i < size; i++){
+            printf("%c", keystate[i]);
+        }
         for (int i = 0; i < size; i++){
           SENDbuff[i] = "";
           keystate[i] = "";
