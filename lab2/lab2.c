@@ -382,19 +382,15 @@ int main()
         size = 0;
       }
       else if (c == -3){ // LEFT
-        if(cursor != 0)
-        {
-          cursor--;
-        }
 
-        for(int i = cols; i>= cursor+1; i--)
+          char temp = keystate[cursor-1];
+          keystate[cursor-1] =  keystate[cursor];
+          keystate[cursor] = temp;
+          if(cursor != 0)
           {
-            //keystate[i] = keystate[i-1];          
-            //SENDbuff[i] = SENDbuff[i-1]; 
-            keystate[i] = keystate[i-1];          
-                     
+            cursor--;
           }
-          keystate[cursor] = '_'; 
+          
           fbputs(keystate, rows, 0);
 
       }
