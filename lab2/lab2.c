@@ -391,7 +391,7 @@ int main()
           {
             //keystate[i] = keystate[i-1];          
             //SENDbuff[i] = SENDbuff[i-1]; 
-            keystate[i] = keystate[i-1];          
+            keystate[i+1] = keystate[i-1];          
                      
           }
           keystate[cursor] = '_'; 
