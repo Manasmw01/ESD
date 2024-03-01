@@ -182,15 +182,15 @@ int main()
           keystate[size] = c;
           size++;
         }
-        // if(size <64){
+        if(size <64){
           fbputs(keystate, rows, 0);
-        // }
-        // else{
-        //   strncpy(keystate0, keystate, 64*sizeof(char));
-        //   keystate0[64] = '\0';
-        //   fbputs(keystate0, rows, 0);
-        //   fbputs(&keystate[64], rows+1, 0);
-        // }
+        }
+        else{
+          strncpy(keystate0, keystate, 64*sizeof(char));
+          keystate0[64] = '\0';
+          fbputs(keystate0, rows, 0);
+          fbputs(&keystate[64], rows+1, 0);
+        }
         cols++;
         cursor++;
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
@@ -244,7 +244,7 @@ int main()
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        for (int i = 0; i <= 129; i++){
+        for (int i = 0; i <= 130; i++){
           SENDbuff[i] = '\0';
           keystate[i] = '\0';
         }
