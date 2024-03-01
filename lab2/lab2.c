@@ -432,18 +432,21 @@ void *network_thread_f(void *ignored)
     }
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-    if (n <43){
+    if (n <64){
       for (int col = 0 ; col < 64 ; col++) {
         fbputchar(' ', j, col);
       }
       fbputs(recvBuf, j, 0);
       
     }
-    else if (n>43 && n<107){
-      char recBuf0[64] = "";
-      strncpy(recBuf0, recvBuf, 63);
+    else if (n>64 && n<128){
+      char recBuf0[65] = "";
+      strncpy(recBuf0, recvBuf, 64);
       recBuf0[64] = '\0';
       fbputs(recBuf0, j, 0);
+      if(j == 12){
+        j = 0;
+      }
       fbputs(&recvBuf[64], ++j, 0);
 
     }
