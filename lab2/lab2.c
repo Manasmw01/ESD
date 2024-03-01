@@ -182,10 +182,10 @@ int main()
         keystate[size] = c;
         size++;
         // sprintf(keystate, "%c", c);
-        // for (int i = 0; i <= size; i++){
-        //     printf("%c", keystate[i]);
-        // }
-        // printf("\n");
+        for (int i = 0; i <= size; i++){
+            printf("%c", keystate[i]);
+        }
+        printf("\n");
         // printf("%s\n", keystate);
         }
 
@@ -197,11 +197,9 @@ int main()
         }
         else
         {
-          printf ("BEFORE PUTS\n");
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        printf("\n");
           fbputs(keystate, rows, cols);
           cols++;
         //  cursor = cols;
