@@ -187,8 +187,8 @@ if( keycode == 0x1e  && modifiers == 2||modifiers == 0x20){
     return 96;}
   //~
   if( keycode == 0x35 && modifiers == 2||modifiers == 0x20){
-    return 126;
-  }
+   return 126;
+}
 
 }
 int main()
@@ -437,7 +437,7 @@ void *network_thread_f(void *ignored)
       
     }
     else if (n>43 && n<107){
-      
+
     }
     else{
 
