@@ -277,7 +277,7 @@ int main()
         printf("enter\n");
         if(cursor!=cols)
         {
-          for(int i = cols; i>= cursor+1; i--)
+          for(int i = cols+1; i>= cursor; i--)
           {
             //keystate[i] = keystate[i-1];          
             SENDbuff[i] = SENDbuff[i-1]; 
