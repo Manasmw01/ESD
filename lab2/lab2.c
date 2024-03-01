@@ -210,7 +210,7 @@ int main()
             // SENDbuff[cursor] = c;
           }
           size--;
-        SENDbuff[cursor] = "";
+        // SENDbuff[cursor] = "";
         }
         else
         {
