@@ -41,7 +41,10 @@ pthread_t network_thread;
 void *network_thread_f(void *);
 int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   int keycode; 
-  if(keycode0!= 0 && keycode1!= 0 ){
+//  if(keycode0!= 0 && keycode1!= 0 ){
+//    keycode = keycode1;
+//  }
+  if(keycode1!= 0){
     keycode = keycode1;
   }
   else{
