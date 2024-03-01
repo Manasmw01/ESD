@@ -182,7 +182,13 @@ if( keycode == 0x1e  && modifiers == 2||modifiers == 0x20){
     //?
      if( keycode == 0x38 && modifiers == 2||modifiers == 0x20){
         return 63; }
-
+//`
+    if( keycode == 0x35 && modifiers == 0){
+    return 96;}
+  //~
+  if( keycode == 0x35 && modifiers == 2||modifiers == 0x20){
+    return 126;
+  }
 
 }
 int main()
