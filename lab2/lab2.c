@@ -328,8 +328,9 @@ int main()
             keystate[i-1] = keystate[i];          
           }
           printf("%s", keystate);
-          keystate[size-1] = ' ';
+          keystate[size-1] = '_';
           SENDbuff[size-1] = ' ';
+          keystate[size] = ' ';
           size--;
         if(size <64){
         fbputs(keystate, rows, 0);
