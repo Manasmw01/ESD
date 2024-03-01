@@ -420,7 +420,7 @@ void *network_thread_f(void *ignored)
   char recvBuf2[BUFFER_SIZE/2];
   int n;
   /* Receive data */
-  int j = 0;
+  int j = 1;
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
     if(j == 0)
     {
@@ -445,7 +445,7 @@ void *network_thread_f(void *ignored)
       recBuf0[64] = '\0';
       fbputs(recBuf0, j, 0);
       if(j == 11){
-        j = 0;
+        j = 1;
         fbputs(&recvBuf[64], j, 0);
       }
       else{
@@ -488,7 +488,7 @@ void *network_thread_f(void *ignored)
     j++;
     if (j ==12)
     {
-      j = 0;
+      j = 1;
     }
 
   }
