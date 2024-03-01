@@ -218,7 +218,15 @@ int main()
           keystate[size-1] = " ";
           SENDbuff[size-1] = " ";
           size--;
-          fbputs(keystate, rows, 0);
+        if(size <64){
+        fbputs(keystate, rows, 0);
+        }
+        else{
+          strncpy(keystate0, keystate, 64*sizeof(char));
+          keystate0[64] = '\0';
+          fbputs(keystate0, rows, 0);
+          fbputs(&keystate[64], rows+1, 0);
+        }
         // SENDbuff[cursor] = "";
         }
         else
@@ -226,7 +234,15 @@ int main()
         size--;
         SENDbuff[size] = " ";
         keystate[size] = " ";
-        fbputs(keystate, rows, 0);
+        if(size <64){
+          fbputs(keystate, rows, 0);
+        }
+        else{
+          strncpy(keystate0, keystate, 64*sizeof(char));
+          keystate0[64] = '\0';
+          fbputs(keystate0, rows, 0);
+          fbputs(&keystate[64], rows+1, 0);
+        }
         }
         cols--;
         cursor--;
