@@ -160,7 +160,7 @@ int main()
           {
             SENDbuff[i] = SENDbuff_tmp[i-1];          
             SENDbuff[cursor] = c;
-            }
+          }
         }
         else
         {
@@ -187,16 +187,33 @@ int main()
         if(cols == 0 && rows == 13){
           continue; 
         }
-        cols--;
+        if(cursor != cols)
+        {
         cursor--;
+        }
+        cols--;
         if(cols == -1)
         {
           cols = 63;
           rows--;
           cursor = 63;
         }
+        if(cursor != cols)
+        {
+        fbputs(" ", rows, cursor);
+          for(int i = cursor; i<= cols; i++)
+          {
+            SENDbuff[i] = SENDbuff_tmp[i+1];          
+            // SENDbuff[cursor] = c;
+          }
+          size--;
+        SENDbuff[cursor] = "";
+        }
+        else
+        {
         fbputs(" ", rows, cols);
         SENDbuff[--size] = "";
+        }
       }
       else if (c == -2){
         for (int r = 13; r < 24; r++){
