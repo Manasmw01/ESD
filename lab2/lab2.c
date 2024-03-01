@@ -387,7 +387,7 @@ int main()
           cursor--;
         }
 
-        for(int i = cols; i>= cursor+2; i--)
+        for(int i = cols; i>= cursor+1; i--)
           {
             //keystate[i] = keystate[i-1];          
             //SENDbuff[i] = SENDbuff[i-1]; 
