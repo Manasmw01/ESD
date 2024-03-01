@@ -159,7 +159,7 @@ int main()
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
       if(c >= 0){
-        if( size == 128){
+        if( size == 129){
           continue;
         }
         printf("\n");
@@ -181,7 +181,7 @@ int main()
           keystate[size] = c;
           size++;
         }
-        if(size == 63){
+        if(size == 64){
           size++;
         }
         if(size <64){
