@@ -185,7 +185,7 @@ int main()
         // for (int i = 0; i <= size; i++){
         //     printf("%c", keystate[i]);
         // }
-        printf("\n");
+        // printf("\n");
         // printf("%s\n", keystate);
         }
 
@@ -201,6 +201,7 @@ int main()
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
+        printf("\n");
           fbputs(keystate, rows, cols);
           cols++;
         //  cursor = cols;
