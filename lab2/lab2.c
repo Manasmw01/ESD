@@ -291,7 +291,7 @@ int main()
         {
           SENDbuff[size] = c;
           keystate[size] = c;
-          keystate[size+1] = '_';
+          keystate[size] = '_';
           size++;
         }
         if(size <64){
@@ -381,6 +381,10 @@ int main()
         size = 0;
       }
       else if (c == -3){ // LEFT
+        if(cursor != 0)
+        {
+          cursor--;
+        }
         for(int i = cols; i>= cursor; i--)
           {
             //keystate[i] = keystate[i-1];          
@@ -389,10 +393,6 @@ int main()
                      
           }
           keystate[cursor] = '_'; 
-        if(cursor != 0)
-        {
-          cursor--;
-        }
       }
       else if (c == -4){ // right 
         if(cursor != cols)
