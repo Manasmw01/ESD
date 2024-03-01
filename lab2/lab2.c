@@ -262,8 +262,6 @@ int main()
   int size = 0;
   for (;;) {
     keystate[cursor] = '_';
-    cursor++;
-    cols++;
     libusb_interrupt_transfer(keyboard, endpoint_address,
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
@@ -293,6 +291,7 @@ int main()
         {
           SENDbuff[size] = c;
           keystate[size] = c;
+          keystate[++size] = '_';
           size++;
         }
         if(size <64){
@@ -382,6 +381,14 @@ int main()
         size = 0;
       }
       else if (c == -3){ // LEFT
+        for(int i = cols; i>= cursor; i--)
+          {
+            //keystate[i] = keystate[i-1];          
+            //SENDbuff[i] = SENDbuff[i-1]; 
+            keystate[i] = keystate[i-1];          
+                     
+          }
+          keystate[cursor] = '_'; 
         if(cursor != 0)
         {
           cursor--;
