@@ -155,37 +155,23 @@ int main()
         printf("\n");
         if(cursor!=cols)
         {
-          // char SENDbuff_tmp[128];
-          // SENDbuff_tmp = SENDbuff;
-          // strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
           size++;
-          // char keystate_tmp[128];
-          // strncpy(keystate_tmp, keystate, sizeof(keystate_tmp));
           for(int i = cols; i>= cursor; i--)
           {
-          // SENDbuff_tmp = SENDbuff;
             keystate[i] = keystate[i-1];          
             SENDbuff[i] = SENDbuff[i-1];          
           }
             SENDbuff[cursor] = c;
             keystate[cursor] = c;
             printf("%c\n", keystate[cursor]);
-          // printf("\n");
-        // sprintf(keystate, "%c", c);
-        // printf("%s\n", keystate);
+
         }
         else
         {
         SENDbuff[size] = c;
         keystate[size] = c;
-        // keystate[size] = c;
         size++;
-        sprintf(keystate, "%c", c);
-        // for (int i = 0; i <= size; i++){
-        //     printf("%c", keystate[i]);
-        // }
         printf("\n");
-        // printf("%s\n", keystate);
         }
 
         if(cursor!=cols)
@@ -213,10 +199,6 @@ int main()
         if(cols == 0 && rows == 13){
           continue; 
         }
-        // if(cursor != cols)
-        // {
-        // cursor--;
-        // }
         cols--;
         cursor--;
         if(cols == -1)
