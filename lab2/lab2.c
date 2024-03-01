@@ -393,6 +393,8 @@ int main()
                      
           }
           keystate[cursor] = '_'; 
+          fbputs(keystate, rows, 0);
+
       }
       else if (c == -4){ // right 
         if(cursor != cols)
