@@ -159,7 +159,6 @@ int main()
           size++;
           char keystate_tmp[12];
           strncpy(keystate_tmp, keystate, sizeof(keystate_tmp));
-            keystate[cursor] = c;
           for(int i = cols; i>= cursor; i--)
           {
           // SENDbuff_tmp = SENDbuff;
@@ -167,6 +166,7 @@ int main()
             SENDbuff[i] = SENDbuff_tmp[i-1];          
             SENDbuff[cursor] = c;
           }
+            keystate[cursor] = c;
         // sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
         }
