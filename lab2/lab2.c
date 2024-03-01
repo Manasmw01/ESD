@@ -163,7 +163,7 @@ int main()
         if( size == 128){
           continue;
         }
-        printf("\n");
+        printf("enter\n");
         if(cursor!=cols)
         {
           for(int i = cols; i>= cursor; i--)
