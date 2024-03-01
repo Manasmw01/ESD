@@ -261,6 +261,9 @@ int main()
   char keystate0[65] = "";
   int size = 0;
   for (;;) {
+    keystate[cursor] = '_';
+    cursor++;
+    cols++;
     libusb_interrupt_transfer(keyboard, endpoint_address,
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
@@ -277,8 +280,9 @@ int main()
         {
           for(int i = cols; i>= cursor; i--)
           {
-            keystate[i] = keystate[i-1];          
+            //keystate[i] = keystate[i-1];          
             SENDbuff[i] = SENDbuff[i-1]; 
+            keystate[i] = keystate[i-1];          
                      
           }
           SENDbuff[cursor] = c;
