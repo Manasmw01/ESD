@@ -411,6 +411,8 @@ int main()
         {
           cursor++;
         }
+        fbputs(keystate, rows, 0);
+
       }
 
 
