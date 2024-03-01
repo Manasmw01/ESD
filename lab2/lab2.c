@@ -191,7 +191,7 @@ int main()
         {
           fbputs(keystate, rows, cursor);
             cols++;
-         cursor = cols;
+         cursor++;;
         }
         else
         {
