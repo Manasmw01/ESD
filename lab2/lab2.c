@@ -150,20 +150,33 @@ int main()
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
       if(c >= 0){
+        if(cursor!=cols)
+        {
+          char SENDbuff_tmp[128];
+          SENDbuff_tmp = SENDbuff;
+          size++;
+          for(int i = cols; i>= cursor; i--)
+            SENDbuff_tmp[i] = SENDbuff_tmp[i-1];          
+            SENDbuff[cursor++];
+        }
+        else
+        {
         SENDbuff[size++] = c;
+        }
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
-        // if(cursor!=cols)
-        // {
-        //   fbputs(keystate, rows, cursor);
-        //     cursor++;
-        // }
-        // else
-        // {
+        if(cursor!=cols)
+        {
+          fbputs(keystate, rows, cursor);
+            cursor++;
+            cols++;
+        }
+        else
+        {
           fbputs(keystate, rows, cols);
           cols++;
          cursor = cols;
-        // }
+        }
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
       }
