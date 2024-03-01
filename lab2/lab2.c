@@ -192,8 +192,8 @@ int main()
         {
           for(int i = cursor; i<= size; i++)
           {
-            SENDbuff[i] = SENDbuff[i-1];          
-            keystate[i] = keystate[i-1];          
+            SENDbuff[i-1] = SENDbuff[i];          
+            keystate[i-1] = keystate[i];          
           }
           printf("%s", keystate);
           keystate[size-1] = " ";
