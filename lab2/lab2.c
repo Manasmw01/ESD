@@ -244,12 +244,11 @@ int main()
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        for (int i = 0; i <= 128; i++){
+        for (int i = 0; i <= size; i++){
           SENDbuff[i] = " ";
           keystate[i] = " ";
         }
-        SENDbuff[129] = (char)0;
-        keystate[129] = (char)0;
+
         size = 0;
       }
       else if (c == -3){ // LEFT
