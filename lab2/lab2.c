@@ -146,10 +146,10 @@ int main()
 
 
   /* Look for and handle keypresses */
-  char SENDbuff[130] = "\0";
+  char SENDbuff[130] = (char) 0;
 
-  char keystate[130] = "\0";
-  char keystate0[65] = "\0";
+  char keystate[130] = (char) 0;
+  char keystate0[65] = (char) 0;
   int size = 0;
   for (;;) {
     libusb_interrupt_transfer(keyboard, endpoint_address,
