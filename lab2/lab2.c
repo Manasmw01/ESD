@@ -212,10 +212,14 @@ int main()
           char SENDbuff_tmp[128];
           strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
 
+          char keystate_tmp[128];
+          strncpy(keystate_tmp, keystate, sizeof(keystate_tmp));
+
         fbputs(" ", rows, cursor);
           for(int i = cursor; i<= cols; i++)
           {
             SENDbuff[i] = SENDbuff_tmp[i+1];          
+            keystate[i] = keystate_tmp[i+1];          
             // SENDbuff[cursor] = c;
           }
           size--;
@@ -224,7 +228,9 @@ int main()
         else
         {
         fbputs(" ", rows, cols);
-        SENDbuff[--size] = "";
+        size--;
+        SENDbuff[size] = "";
+        keystate[size] = "";
         }
       }
       else if (c == -2){
