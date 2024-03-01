@@ -155,7 +155,7 @@ int main()
         printf("\n");
         if(cursor!=cols)
         {
-          print ("Not EQUAL TO\n");
+          printf ("Not EQUAL TO\n");
           char SENDbuff_tmp[128];
           // SENDbuff_tmp = SENDbuff;
           strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
@@ -177,7 +177,7 @@ int main()
         }
         else
         {
-          print ("EQUAL TO LOOP\n");
+          printf ("EQUAL TO LOOP\n");
         SENDbuff[size] = c;
         keystate[size] = c;
         size++;
