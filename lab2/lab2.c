@@ -214,6 +214,7 @@ int main()
         // cursor--;
         // }
         cols--;
+        cursor--;
         if(cols == -1)
         {
           cols = 63;
