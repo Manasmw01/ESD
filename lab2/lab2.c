@@ -187,12 +187,14 @@ int main()
     printf("Value of size is: %d\n", size);
     if(size < 64)
     {
-        fbputs(keystate, 0, 0);
+        fbputs(keystate, rows, 0);
     }
     else
     {
-      fbputs(keystate, 0, 0);
-      fbputs(&keystate[64], 1, 0);
+      char keystate0[64] =  "";
+      strncpy(keystate0, keystate, 64*sizeof(char))
+      fbputs(keystate0, rows, 0);
+      fbputs(&keystate[64], rows+1, 0);
       // for (int col = 0 ; col < 64 ; col++) {
       //   fbputchar(' ', rows, col);
       // }
@@ -275,14 +277,14 @@ int main()
         }
       }
 
-      if (cols == 64){
-        rows++;
-        cols = 0;
-      }
-      if(rows == 24)
-      {
-        rows = 13;
-      }
+      // if (cols == 64){
+      //   rows++;
+      //   cols = 0;
+      // }
+      // if(rows == 24)
+      // {
+      //   rows = 13;
+      // }
       
       if (packet.keycode[0] == 0x29) { /* ESC pressed? */
 	break;
