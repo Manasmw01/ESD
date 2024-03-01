@@ -41,9 +41,9 @@ pthread_t network_thread;
 void *network_thread_f(void *);
 int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   int keycode; 
- if(keycode0!= 0 && keycode1!= 0 ){
-   keycode = keycode1;
- }
+//  if(keycode0!= 0 && keycode1!= 0 ){
+//    keycode = keycode1;
+//  }
   if(keycode1!= 0){
     keycode = keycode1;
   }
@@ -442,7 +442,7 @@ void *network_thread_f(void *ignored)
     else if (n>64 && n<128){
       char recBuf0[65] = "";
       strncpy(recBuf0, recvBuf, 64);
-      recBuf0[64] = '\0';
+      recBuf0[64] = '\0'
       if(j == 11){
         j = 1;
         for (int r = 1 ; r<12; r++){
