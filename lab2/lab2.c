@@ -440,11 +440,11 @@ void *network_thread_f(void *ignored)
       
     }
     else if (n>43 && n<107){
-      char recBuf0[44] = "";
-      strncpy(recBuf0, recvBuf, 43);
-      recBuf0[43] = '\0';
+      char recBuf0[64] = "";
+      strncpy(recBuf0, recvBuf, 63);
+      recBuf0[64] = '\0';
       fbputs(recBuf0, j, 0);
-      fbputs(&recvBuf[43], ++j, 0);
+      fbputs(&recvBuf[], ++j, 0);
 
     }
     else{
