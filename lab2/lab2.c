@@ -193,13 +193,13 @@ int main()
         {
           fbputs(keystate, rows, cols);
             cols++;
-         cursor = cols;
+        //  cursor = cols;
         }
         else
         {
           fbputs(keystate, rows, cols);
           cols++;
-         cursor = cols;
+        //  cursor = cols;
         }
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
