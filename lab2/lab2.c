@@ -205,6 +205,7 @@ int main()
   int transferred;
   // char keystate[128];
 
+
   if ((err = fbopen()) != 0) {
     fprintf(stderr, "Error: Could not open framebuffer: %d\n", err);
     exit(1);
@@ -385,7 +386,8 @@ int main()
         {
           cursor--;
         }
-        for(int i = cols; i>= cursor; i--)
+
+        for(int i = cols; i>= cursor+1; i--)
           {
             //keystate[i] = keystate[i-1];          
             //SENDbuff[i] = SENDbuff[i-1]; 
