@@ -240,15 +240,15 @@ int main()
           for (int co = 0; co < 64; co++){
             fbputs(" ", r, co);
           }
-          rows = 13;
-          cols = 0;
-          cursor = 0;
         }
+        rows = 13;
+        cols = 0;
+        cursor = 0;
         write(sockfd, SENDbuff, size);
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        for (int i = 0; i <= size; i++){
+        for (int i = 0; i <= 128; i++){
           SENDbuff[i] = "";
           keystate[i] = "";
         }
