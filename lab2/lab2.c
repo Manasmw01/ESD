@@ -423,12 +423,19 @@ void *network_thread_f(void *ignored)
     }
     recvBuf[n] = '\0';
     printf("%s", recvBuf);
-    // if (n <64){
+    if (n <43){
       for (int col = 0 ; col < 64 ; col++) {
         fbputchar(' ', j, col);
       }
       fbputs(recvBuf, j, 0);
-    // }
+      
+    }
+    else if (n>43 && n<107){
+      
+    }
+    else{
+
+    }
     // else{
     //   for (int col = 0 ; col < 64 ; col++) {
     //     fbputchar(' ', j, col);
