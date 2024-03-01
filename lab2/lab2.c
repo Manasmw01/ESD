@@ -191,7 +191,14 @@ int main()
     }
     else
     {
-  char keystate2[128] = "";
+      for (int col = 0 ; col < 64 ; col++) {
+        fbputchar(' ', rows, col);
+      }
+      for (int col = 0 ; col < 64 ; col++) {
+        fbputchar(' ', rows+1, col);
+      }
+
+      char keystate2[128] = "";
       for (int i = 0; i<64; i++){
         keystate2[i] = keystate[i];
         keystate[i] = keystate[i+64];
