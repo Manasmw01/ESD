@@ -181,15 +181,13 @@ int main()
           keystate[size] = c;
           size++;
         }
-        if(size == 64){
-          size++;
-        }
         if(size <64){
           fbputs(keystate, rows, 0);
         }
         else{
-          char keystate0[64] = "";
+          char keystate0[65] = "";
           strncpy(keystate0, keystate, 64*sizeof(char));
+          keystate0[64] = '\0';
           fbputs(keystate0, rows, 0);
           fbputs(&keystate[64], rows+1, 0);
         }
