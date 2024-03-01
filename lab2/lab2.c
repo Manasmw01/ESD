@@ -248,6 +248,7 @@ int main()
           SENDbuff[i] = " ";
           keystate[i] = " ";
         }
+        printf("%s\n", keystate);
 
         size = 0;
       }
