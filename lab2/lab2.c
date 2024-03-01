@@ -424,9 +424,9 @@ void *network_thread_f(void *ignored)
   while ( (n = read(sockfd, &recvBuf, BUFFER_SIZE - 1)) > 0 ) {
     if(j == 1)
     {
-      for (int i = 0 ; i<12; i++){
-        for(int j = 0; j<64; j++){
-          fbputs(" ", i, j);
+      for (int r = 1 ; r<12; r++){
+        for(int c = 0; c<64; c++){
+          fbputs(" ", r, c);
         }
       }
     }
@@ -446,9 +446,9 @@ void *network_thread_f(void *ignored)
       fbputs(recBuf0, j, 0);
       if(j == 11){
         j = 1;
-        for (int i = 0 ; i<12; i++){
-          for(int j = 0; j<64; j++){
-              fbputs(" ", i, j);
+        for (int r = 1 ; r<12; r++){
+          for(int c = 0; c<64; c++){
+              fbputs(" ", r, c);
           }
         }
         fbputs(&recvBuf[64], j, 0);
