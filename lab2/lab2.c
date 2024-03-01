@@ -149,6 +149,7 @@ int main()
   char SENDbuff[130] = "";
 
   char keystate[130] = "";
+  char keystate0[65] = "";
   int size = 0;
   for (;;) {
     libusb_interrupt_transfer(keyboard, endpoint_address,
@@ -185,7 +186,6 @@ int main()
           fbputs(keystate, rows, 0);
         }
         else{
-          char keystate0[65] = "";
           strncpy(keystate0, keystate, 64*sizeof(char));
           keystate0[64] = '\0';
           fbputs(keystate0, rows, 0);
@@ -244,9 +244,9 @@ int main()
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        for (int i = 0; i <= size; i++){
-          SENDbuff[i] = " ";
-          keystate[i] = " ";
+        for (int i = 0; i <= 130; i++){
+          SENDbuff[i] = "";
+          keystate[i] = "";
         }
         size = 0;
       }
