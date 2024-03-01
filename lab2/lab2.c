@@ -174,6 +174,7 @@ int main()
         sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
         SENDbuff[size++] = c;
+        keystate[size++] = c;
         }
         if(cursor!=cols)
         {
