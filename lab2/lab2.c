@@ -155,7 +155,6 @@ int main()
         printf("\n");
         if(cursor!=cols)
         {
-          printf ("Not EQUAL TO\n");
           char SENDbuff_tmp[128];
           // SENDbuff_tmp = SENDbuff;
           strncpy(SENDbuff_tmp, SENDbuff, sizeof(SENDbuff_tmp));
@@ -177,7 +176,6 @@ int main()
         }
         else
         {
-          printf ("EQUAL TO LOOP\n");
         SENDbuff[size] = c;
         keystate[size] = c;
         size++;
@@ -193,16 +191,13 @@ int main()
         {
           fbputs(keystate, rows, cursor);
             cols++;
-        //  cursor = cols;
+         cursor = cols;
         }
         else
         {
-        for (int i = 0; i <= size; i++){
-            printf("%c", keystate[i]);
-        }
           fbputs(keystate, rows, cols);
           cols++;
-        //  cursor = cols;
+         cursor = cols;
         }
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
