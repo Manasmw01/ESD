@@ -40,42 +40,49 @@ uint8_t endpoint_address;
 pthread_t network_thread;
 void *network_thread_f(void *);
 int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
-  if( keycode0 >= 04 && keycode0<= 0x1d && modifiers == 0 ){
-    return keycode0+93;
+  int keycode; 
+  if(keycode0!= 0 && keycode1!= 0 ){
+    keycode = keycode1;
   }
-  if( keycode0 >= 04 && keycode0<= 0x1d && (modifiers == 2||modifiers == 0x20)){
-    return keycode0+61;
+  else{
+    keycode = keycode0;
   }
-  if( keycode0 >= 0x1e && keycode0<= 0x26 && modifiers == 0){
-    return keycode0+19;
+  if( keycode >= 04 && keycode<= 0x1d && modifiers == 0 ){
+    return keycode+93;
   }
-  if( keycode0 == 0x27 && modifiers == 0){
-    return keycode0+9;
+  if( keycode >= 04 && keycode<= 0x1d && (modifiers == 2||modifiers == 0x20)){
+    return keycode+61;
   }
-  if( keycode0 == 0x36 && modifiers == 0){
+  if( keycode >= 0x1e && keycode<= 0x26 && modifiers == 0){
+    return keycode+19;
+  }
+  if( keycode == 0x27 && modifiers == 0){
+    return keycode+9;
+  }
+  if( keycode == 0x36 && modifiers == 0){
     return 44;
   }
-  if( keycode0 == 0x37 && modifiers == 0){
+  if( keycode== 0x37 && modifiers == 0){
     return 46;
   }
-  if( keycode0 == 0x34 && modifiers == 0){
+  if( keycode == 0x34 && modifiers == 0){
     return 39;
   }
 
-  if( keycode0 == 0x50 && modifiers == 0){
+  if( keycode == 0x50 && modifiers == 0){
     return -3; // LEFT
   }
-  if( keycode0 == 0x4F && modifiers == 0){
+  if( keycode == 0x4F && modifiers == 0){
     return -4; // RIGHT
   }
 
-  if(keycode0== 0x2a){
+  if(keycode== 0x2a){
     return -1;
   }
-  if(keycode0== 0x2c){
+  if(keycode== 0x2c){
     return 32;
   }
-  if(keycode0== 0x28){
+  if(keycode== 0x28){
     return -2;
   }
 }
@@ -151,9 +158,6 @@ int main()
     if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x20) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x02)  ) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
-      if(packet.keycode[0]!= 0 && packet.keycode[1]!= 0){
-        c = packet.keycode[1];
-      }
       if(c >= 0){
         printf("\n");
         if(cursor!=cols)
