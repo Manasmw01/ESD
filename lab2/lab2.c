@@ -203,6 +203,7 @@ int main()
         SENDbuff[size] = " ";
         keystate[size] = " ";
         fbputs(keystate, rows, 0);
+        size--;
         }
         cols--;
         cursor--;
