@@ -291,7 +291,7 @@ int main()
         {
           SENDbuff[size] = c;
           keystate[size] = c;
-          keystate[++size] = '_';
+          keystate[size+1] = '_';
           size++;
         }
         if(size <64){
