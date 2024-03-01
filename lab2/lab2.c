@@ -407,10 +407,6 @@ int main()
           {
             cursor++;
           }
-        if(cursor != cols)
-        {
-          cursor++;
-        }
         fbputs(keystate, rows, 0);
 
       }
