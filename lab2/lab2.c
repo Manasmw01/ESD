@@ -164,8 +164,8 @@ int main()
           for(int i = cols; i>= cursor; i--)
           {
           // SENDbuff_tmp = SENDbuff;
-            keystate[i] = keystate_tmp[i-1];          
-            SENDbuff[i] = SENDbuff_tmp[i-1];          
+            keystate[i] = keystate[i-1];          
+            SENDbuff[i] = SENDbuff[i-1];          
             SENDbuff[cursor] = c;
             keystate[cursor] = c;
           }
@@ -271,7 +271,6 @@ int main()
         {
           cursor--;
         }
-       fbputs("|", rows, cursor);        
       }
 
       if (cols == 64){
