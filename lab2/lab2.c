@@ -446,6 +446,11 @@ void *network_thread_f(void *ignored)
       fbputs(recBuf0, j, 0);
       if(j == 11){
         j = 1;
+        for (int i = 0 ; i<12; i++){
+          for(int j = 0; j<64; j++){
+              fbputs(" ", i, j);
+          }
+        }
         fbputs(&recvBuf[64], j, 0);
       }
       else{
