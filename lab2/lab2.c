@@ -174,13 +174,13 @@ int main()
         }
         else
         {
+        size++;
+        SENDbuff[size] = c;
+        keystate[size] = c;
         // sprintf(keystate, "%c", c);
         for (int i = 0; i < size; i++){
             printf("%c", keystate[i]);
         }
-        size++;
-        SENDbuff[size] = c;
-        keystate[size] = c;
           printf("\n");
         // printf("%s\n", keystate);
         }
