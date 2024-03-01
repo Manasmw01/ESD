@@ -207,13 +207,13 @@ int main()
         }
         size = 0;
       }
-      // else if (c == -3){ // LEFT
-      //   if(cursor != 0)
-      //   {
-      //     cursor--;
-      //   }
-      //  fbputs("|", rows, cursor);        
-      // }
+      else if (c == -3){ // LEFT
+        if(cursor != 0)
+        {
+          cursor--;
+        }
+       fbputs("|", rows, cursor);        
+      }
 
       if (cols == 64){
         rows++;
