@@ -199,7 +199,6 @@ int main()
         }
         else
         {
-        size--;
         SENDbuff[size] = " ";
         keystate[size] = " ";
         fbputs(keystate, rows, 0);
