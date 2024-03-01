@@ -174,11 +174,11 @@ int main()
         }
         else
         {
-        size++;
         SENDbuff[size] = c;
         keystate[size] = c;
+        size++;
         // sprintf(keystate, "%c", c);
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
           printf("\n");
@@ -199,6 +199,9 @@ int main()
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);
       }
+
+
+      
       else if (c == -1){
         if(cols == 0 && rows == 13){
           continue; 
