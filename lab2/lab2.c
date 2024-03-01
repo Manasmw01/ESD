@@ -87,7 +87,7 @@ int main()
 
   struct usb_keyboard_packet packet;
   int transferred;
-  char keystate[128];
+  // char keystate[128];
 
   if ((err = fbopen()) != 0) {
     fprintf(stderr, "Error: Could not open framebuffer: %d\n", err);
@@ -140,6 +140,7 @@ int main()
   int cursor= 0;
   /* Look for and handle keypresses */
   char SENDbuff[128] = "";
+  char keystate[128] = "";
   int size = 0;
   for (;;) {
     libusb_interrupt_transfer(keyboard, endpoint_address,
