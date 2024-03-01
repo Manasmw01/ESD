@@ -178,11 +178,11 @@ int main()
         for (int i = 0; i < size; i++){
             printf("%c", keystate[i]);
         }
-          printf("\n");
-        // printf("%s\n", keystate);
         size++;
         SENDbuff[size] = c;
         keystate[size] = c;
+          printf("\n");
+        // printf("%s\n", keystate);
         }
         if(cursor!=cols)
         {
