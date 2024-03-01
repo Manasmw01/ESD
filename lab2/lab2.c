@@ -158,7 +158,8 @@ int main()
           for(int i = cols; i>= cursor; i--)
           {
             keystate[i] = keystate[i-1];          
-            SENDbuff[i] = SENDbuff[i-1];          
+            SENDbuff[i] = SENDbuff[i-1]; 
+                     
           }
           SENDbuff[cursor] = c;
           keystate[cursor] = c;
@@ -194,6 +195,8 @@ int main()
             SENDbuff[i] = SENDbuff[i-1];          
             keystate[i] = keystate[i-1];          
           }
+          keystate[size-1] = " ";
+          SENDbuff[size-1] = " ";
           size--;
           fbputs(keystate, rows, 0);
         // SENDbuff[cursor] = "";
@@ -221,7 +224,7 @@ int main()
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        for (int i = 0; i <= 128; i++){
+        for (int i = 0; i <= size; i++){
           SENDbuff[i] = " ";
           keystate[i] = " ";
         }
