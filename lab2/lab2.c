@@ -141,7 +141,7 @@ int main()
   /* Look for and handle keypresses */
   char SENDbuff[128] = "";
 
-  char keystate[128] = "";
+  char keystate[128] = 0;
   int size = 0;
   for (;;) {
     libusb_interrupt_transfer(keyboard, endpoint_address,
@@ -189,12 +189,15 @@ int main()
 
         if(cursor!=cols)
         {
-          fbputs(keystate, rows, cols);
-            cols++;
-         cursor++;
+        printf("%s\n",keystate );
+        fbputs(keystate, rows, cols);
+        cols++;
+        cursor++;
         }
         else
         {
+                  printf("%s\n",keystate );
+
           fbputs(keystate, rows, cols);
           cols++;
          cursor = cols;
