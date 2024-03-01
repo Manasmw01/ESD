@@ -50,7 +50,7 @@ int keycode_to_ascii(int modifiers,int keycode0, int keycode1){
   if( keycode >= 04 && keycode<= 0x1d && modifiers == 0 ){
     return keycode+93;
   }
-  if( keycode >= 04 && keycode<= 0x1d && (modifiers == 2||modifiers == 0x20)){
+  if( keycode >= 04 && keycode<= 0x1d && (modifiers == 2|| modifiers == 0x20)){
     return keycode+61;
   }
   if( keycode >= 0x1e && keycode<= 0x26 && modifiers == 0){
@@ -178,7 +178,15 @@ int main()
           keystate[size] = c;
           size++;
         }
-        fbputs(keystate, rows, 0);
+        if(size <64){
+          fbputs(keystate, rows, 0);
+        }
+        else{
+          char keystate0[64] = "";
+          strncpy(keystate0, keystate, 64 );
+          fbputs(keystate0, rows, 0);
+          fbputs(&keystate[64], rows+1, 0);
+        }
         cols++;
         cursor++;
         printf("%02x %02x %02x\n", packet.modifiers, packet.keycode[0],
