@@ -140,7 +140,7 @@ int main()
 
   /* Look for and handle keypresses */
   char SENDbuff[128] = "";
-  
+
   char keystate[128] = "";
   int size = 0;
   for (;;) {
@@ -152,6 +152,7 @@ int main()
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
       if(c >= 0){
+        printf("\n");
         if(cursor!=cols)
         {
           char SENDbuff_tmp[128];
@@ -169,7 +170,7 @@ int main()
             keystate[cursor] = c;
           }
             printf("%c", keystate[cursor]);
-          printf("\n");
+          // printf("\n");
         // sprintf(keystate, "%c", c);
         // printf("%s\n", keystate);
         }
@@ -182,9 +183,10 @@ int main()
         for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-          printf("\n");
+        printf("\n");
         // printf("%s\n", keystate);
         }
+
         if(cursor!=cols)
         {
           fbputs(keystate, rows, cursor);
@@ -254,10 +256,10 @@ int main()
           cursor = 0;
         }
         write(sockfd, SENDbuff, size);
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i <= size; i++){
             printf("%c", keystate[i]);
         }
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i <= size; i++){
           SENDbuff[i] = "";
           keystate[i] = "";
         }
