@@ -177,13 +177,12 @@ int main()
         else
         {
         SENDbuff[size] = c;
-        keystate[size] = c;
-        keystate[size+1] = '\0';
+        // keystate[size] = c;
         size++;
-        // sprintf(keystate, "%c", c);
-        for (int i = 0; i <= size; i++){
-            printf("%c", keystate[i]);
-        }
+        sprintf(keystate, "%c", c);
+        // for (int i = 0; i <= size; i++){
+        //     printf("%c", keystate[i]);
+        // }
         printf("\n");
         // printf("%s\n", keystate);
         }
