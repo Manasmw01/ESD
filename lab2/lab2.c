@@ -171,10 +171,11 @@ int main()
         }
         else
         {
-        sprintf(keystate, "%c", c);
+        // sprintf(keystate, "%c", c);
         printf("%s\n", keystate);
-        SENDbuff[size++] = c;
-        keystate[size++] = c;
+        size++;
+        SENDbuff[size] = c;
+        keystate[size] = c;
         }
         if(cursor!=cols)
         {
