@@ -209,10 +209,10 @@ int main()
         if(cols == 0 && rows == 13){
           continue; 
         }
-        if(cursor != cols)
-        {
-        cursor--;
-        }
+        // if(cursor != cols)
+        // {
+        // cursor--;
+        // }
         cols--;
         if(cols == -1)
         {
