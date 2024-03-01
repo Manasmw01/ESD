@@ -158,8 +158,8 @@ int main()
           size++;
           for(int i = cols; i>= cursor; i--)
           {
-            SENDbuff_tmp[i] = SENDbuff_tmp[i-1];          
-            SENDbuff[cursor++];
+            SENDbuff[i] = SENDbuff_tmp[i-1];          
+            SENDbuff[cursor] = c;
           }
         }
         else
