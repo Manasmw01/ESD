@@ -166,10 +166,10 @@ int main()
           // SENDbuff_tmp = SENDbuff;
             keystate[i] = keystate[i-1];          
             SENDbuff[i] = SENDbuff[i-1];          
+          }
             SENDbuff[cursor] = c;
             keystate[cursor] = c;
-          }
-            printf("%c", keystate[cursor]);
+            printf("%c\n", keystate[cursor]);
           // printf("\n");
         // sprintf(keystate, "%c", c);
         // printf("%s\n", keystate);
@@ -191,7 +191,7 @@ int main()
         {
           fbputs(keystate, rows, cursor);
             cols++;
-         cursor++;;
+         cursor++;
         }
         else
         {
