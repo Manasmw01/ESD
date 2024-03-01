@@ -195,6 +195,7 @@ int main()
             SENDbuff[i] = SENDbuff[i-1];          
             keystate[i] = keystate[i-1];          
           }
+          printf("%s", keystate);
           keystate[size-1] = " ";
           SENDbuff[size-1] = " ";
           size--;
