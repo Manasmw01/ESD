@@ -261,7 +261,7 @@ int main()
   char keystate0[65] = "";
   int size = 0;
   for (;;) {
-    keystate[cursor] = '_';
+    //keystate[cursor] = '_';
     libusb_interrupt_transfer(keyboard, endpoint_address,
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
