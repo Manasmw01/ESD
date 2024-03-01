@@ -322,7 +322,7 @@ int main()
         }
         if(cursor != cols)
         {
-          for(int i = cursor; i<= size; i++)
+          for(int i = cursor; i<= cols+1; i++)
           {
             SENDbuff[i-1] = SENDbuff[i];          
             keystate[i-1] = keystate[i];          
