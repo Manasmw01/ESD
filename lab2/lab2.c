@@ -151,6 +151,9 @@ int main()
     if (transferred == sizeof(packet) && (packet.keycode[0] != 0 || packet.keycode[1] != 0 || packet.modifiers!= 0) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x20) && !(packet.keycode[0] == 0x00 && packet.keycode[1] == 0 && packet.modifiers == 0x02)  ) {
       int c = keycode_to_ascii(packet.modifiers, packet.keycode[0],
 	    packet.keycode[1]);
+      if(packet.keycode[0]!= 0 && packet.keycode[1]!= 0){
+        c = packet.keycode[1];
+      }
       if(c >= 0){
         printf("\n");
         if(cursor!=cols)
