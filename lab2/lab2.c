@@ -393,7 +393,15 @@ int main()
             cursor--;
           }
           
+        if(size <64){
           fbputs(keystate, rows, 0);
+        }
+        else{
+          strncpy(keystate0, keystate, 64*sizeof(char));
+          keystate0[64] = '\0';
+          fbputs(keystate0, rows, 0);
+          fbputs(&keystate[64], rows+1, 0);
+        }
 
       }
       else if (c == -4){ // right 
@@ -407,7 +415,15 @@ int main()
           {
             cursor++;
           }
-        fbputs(keystate, rows, 0);
+        if(size <64){
+          fbputs(keystate, rows, 0);
+        }
+        else{
+          strncpy(keystate0, keystate, 64*sizeof(char));
+          keystate0[64] = '\0';
+          fbputs(keystate0, rows, 0);
+          fbputs(&keystate[64], rows+1, 0);
+        }
 
       }
 
