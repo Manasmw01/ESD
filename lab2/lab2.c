@@ -158,7 +158,7 @@ int main()
           size++;
           for(int i = cols; i>= cursor; i--)
           {
-            SENDbuff[i+1] = SENDbuff_tmp[i-1];          
+            SENDbuff[i] = SENDbuff_tmp[i-1];          
             SENDbuff[cursor] = c;
             }
         }
@@ -188,10 +188,12 @@ int main()
           continue; 
         }
         cols--;
+        cursor--;
         if(cols == -1)
         {
           cols = 63;
           rows--;
+          cursor = 63;
         }
         fbputs(" ", rows, cols);
         SENDbuff[--size] = "";
