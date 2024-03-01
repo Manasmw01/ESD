@@ -182,21 +182,25 @@ int main()
         keystate[size] = c;
         size++;
         // sprintf(keystate, "%c", c);
-        for (int i = 0; i <= size; i++){
-            printf("%c", keystate[i]);
-        }
+        // for (int i = 0; i <= size; i++){
+        //     printf("%c", keystate[i]);
+        // }
         printf("\n");
         // printf("%s\n", keystate);
         }
 
         if(cursor!=cols)
         {
-          fbputs(keystate, rows, cols);
+          fbputs(keystate, rows, cursor);
             cols++;
         //  cursor = cols;
         }
         else
         {
+          printf ("BEFORE PUTS\n");
+        for (int i = 0; i <= size; i++){
+            printf("%c", keystate[i]);
+        }
           fbputs(keystate, rows, cols);
           cols++;
         //  cursor = cols;
