@@ -49,6 +49,7 @@ struct vga_ball_dev {
 	struct resource res; /* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
         vga_ball_color_t background;
+		vga_ball_coordinates coordinates;
 } dev;
 
 /*
@@ -67,7 +68,7 @@ static void write_coordinates(vga_ball_coordinates *coordinates)
 {
 	iowrite8(coordinates->x, COR_X(dev.virtbase) );
 	iowrite8(coordinates->y, COR_Y(dev.virtbase) );
-	dev.background = *background;
+	dev.coordinates = *coordinates;
 }
 
 
