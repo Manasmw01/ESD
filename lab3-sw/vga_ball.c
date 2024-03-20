@@ -32,7 +32,7 @@
 #include <linux/fs.h>
 #include <linux/uaccess.h>
 #include "vga_ball.h"
-#include <linux/string.h>
+#include <linux/stdio.h>
 
 #define DRIVER_NAME "vga_ball"
 
