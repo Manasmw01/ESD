@@ -21,6 +21,7 @@ module vga_ball(input logic        clk,
    logic [9:0]     vcount;
 
    logic [7:0] 	   background_r, background_g, background_b;
+   logic [7:0] 	   x_coordinate, y_coordinate;
 	
    vga_counters counters(.clk50(clk), .*);
 
@@ -34,13 +35,15 @@ module vga_ball(input logic        clk,
 	 3'h0 : background_r <= writedata;
 	 3'h1 : background_g <= writedata;
 	 3'h2 : background_b <= writedata;
+   3'h3 : x_coordinate <= writedata;
+   3'h4 : y_coordinate <= writedata;
        endcase
 
    always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
-	if (hcount[10:6] == 5'd3 &&
-	    vcount[9:5] == 5'd3)
+	if (hcount[10:6] == (x_coordinate) &&
+	    vcount[9:5] == (y_coordinate))
 	  {VGA_R, VGA_G, VGA_B} = {8'hff, 8'hff, 8'hff};
 	else
 	  {VGA_R, VGA_G, VGA_B} =

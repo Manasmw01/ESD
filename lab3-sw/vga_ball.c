@@ -61,6 +61,15 @@ static void write_background(vga_ball_color_t *background)
 	dev.background = *background;
 }
 
+static void write_background(vga_ball_color_t *background)
+{
+	iowrite8(background->red, BG_RED(dev.virtbase) );
+	iowrite8(background->green, BG_GREEN(dev.virtbase) );
+	iowrite8(background->blue, BG_BLUE(dev.virtbase) );
+	dev.background = *background;
+}
+
+
 /*
  * Handle ioctl() calls from userspace:
  * Read or write the segments on single digits.
@@ -83,6 +92,12 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		if (copy_to_user((vga_ball_arg_t *) arg, &vla,
 				 sizeof(vga_ball_arg_t)))
 			return -EACCES;
+		break;
+	case VGA_BALL_WRITE_COORDINATE:
+			if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+				   sizeof(vga_ball_arg_t)))
+			return -EACCES;
+		write_coordinates(&vla.coordinates);
 		break;
 
 	default:
