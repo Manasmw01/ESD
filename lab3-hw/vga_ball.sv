@@ -21,7 +21,7 @@ module vga_ball(input logic        clk,
    logic [9:0]     vcount;
 
    logic [7:0] 	   background_r, background_g, background_b;
-   logic [7:0] 	   x_coordinate, y_coordinate;
+   logic [16:0] 	   x_coordinate, y_coordinate;
 	
    vga_counters counters(.clk50(clk), .*);
 
@@ -30,22 +30,24 @@ module vga_ball(input logic        clk,
 	background_r <= 8'h0;
 	background_g <= 8'h0;
 	background_b <= 8'h80;
-  x_coordinate <= 8'h0;
-  y_coordinate <= 8'h0;
+  x_coordinate <= 16'h0;
+  y_coordinate <= 16'h0;
      end else if (chipselect && write)
        case (address)
 	 3'h0 : background_r <= writedata;
 	 3'h1 : background_g <= writedata;
 	 3'h2 : background_b <= writedata;
-   3'h3 : x_coordinate <= writedata;
-   3'h4 : y_coordinate <= writedata;
+   3'h3 : x_coordinate[7:0] <= writedata;
+   3'h4 : x_coordinate[15:8] <= writedata;
+   3'h5 : y_coordinate[7:0] <= writedata;
+   3'h6 : y_coordinate[15:8] <= writedata;
        endcase
 
     always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
-	if (hcount[10:6] == (x_coordinate) &&
-	   vcount[9:5] == (y_coordinate))
+	if ((hcount[10:1]-(x_coordinate))*(hcount[10:1]-(x_coordinate)) +
+	   (vcount -(y_coordinate))*(vcount -(y_coordinate)) <= 5000)
 	  {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'h00};
 	else
 	  {VGA_R, VGA_G, VGA_B} =

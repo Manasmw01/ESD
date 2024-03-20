@@ -40,7 +40,7 @@
 #define BG_GREEN(x) ((x)+1)
 #define BG_BLUE(x) ((x)+2)
 #define COR_X(x) ((x)+3)
-#define COR_Y(x) ((x)+4)
+#define COR_Y(x) ((x)+5)
 
 /*
  * Information about our device
