@@ -90,6 +90,7 @@ int main()
   int incy = 5;
   int incx = 5;
   while(1) {
+    printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
