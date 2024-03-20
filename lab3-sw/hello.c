@@ -80,8 +80,8 @@ int main()
   printf("initial state: ");
   print_background_color();
   vga_ball_coordinates coordinates;
-  coordinates.x = 15;
-  coordinates.y = 3;
+  coordinates.x = 5;
+  coordinates.y = 5;
   for (i = 0 ; i < 3 ; i++) {
     set_background_color(&colors[i % COLORS ]);
     print_background_color();
