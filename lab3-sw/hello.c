@@ -85,7 +85,7 @@ int main()
   for (i = 0 ; i < 3 ; i++) {
     set_background_color(&colors[i % COLORS ]);
     print_background_color();
-    set_ball_coordinates()
+    set_ball_coordinates(&coordinates);
     coordinates.x++;
     coordinates.y++;
     usleep(400000);
