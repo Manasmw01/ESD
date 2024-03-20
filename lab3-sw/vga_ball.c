@@ -66,8 +66,8 @@ static void write_background(vga_ball_color_t *background)
 
 static void write_coordinates(vga_ball_coordinates *coordinates)
 {
-	iowrite8(coordinates->x, COR_X(dev.virtbase) );
-	iowrite8(coordinates->y, COR_Y(dev.virtbase) );
+	iowrite16(coordinates->x, COR_X(dev.virtbase) );
+	iowrite16(coordinates->y, COR_Y(dev.virtbase) );
 	dev.coordinates = *coordinates;
 }
 
