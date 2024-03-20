@@ -77,7 +77,7 @@ static void write_coordinates(vga_ball_coordinates *coordinates)
  * Read or write the segments on single digits.
  * Note extensive error checking of arguments
  */
-static long vga_ball_ioctl(struct file *f, unsigned int cmd, void* arg)
+static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;
 
