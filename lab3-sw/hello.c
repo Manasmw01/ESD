@@ -95,7 +95,7 @@ int main()
       incy = -5;
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
     }
-    if(coordinates.y-1 < 0){
+    if(coordinates.y-1 < 70){
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
 
       incy = 5;
@@ -104,7 +104,7 @@ int main()
       incx = -5;
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
     }
-    if(coordinates.x-1 < 0){
+    if(coordinates.x-1 < 70){
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
       incx = 5;
     }
