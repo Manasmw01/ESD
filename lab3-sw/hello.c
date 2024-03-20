@@ -15,7 +15,7 @@
 #include <string.h>
 #include <unistd.h>
 
-int vga_ball_fd;
+struct file vga_ball_fd;
 
 /* Read and print the background color */
 void print_background_color() {
@@ -44,7 +44,7 @@ void set_ball_coordinates(const vga_ball_coordinates *c)
 {
   vga_ball_arg_t vla;
   vla.coordinates = *c;
-  if (vga_ball_ioctl(&vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
+  if (vga_ball_ioctl(&vga_ball_fd, VGA_BALL_WRITE_COORDINATE, (void*) &vla)) {
       perror("ioctl(VGA_BALL_SET_COORDINATES) failed");
       return;
   }
