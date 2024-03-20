@@ -94,12 +94,14 @@ int main()
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
+      usleep(500000);
     }
     if(coordinates.y-1 < 0){
       incy = 5;
     }
     if(coordinates.x+1 > MAX_X){
       incx = -5;
+      usleep(500000);
     }
     if(coordinates.x-1 < 0){
       incx = 5;
