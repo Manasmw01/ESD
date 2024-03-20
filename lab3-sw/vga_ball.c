@@ -83,6 +83,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 
 	switch (cmd) {
 	case VGA_BALL_WRITE_BACKGROUND:
+	printf("Hello -1");
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
@@ -96,6 +97,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 			return -EACCES;
 		break;
 	case 5:
+			printf("Hello -3");
 			if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
