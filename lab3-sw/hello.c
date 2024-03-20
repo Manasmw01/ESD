@@ -87,25 +87,25 @@ int main()
   int MAX_X = 480;
   coordinates.x = 50;
   coordinates.y = 50;
-  int incy = 10;
-  int incx = 10;
+  int incy = 5;
+  int incx = 5;
   while(1) {
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
-      incy = -10;
+      incy = -5;
     }
     if(coordinates.y-1 < 0){
-      incy = 10;
+      incy = 5;
     }
     if(coordinates.x+1 > MAX_X){
-      incx = -10;
+      incx = -5;
     }
     if(coordinates.x-1 < 0){
-      incx = 10;
+      incx = 5;
     }
     coordinates.x+= incx;
     coordinates.y += incy;
-    usleep(400000);
+    usleep(100000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
