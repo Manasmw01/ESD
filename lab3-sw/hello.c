@@ -83,8 +83,8 @@ int main()
 
   //x-coordinate most sigficant 20
   //y-coordinate max is 15
-  int MAX_Y = 14;
-  int MAX_X = 19;
+  int MAX_Y = 640;
+  int MAX_X = 480;
   coordinates.x = 50;
   coordinates.y = 50;
   int incy = 1;
