@@ -95,7 +95,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 				 sizeof(vga_ball_arg_t)))
 			return -EACCES;
 		break;
-	case VGA_BALL_WRITE_COORDINATE:
+	case 5:
 			if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
