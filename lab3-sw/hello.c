@@ -87,8 +87,8 @@ int main()
   int MAX_X = 480;
   coordinates.x = 50;
   coordinates.y = 50;
-  int incy = 1;
-  int incx = 1;
+  int incy = 10;
+  int incx = 10;
   while(1) {
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
