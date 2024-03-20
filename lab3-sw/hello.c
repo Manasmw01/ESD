@@ -93,16 +93,16 @@ int main()
     set_ball_coordinates(&coordinates);
     coordinates.x+= incx;
     coordinates.y += incy;
-    if(coordiantes.y+1 > MAX_Y){
+    if(coordinates.y+1 > MAX_Y){
       incy = -1;
     }
-    if(coordiantes.y-1 < 0){
+    if(coordinates.y-1 < 0){
       incy = 1;
     }
-    if(coordiantes.x+1 > MAX_X){
+    if(coordinates.x+1 > MAX_X){
       incx = -1;
     }
-    if(coordiantes.x-1 < MAX_X){
+    if(coordinates.x-1 < MAX_X){
       incx = 1;
     }
     usleep(400000);
