@@ -49,7 +49,7 @@ module vga_ball(input logic        clk,
 	  {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'h00};
 	else
 	  {VGA_R, VGA_G, VGA_B} =
-             {background_r, background_g, background_b};
+             {8'hff, 8'h00, 8'h00};
    end
 	       
 endmodule
