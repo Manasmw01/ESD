@@ -85,23 +85,23 @@ int main()
   //y-coordinate max is 15
   int MAX_Y = 14;
   int MAX_X = 19;
-  coordinates.x = 5;
-  coordinates.y = 5;
+  coordinates.x = 50;
+  coordinates.y = 50;
   int incy = 1;
   int incx = 1;
   while(1) {
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
-      incy = -1;
+      incy = -10;
     }
     if(coordinates.y-1 < 0){
-      incy = 1;
+      incy = 10;
     }
     if(coordinates.x+1 > MAX_X){
-      incx = -1;
+      incx = -10;
     }
     if(coordinates.x-1 < 0){
-      incx = 1;
+      incx = 10;
     }
     coordinates.x+= incx;
     coordinates.y += incy;
