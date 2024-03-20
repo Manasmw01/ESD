@@ -90,20 +90,25 @@ int main()
   int incy = 5;
   int incx = 5;
   while(1) {
-    printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
+      printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
       usleep(500000);
     }
     if(coordinates.y-1 < 0){
+      printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+
       incy = 5;
     }
     if(coordinates.x+1 > MAX_X){
       incx = -5;
+      printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
       usleep(500000);
     }
     if(coordinates.x-1 < 0){
+        printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+
       incx = 5;
     }
     coordinates.x+= incx;
