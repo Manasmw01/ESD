@@ -83,14 +83,14 @@ int main()
 
   //x-coordinate most sigficant 20
   //y-coordinate max is 15
-  int MAX_Y = 720;
-  int MAX_X = 480;
+  int MAX_Y = 640;
+  int MAX_X = 525;
   coordinates.x = 50;
   coordinates.y = 50;
   int incy = 5;
   int incx = 5;
   while(1) {
-    printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+    printf("x: %d, y: %d\n",coordinates.x, coordinates.y )
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
