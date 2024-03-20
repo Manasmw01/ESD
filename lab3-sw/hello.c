@@ -100,7 +100,7 @@ int main()
     if(coordinates.x+1 > MAX_X){
       incx = -1;
     }
-    if(coordinates.x-1 < MAX_X){
+    if(coordinates.x-1 < 0){
       incx = 1;
     }
     coordinates.x+= incx;
