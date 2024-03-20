@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.cc": "cpp",
+        "vga_ball.h": "c",
+        "complex": "c"
+    }
+}
