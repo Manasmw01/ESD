@@ -80,14 +80,31 @@ int main()
   printf("initial state: ");
   print_background_color();
   vga_ball_coordinates coordinates;
+
+  //x-coordinate most sigficant 20
+  //y-coordinate max is 15
+  int MAX_Y = 15;
+  int MAX_X = 20;
   coordinates.x = 5;
   coordinates.y = 5;
-  for (i = 0 ; i < 3 ; i++) {
-    set_background_color(&colors[i % COLORS ]);
-    print_background_color();
+  int incy = 1;
+  int incx = 1;
+  while(1) {
     set_ball_coordinates(&coordinates);
-    coordinates.x++;
-    coordinates.y++;
+    coordinates.x+= incx;
+    coordinates.y += incy;
+    if(coordiantes.y+1 > MAX_Y){
+      incy = -1;
+    }
+    if(coordiantes.y-1 < 0){
+      incy = 1;
+    }
+    if(coordiantes.x+1 > MAX_X){
+      incx = -1;
+    }
+    if(coordiantes.x-1 < MAX_X){
+      incx = 1;
+    }
     usleep(400000);
   }
   

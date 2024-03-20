@@ -41,11 +41,11 @@ module vga_ball(input logic        clk,
    3'h4 : y_coordinate <= writedata;
        endcase
 
-   always_comb begin
+    always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
 	if (hcount[10:6] == (x_coordinate) &&
-	    vcount[9:5] == (y_coordinate))
+	   vcount[9:5] == (y_coordinate))
 	  {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'h00};
 	else
 	  {VGA_R, VGA_G, VGA_B} =
