@@ -30,6 +30,8 @@ module vga_ball(input logic        clk,
 	background_r <= 8'h0;
 	background_g <= 8'h0;
 	background_b <= 8'h80;
+  x_coordinate <= 8'h0;
+  y_coordinate <= 8'h0;
      end else if (chipselect && write)
        case (address)
 	 3'h0 : background_r <= writedata;
@@ -44,7 +46,7 @@ module vga_ball(input logic        clk,
       if (VGA_BLANK_n )
 	if (hcount[10:6] == (x_coordinate) &&
 	    vcount[9:5] == (y_coordinate))
-	  {VGA_R, VGA_G, VGA_B} = {8'hff, 8'hff, 8'hff};
+	  {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'h00};
 	else
 	  {VGA_R, VGA_G, VGA_B} =
              {background_r, background_g, background_b};
