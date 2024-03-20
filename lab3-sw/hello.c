@@ -44,7 +44,7 @@ void set_ball_coordinates(const vga_ball_coordinates *c)
 {
   vga_ball_arg_t vla;
   vla.coordinates = *c;
-  if (ioctl(vga_ball_fd, 5, &vla)) {
+  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
       perror("ioctl(VGA_BALL_SET_COORDINATES) failed");
       return;
   }
