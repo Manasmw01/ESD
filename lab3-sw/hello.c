@@ -96,11 +96,13 @@ int main()
       incy = -5;
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
+      print_background_color();
       i++;
     }
     if(coordinates.y-1 < 25){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
+      print_background_color();
       i++;
 
       incy = 5;
@@ -109,12 +111,14 @@ int main()
       incx = -5;
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
+      print_background_color();
       i++;
     }
     if(coordinates.x-1 < 25){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       incx = 5;
       set_background_color(&colors[i % COLORS ]);
+      print_background_color();
       i++;
     }
     if(i > 9) i = 0;
