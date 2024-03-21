@@ -90,7 +90,7 @@ int main()
   int incy = 15;
   int incx = 15;
   while(1) {
-    set_background_color(&colors[3]);
+    set_background_color(&colors[5]);
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
