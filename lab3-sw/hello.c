@@ -124,7 +124,7 @@ int main()
     //if(i > 9) i = 0;
     coordinates.x+= incx;
     coordinates.y += incy;
-    usleep(5000);
+    usleep(1000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
