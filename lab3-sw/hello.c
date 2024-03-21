@@ -83,8 +83,8 @@ int main()
 
   //x-coordinate most sigficant 20
   //y-coordinate max is 15
-  int MAX_Y = 410;
-  int MAX_X = 570;
+  int MAX_Y = 480-25;
+  int MAX_X = 640-25;
   coordinates.x = 50;
   coordinates.y = 50;
   int incy = 5;
@@ -95,7 +95,7 @@ int main()
       incy = -5;
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
     }
-    if(coordinates.y-1 < 70){
+    if(coordinates.y-1 < 25){
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
 
       incy = 5;
@@ -104,7 +104,7 @@ int main()
       incx = -5;
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
     }
-    if(coordinates.x-1 < 70){
+    if(coordinates.x-1 < 25){
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
       incx = 5;
     }
