@@ -95,14 +95,14 @@ int main()
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-      set_background_color(&colors[i % COLORS ]);
-      print_background_color();
+      //set_background_color(&colors[i % COLORS ]);
+      //print_background_color();
       //i++;
     }
     if(coordinates.y-1 < 25){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-      set_background_color(&colors[i % COLORS ]);
-      print_background_color();
+      //set_background_color(&colors[i % COLORS ]);
+      //print_background_color();
       //i++;
 
       incy = 5;
@@ -110,8 +110,8 @@ int main()
     if(coordinates.x+1 > MAX_X){
       incx = -5;
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-      set_background_color(&colors[i % COLORS ]);
-      print_background_color();
+      //set_background_color(&colors[i % COLORS ]);
+      //print_background_color();
       //i++;
     }
     if(coordinates.x-1 < 25){
