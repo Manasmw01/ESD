@@ -99,7 +99,7 @@ int main()
       //print_background_color();
       //i++;
     }
-    if(coordinates.y-1 < 25){
+    if(coordinates.y-1 < 20){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       //set_background_color(&colors[i % COLORS ]);
       //print_background_color();
@@ -114,7 +114,7 @@ int main()
       //print_background_color();
       //i++;
     }
-    if(coordinates.x-1 < 25){
+    if(coordinates.x-1 < 20){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       incx = 1;
       //set_background_color(&colors[i % COLORS ]);
