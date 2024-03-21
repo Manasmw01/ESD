@@ -90,7 +90,7 @@ int main()
   int incy = 1;
   int incx = 1;
   while(1) {
-    set_background_color(&colors[6]);
+    set_background_color(&colors[5]);
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -1;
@@ -102,7 +102,7 @@ int main()
     if(coordinates.y-1 < 20){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       //set_background_color(&colors[i % COLORS ]);
-      //print_background_color();
+      //print_background_color();                  insmod vga_ball.ko
       //i++;
 
       incy = 1;
