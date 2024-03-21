@@ -87,7 +87,7 @@ int main()
   int MAX_X = 640-15;
   coordinates.x = 50;
   coordinates.y = 50;
-  int inc_xy = 3;
+  int inc_xy = 1;
   int incy = inc_xy;
   int incx = inc_xy;
   while(1) {
@@ -112,7 +112,7 @@ int main()
     }
     coordinates.x+= incx;
     coordinates.y += incy;
-    usleep(15000);
+    usleep(10000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
