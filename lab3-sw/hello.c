@@ -83,8 +83,8 @@ int main()
 
   //x-coordinate most sigficant 20
   //y-coordinate max is 15
-  int MAX_Y = 480-25;
-  int MAX_X = 640-25;
+  int MAX_Y = 480-15;
+  int MAX_X = 640-15;
   coordinates.x = 50;
   coordinates.y = 50;
   int incy = 1;
@@ -99,7 +99,7 @@ int main()
       //print_background_color();
       //i++;
     }
-    if(coordinates.y-1 < 25){
+    if(coordinates.y-1 < 15){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       //set_background_color(&colors[i % COLORS ]);
       //print_background_color();                  insmod vga_ball.ko
@@ -114,7 +114,7 @@ int main()
       //print_background_color();
       //i++;
     }
-    if(coordinates.x-1 < 25){
+    if(coordinates.x-1 < 15){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       incx = 1;
       //set_background_color(&colors[i % COLORS ]);
