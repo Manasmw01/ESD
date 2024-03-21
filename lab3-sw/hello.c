@@ -59,7 +59,7 @@ int main()
   static const vga_ball_color_t colors[] = {
     { 0xff, 0x00, 0x00 }, /* Red */
     { 0x00, 0xff, 0x00 }, /* Green */
-    { 0x00, 0x00, 0xff }, /* Blue */
+//    { 0x00, 0x00, 0xff }, /* Blue */
     { 0xff, 0xff, 0x00 }, /* Yellow */
     { 0x00, 0xff, 0xff }, /* Cyan */
     { 0xff, 0x00, 0xff }, /* Magenta */
@@ -68,7 +68,7 @@ int main()
     { 0xff, 0xff, 0xff }  /* White */
   };
 
-# define COLORS 9
+# define COLORS 8
 
   printf("VGA ball Userspace program started\n");
 
@@ -97,13 +97,13 @@ int main()
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
       print_background_color();
-      i++;
+      //i++;
     }
     if(coordinates.y-1 < 25){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
       print_background_color();
-      i++;
+      //i++;
 
       incy = 5;
     }
@@ -112,7 +112,7 @@ int main()
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
       print_background_color();
-      i++;
+      //i++;
     }
     if(coordinates.x-1 < 25){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
