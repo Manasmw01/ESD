@@ -87,41 +87,29 @@ int main()
   int MAX_X = 640-15;
   coordinates.x = 50;
   coordinates.y = 50;
-  int incy = 1;
-  int incx = 1;
+  int inc_xy = 3;
+  int incy = inc_xy;
+  int incx = inc_xy;
   while(1) {
     set_background_color(&colors[5]);
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
-      incy = -1;
+      incy = -inc_xy;
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-      //set_background_color(&colors[i % COLORS ]);
-      //print_background_color();
-      //i++;
     }
     if(coordinates.y-1 < 15){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-      //set_background_color(&colors[i % COLORS ]);
-      //print_background_color();                  insmod vga_ball.ko
-      //i++;
 
-      incy = 1;
+      incy = inc_xy;
     }
     if(coordinates.x+1 > MAX_X){
-      incx = -1;
+      incx = -inc_xy;
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-      //set_background_color(&colors[i % COLORS ]);
-      //print_background_color();
-      //i++;
     }
     if(coordinates.x-1 < 15){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-      incx = 1;
-      //set_background_color(&colors[i % COLORS ]);
-      //print_background_color();
-      //i++;
+      incx = inc_xy;
     }
-    //if(i > 9) i = 0;
     coordinates.x+= incx;
     coordinates.y += incy;
     usleep(10000);
