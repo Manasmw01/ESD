@@ -94,12 +94,12 @@ int main()
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
-      printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+      printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
       i++;
     }
     if(coordinates.y-1 < 25){
-      printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+      printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
       i++;
 
@@ -107,12 +107,12 @@ int main()
     }
     if(coordinates.x+1 > MAX_X){
       incx = -5;
-      printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+      printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       set_background_color(&colors[i % COLORS ]);
       i++;
     }
     if(coordinates.x-1 < 25){
-      printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+      printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
       incx = 5;
       set_background_color(&colors[i % COLORS ]);
       i++;
