@@ -90,25 +90,34 @@ int main()
   int incy = 15;
   int incx = 15;
   while(1) {
-    set_background_color(&colors[4]);
+    //set_background_color(&colors[4]);
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -5;
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+      set_background_color(&colors[i % COLORS ]);
+      i++;
     }
     if(coordinates.y-1 < 25){
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+      set_background_color(&colors[i % COLORS ]);
+      i++;
 
       incy = 5;
     }
     if(coordinates.x+1 > MAX_X){
       incx = -5;
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
+      set_background_color(&colors[i % COLORS ]);
+      i++;
     }
     if(coordinates.x-1 < 25){
       printf("x: %d, y: %d\n",coordinates.x, coordinates.y );
       incx = 5;
+      set_background_color(&colors[i % COLORS ]);
+      i++;
     }
+    if(i > 9) i = 0;
     coordinates.x+= incx;
     coordinates.y += incy;
     usleep(10000);
