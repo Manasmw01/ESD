@@ -47,7 +47,10 @@ module vga_ball(input logic        clk,
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
 	if ((hcount[10:1]-(x_coordinate))*(hcount[10:1]-(x_coordinate)) +
-	   (vcount -(y_coordinate))*(vcount -(y_coordinate)) <= 5000)
+	   (vcount -(y_coordinate))*(vcount -(y_coordinate)) < 500)
+	  {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'hff};
+	if ((hcount[10:1]-(x_coordinate))*(hcount[10:1]-(x_coordinate)) +
+	   (vcount -(y_coordinate))*(vcount -(y_coordinate)) <= 525)
 	  {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'h00};
 	else
 	  {VGA_R, VGA_G, VGA_B} =
