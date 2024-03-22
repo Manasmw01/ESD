@@ -113,7 +113,7 @@ int main()
     }
     coordinates.x+= incx;
     coordinates.y += incy;
-    usleep(12000);
+    usleep(5000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
