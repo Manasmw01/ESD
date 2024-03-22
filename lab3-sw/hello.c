@@ -58,7 +58,7 @@ int main()
 
   static const vga_ball_color_t colors[] = {
     { 0xff, 0x00, 0x00 }, /* Red */
-    { 0x00, 0x0f, 0x00 }, /* Green */
+    { 0x00, 0xff, 0x00 }, /* Green */
 //    { 0x00, 0x00, 0xff }, /* Blue */
     { 0xff, 0xff, 0x00 }, /* Yellow */
     { 0x00, 0xff, 0xff }, /* Cyan */
@@ -111,7 +111,7 @@ int main()
     }
     coordinates.x+= incx;
     coordinates.y += incy;
-    usleep(5000);
+    usleep(3000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
