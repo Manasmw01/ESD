@@ -91,7 +91,7 @@ int main()
   int incy = inc_xy;
   int incx = inc_xy;
   while(1) {
-    set_background_color(&colors[2]);
+    set_background_color(&colors[1]);
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -inc_xy;
@@ -111,7 +111,7 @@ int main()
     }
     coordinates.x+= incx;
     coordinates.y += incy;
-    usleep(3000);
+    usleep(7000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
