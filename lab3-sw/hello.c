@@ -85,8 +85,10 @@ int main()
   //y-coordinate max is 15
   int MAX_Y = 480-20;
   int MAX_X = 640-20;
-  coordinates.x = 320;
-  coordinates.y = 240;
+//  coordinates.x = 320;
+//  coordinates.y = 240;
+    coordinates.x = 20;
+    coordinates.y = 20;
   int inc_xy = 1;
   int incy = inc_xy;
   int incx = inc_xy;
