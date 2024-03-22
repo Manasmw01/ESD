@@ -58,7 +58,7 @@ int main()
 
   static const vga_ball_color_t colors[] = {
     { 0xff, 0x00, 0x00 }, /* Red */
-    { 0x00, 0xff, 0x00 }, /* Green */
+    { 0x00, 0x0f, 0x00 }, /* Green */
 //    { 0x00, 0x00, 0xff }, /* Blue */
     { 0xff, 0xff, 0x00 }, /* Yellow */
     { 0x00, 0xff, 0xff }, /* Cyan */
@@ -91,7 +91,7 @@ int main()
   int incy = inc_xy;
   int incx = inc_xy;
   while(1) {
-    set_background_color(&colors[5]);
+    set_background_color(&colors[1]);
     set_ball_coordinates(&coordinates);
     if(coordinates.y+1 > MAX_Y){
       incy = -inc_xy;
@@ -99,7 +99,6 @@ int main()
     }
     if(coordinates.y-1 < 15){
       printf("x: %d, y: %d, i = %d\n",coordinates.x, coordinates.y , i);
-
       incy = inc_xy;
     }
     if(coordinates.x+1 > MAX_X){
@@ -112,7 +111,7 @@ int main()
     }
     coordinates.x+= incx;
     coordinates.y += incy;
-    usleep(10000);
+    usleep(7000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
