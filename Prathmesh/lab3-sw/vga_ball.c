@@ -66,19 +66,19 @@ static int read_samples(void)
  * Handle interrupts raised by our device. Read samples,
  * clear the interrupt, and wake the user level program.
  */
-irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
-{
-	// Read samples from the device
-	audio_samples_t samples;
-	read_samples(&samples);
+// irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
+// {
+// 	// Read samples from the device
+// 	audio_samples_t samples;
+// 	read_samples(&samples);
 
-	// Wake the user level process
-	audio_ready_t ready = { .audio_ready = 1 };
-	dev.ready = ready;
-	wake_up_interruptible(&wq);
+// 	// Wake the user level process
+// 	audio_ready_t ready = { .audio_ready = 1 };
+// 	dev.ready = ready;
+// 	wake_up_interruptible(&wq);
 
-	return IRQ_RETVAL(1);
-}
+// 	return IRQ_RETVAL(1);
+// }
 /*
  * Write segments of a single digit
  * Assumes digit is in range and the device information has been set up
@@ -195,7 +195,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -EBUSY;
 		goto out_deregister;
 	}
-	
+
 	printk(KERN_ALERT "198\n");
 
 	/* Arrange access to our registers */
