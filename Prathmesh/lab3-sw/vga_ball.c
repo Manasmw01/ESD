@@ -62,7 +62,7 @@ static void read_samples(audio_samples_t *samples)
 	dev.samples = *samples;
 }
 
-static int read_samples_simple()
+static int read_samples_simple(void)
 {
 	int output = ioread32(L_SAMPLES(dev.virtbase));
 	return output;
