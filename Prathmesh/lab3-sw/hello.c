@@ -81,7 +81,7 @@ int main()
     { 0xff, 0xff, 0xff }  /* White */
   };
 
-  vga_ball_hv_t hv_val = {0, 0};
+  // vga_ball_hv_t hv_val = {0, 0};
 
 # define COLORS 9
 
