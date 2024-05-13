@@ -71,7 +71,7 @@ int main()
 {
   vga_ball_arg_t vla;
   int i;
-  static const char filename[] = "/dev/vga_ball";
+  static const char filename[] = "/dev/audio";
   idx = 0;
   printf("VGA ball Userspace program started\n");
 
