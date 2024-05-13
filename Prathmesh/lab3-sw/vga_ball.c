@@ -39,7 +39,7 @@
 #define DRIVER_NAME "vga_ball"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x)+4)
+#define L_SAMPLES(x) ((x)+ 4)
 #define RESET_IRQ(x) ((x) + 8)
 
 DECLARE_WAIT_QUEUE_HEAD(wq);
@@ -178,7 +178,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
     //     vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
 	// vga_ball_hv_t initial = {0x6, 0x6};
 	int ret;
-	printk("Hello");
+	printk(KERN_EMERG "Hello");
 	/* Register ourselves as a misc device: creates /dev/vga_ball */
 	ret = misc_register(&vga_ball_misc_device);
 
@@ -188,7 +188,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -ENOENT;
 		goto out_deregister;
 	}
-	printk("191\n");
+	printk(KERN_EMERG "191\n");
 
 	/* Make sure we can use these registers */
 	if (request_mem_region(dev.res.start, resource_size(&dev.res),
@@ -196,7 +196,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -EBUSY;
 		goto out_deregister;
 	}
-	printk("198\n");
+	printk(KERN_EMERG "198\n");
 
 	/* Arrange access to our registers */
 	dev.virtbase = of_iomap(pdev->dev.of_node, 0);
@@ -204,21 +204,21 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -ENOMEM;
 		goto out_release_mem_region;
 	}
-	printk("207\n");
+	printk(KERN_EMERG "207\n");
 
 	int irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
 	dev.irq_num = irq;
-	printk("211\n");
+	printk(KERN_EMERG  "211\n");
 
 	ret = request_irq(irq, (irq_handler_t) irq_handler, 0, "csee4840_audio", NULL);
-	printk("212\n");
+	printk(KERN_EMERG "212\n");
 
 	if (ret) {
 		printk("request_irq err: %d", ret);
 		ret = -ENOENT;
 		goto out_deregister;
 	}
-		printk("207\n");
+		printk(KERN_EMERG "207\n");
 
         
 	/* Set an initial color */
