@@ -149,7 +149,6 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 
 
 	default:
-		printf("hello\n");
 		return -EINVAL;
 	}
 
