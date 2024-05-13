@@ -36,7 +36,7 @@
 #include <linux/of_irq.h>
 #include "vga_ball.h"
 
-#define DRIVER_NAME "vga_ball"
+#define DRIVER_NAME "audio"
 
 /* Device registers */
 #define L_SAMPLES(x) ((x)+ 4)
