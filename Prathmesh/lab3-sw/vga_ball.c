@@ -39,10 +39,10 @@
 #define DRIVER_NAME "audio"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x)+ 4)
+#define L_SAMPLES(x) ((x)+ 8)
 #define RESET_IRQ(x) ((x) + 8)
 
-DECLARE_WAIT_QUEUE_HEAD(wq);
+//DECLARE_WAIT_QUEUE_HEAD(wq);
 
 
 /*
@@ -62,6 +62,12 @@ static void read_samples(audio_samples_t *samples)
 	dev.samples = *samples;
 }
 
+static uint32_t read_samples_simple()
+{
+	uint32_t output = ioread32(L_SAMPLES(dev.virtbase));
+	return output;
+}
+
 /*
  * Handle interrupts raised by our device. Read samples,
  * clear the interrupt, and wake the user level program.
@@ -75,7 +81,7 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
 	// Wake the user level process
 	audio_ready_t ready = { .audio_ready = 1 };
 	dev.ready = ready;
-	wake_up_interruptible(&wq);
+	//wake_up_interruptible(&wq);
 
 	return IRQ_RETVAL(1);
 }
@@ -104,18 +110,28 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
 static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;
-	printk("hello\n");
 	switch (cmd) {
 		case AUDIO_READ_SAMPLES:
 			// Sleep the process until woken by the interrupt handler, and the data is ready
 				printk("111\n");
-			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
+			//wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
 				printk("113\n");
 
 			// The data is now ready, send them to the user space
 			vla.samples = dev.samples;
 			audio_ready_t ready = { .audio_ready = 0 };
 			dev.ready = ready;
+			// Copy the data to the user space
+			if (copy_to_user((vga_ball_arg_t *) arg, &vla,
+					sizeof(vga_ball_arg_t))){
+						return -EACCES;
+					}
+			break;
+		case AUDIO_READ_SAMPLES_X:
+			// Sleep the process until woken by the interrupt handler, and the data is ready
+			
+			// The data is now ready, send them to the user space
+			vla.samples.l = read_samples_simple();
 			// Copy the data to the user space
 			if (copy_to_user((vga_ball_arg_t *) arg, &vla,
 					sizeof(vga_ball_arg_t))){

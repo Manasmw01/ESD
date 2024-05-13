@@ -25,6 +25,7 @@ typedef struct {
 #define VGA_BALL_WRITE_HV _IOW(VGA_BALL_MAGIC, 3, vga_ball_arg_t *)
 #define VGA_BALL_READ_HV _IOR(VGA_BALL_MAGIC, 4, vga_ball_arg_t *)
 #define AUDIO_READ_SAMPLES _IOR(VGA_BALL_MAGIC, 5, vga_ball_arg_t *)
+#define AUDIO_READ_SAMPLES_X _IOR(VGA_BALL_MAGIC, 5, vga_ball_arg_t *)
 
 
 #endif
