@@ -40,9 +40,9 @@
 
 /* Device registers */
 #define L_SAMPLES(x) (x)
-#define RESET_IRQ(x) ((x) + 4)
+//#define RESET_IRQ(x) ((x) + 4)
 
-DECLARE_WAIT_QUEUE_HEAD(wq);
+//DECLARE_WAIT_QUEUE_HEAD(wq);
 
 
 /*
@@ -53,13 +53,13 @@ struct vga_ball_dev {
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
 	audio_samples_t samples;
 	audio_ready_t ready;
-	int irq_num;
+	//int irq_num;
 } dev;
-static void read_samples(audio_samples_t *samples)
+static int read_samples(void)
 {
-	samples->l = ioread32(L_SAMPLES(dev.virtbase));
-	ioread32(RESET_IRQ(dev.virtbase));
-	dev.samples = *samples;
+	int value = ioread32(L_SAMPLES(dev.virtbase));
+	//ioread32(RESET_IRQ(dev.virtbase));
+	return value;
 }
 
 /*
@@ -83,6 +83,7 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
  * Write segments of a single digit
  * Assumes digit is in range and the device information has been set up
  */
+
 // static void write_background(vga_ball_color_t *background)
 // {
 // 	iowrite8(background->red, BG_RED(dev.virtbase) );
@@ -108,12 +109,10 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 	switch (cmd) {
 		case AUDIO_READ_SAMPLES:
 			// Sleep the process until woken by the interrupt handler, and the data is ready
-			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
+			//wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
 
 			// The data is now ready, send them to the user space
-			vla.samples = dev.samples;
-			audio_ready_t ready = { .audio_ready = 0 };
-			dev.ready = ready;
+			vla.samples.l = read_samples();
 			// Copy the data to the user space
 			if (copy_to_user((vga_ball_arg_t *) arg, &vla,
 					sizeof(vga_ball_arg_t))){
@@ -191,11 +190,12 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 	printk("191\n");
 
 	/* Make sure we can use these registers */
-	// if (request_mem_region(dev.res.start, resource_size(&dev.res),
-	// 		       DRIVER_NAME) == NULL) {
-	// 	ret = -EBUSY;
-	// 	goto out_deregister;
-	// }
+	if (request_mem_region(dev.res.start, resource_size(&dev.res),
+			       DRIVER_NAME) == NULL) {
+		ret = -EBUSY;
+		goto out_deregister;
+	}
+	
 	printk(KERN_ALERT "198\n");
 
 	/* Arrange access to our registers */
@@ -206,17 +206,17 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 	}
 	printk("207\n");
 
-	int irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
-	dev.irq_num = irq;
+	// int irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
+	// dev.irq_num = irq;
 
-	ret = request_irq(irq, (irq_handler_t) irq_handler, 0, "csee4840_audio", NULL);
-	printk("212\n");
+	// ret = request_irq(irq, (irq_handler_t) irq_handler, 0, "csee4840_audio", NULL);
+	// printk("212\n");
 
-	if (ret) {
-		printk("request_irq err: %d", ret);
-		ret = -ENOENT;
-		goto out_deregister;
-	}
+	// if (ret) {
+	// 	printk("request_irq err: %d", ret);
+	// 	ret = -ENOENT;
+	// 	goto out_deregister;
+	//}
 		printk("220\n");
 
         
