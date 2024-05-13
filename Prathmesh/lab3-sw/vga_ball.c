@@ -210,10 +210,10 @@ static int __init audio_probe(struct platform_device *pdev)
 
 	int irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
 	dev.irq_num = irq;
-	printk(KERN_EMERG  "211\n");
+	printk(KERN_EMERG  "211: %d\n", irq);
 
 	ret = request_irq(irq, (irq_handler_t) irq_handler, 0, "csee4840_audio", NULL);
-	printk(KERN_EMERG "212\n");
+	printk(KERN_EMERG "212: %d\n", ret);
 
 	if (ret) {
 		printk("request_irq err: %d", ret);
