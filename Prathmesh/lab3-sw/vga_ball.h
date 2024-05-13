@@ -3,7 +3,7 @@
 
 #include <linux/ioctl.h>
 
-ypedef struct {
+typedef struct {
   unsigned int l;
 } audio_samples_t;
 
