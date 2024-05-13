@@ -109,7 +109,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 	switch (cmd) {
 		case AUDIO_READ_SAMPLES:
 			// Sleep the process until woken by the interrupt handler, and the data is ready
-			//wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
+			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
 
 			// The data is now ready, send them to the user space
 			vla.samples = dev.samples;
@@ -203,6 +203,17 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -ENOMEM;
 		goto out_release_mem_region;
 	}
+
+	int irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
+	dev.irq_num = irq;
+
+	ret = request_irq(irq, (irq_handler_t) irq_handler, 0, "csee4840_audio", NULL);
+
+	if (ret) {
+		printk("request_irq err: %d", ret);
+		ret = -ENOENT;
+		goto out_deregister;
+	}
         
 	/* Set an initial color */
     //     write_background(&beige);
@@ -222,6 +233,7 @@ static int vga_ball_remove(struct platform_device *pdev)
 {
 	iounmap(dev.virtbase);
 	release_mem_region(dev.res.start, resource_size(&dev.res));
+	free_irq(dev.irq_num, NULL);
 	misc_deregister(&vga_ball_misc_device);
 	return 0;
 }
