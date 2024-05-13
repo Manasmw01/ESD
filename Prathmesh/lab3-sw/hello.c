@@ -16,7 +16,8 @@
 #include <unistd.h>
 #include <stdbool.h>
 int vga_ball_fd;
-
+long unsigned int buffer[BUF_SIZE];
+int idx;
 /* Read and print the background color */
 void print_background_color() {
   vga_ball_arg_t vla;
@@ -27,6 +28,17 @@ void print_background_color() {
   }
   printf("%02x %02x %02x\n",
 	 vla.background.red, vla.background.green, vla.background.blue);
+}
+
+void read_samples() {
+    audio_arg_t vla;
+  
+    if (ioctl(vga_ball_fd, AUDIO_READ_SAMPLES, &vla)) {
+        perror("ioctl(AUDIO_READ_SAMPLES) failed");
+        return;
+    }
+		
+		buffer[idx++] = vla.samples.l;
 }
 
 /* Set the background color */
@@ -80,45 +92,53 @@ int main()
     return -1;
   }
 
-  printf("initial state: ");
-  //print_background_color();
-  unsigned int radius = 10;
-  int h_count = radius;
-  int v_count = radius;
-  bool h_flag = false;
-  bool v_flag = false;
-  for (i = 0 ; i < 20000; i++) {
-    set_background_color(&colors[2]);
-    hv_val.h = h_count;
-    hv_val.v = v_count;
-
-    if(v_count < 480-radius &&v_flag == false){
-	v_count++;
-    }
- 
-    if(v_count >= 480-radius || v_flag == true){
-	v_count--;
-        v_flag = true;
-       if(v_count == radius)
-	v_flag = false;
-    }
-
-    if(h_count < 640-radius && h_flag == false){
-        h_count++;
-    }
-    if(h_count >= 640-radius || h_flag == true){
-        h_count--;
-	h_flag = true;
-	if(h_count == radius)
-	 h_flag = false;
-    }
-
-
-    set_hv(&hv_val);
-    print_background_color();
-    usleep(9000);
-    
+  while(idx < BUF_SIZE){
+      read_samples();
   }
+
+  printf("sample read done, before write_wav");
+  for (int i = 100; i < 150; i++)
+    printf("samp: %lu\n", buffer[i]);
+
+  // printf("initial state: ");
+  // //print_background_color();
+  // unsigned int radius = 10;
+  // int h_count = radius;
+  // int v_count = radius;
+  // bool h_flag = false;
+  // bool v_flag = false;
+  // for (i = 0 ; i < 20000; i++) {
+  //   set_background_color(&colors[2]);
+  //   hv_val.h = h_count;
+  //   hv_val.v = v_count;
+
+  //   if(v_count < 480-radius &&v_flag == false){
+	// v_count++;
+  //   }
+ 
+  //   if(v_count >= 480-radius || v_flag == true){
+	// v_count--;
+  //       v_flag = true;
+  //      if(v_count == radius)
+	// v_flag = false;
+  //   }
+
+  //   if(h_count < 640-radius && h_flag == false){
+  //       h_count++;
+  //   }
+  //   if(h_count >= 640-radius || h_flag == true){
+  //       h_count--;
+	// h_flag = true;
+	// if(h_count == radius)
+	//  h_flag = false;
+  //   }
+
+
+  //   set_hv(&hv_val);
+  //   print_background_color();
+  //   usleep(9000);
+    
+  //}
 
 
   
