@@ -39,8 +39,7 @@
 #define DRIVER_NAME "audio"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x))
-#define RESET_IRQ(x) ((x) + 8)
+#define L_SAMPLES(x) ((x)+8)
 
 //DECLARE_WAIT_QUEUE_HEAD(wq);
 
@@ -58,7 +57,7 @@ struct vga_ball_dev {
 static void read_samples(audio_samples_t *samples)
 {
 	samples->l = ioread32(L_SAMPLES(dev.virtbase));
-	ioread32(RESET_IRQ(dev.virtbase));
+	//ioread32(RESET_IRQ(dev.virtbase));
 	dev.samples = *samples;
 }
 
@@ -81,7 +80,7 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
 	// Wake the user level process
 	audio_ready_t ready = { .audio_ready = 1 };
 	dev.ready = ready;
-	//wake_up_interruptible(&wq);
+	wake_up_interruptible(&wq);
 
 	return IRQ_RETVAL(1);
 }
@@ -114,7 +113,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		case AUDIO_READ_SAMPLES:
 			// Sleep the process until woken by the interrupt handler, and the data is ready
 				printk("111\n");
-			//wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
+			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
 				printk("113\n");
 
 			// The data is now ready, send them to the user space
