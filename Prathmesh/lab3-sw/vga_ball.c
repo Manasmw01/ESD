@@ -109,8 +109,8 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 			audio_ready_t ready = { .audio_ready = 0 };
 			dev.ready = ready;
 			// Copy the data to the user space
-			if (copy_to_user((audio_arg_t *) arg, &vla,
-					sizeof(audio_arg_t))){
+			if (copy_to_user((vga_ball_arg_t *) arg, &vla,
+					sizeof(vga_ball_arg_t))){
 						return -EACCES;
 					}
 			break;
@@ -169,8 +169,8 @@ static struct miscdevice vga_ball_misc_device = {
  */
 static int __init vga_ball_probe(struct platform_device *pdev)
 {
-        vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
-	vga_ball_hv_t initial = {0x6, 0x6};
+    //     vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
+	// vga_ball_hv_t initial = {0x6, 0x6};
 	int ret;
 
 	/* Register ourselves as a misc device: creates /dev/vga_ball */
@@ -198,8 +198,8 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 	}
         
 	/* Set an initial color */
-        write_background(&beige);
-	write_hv(&initial);
+    //     write_background(&beige);
+	// write_hv(&initial);
 
 	return 0;
 
