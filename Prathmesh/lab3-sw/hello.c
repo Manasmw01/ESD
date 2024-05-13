@@ -18,7 +18,7 @@
 
 #define S_RATE  (44100)
 #define REAL_S_RATE (44100)
-#define BUF_SIZE (S_RATE*5*2) /* 5 second buffer for L/R */
+#define BUF_SIZE (5) /* 5 second buffer for L/R */
  
 int vga_ball_fd;
 long unsigned int buffer[BUF_SIZE];
@@ -88,7 +88,7 @@ int main()
   printf("sample read done, before write_wav");
   for (i = 100; i < 150; i++)
     printf("samp: %lu\n", buffer[i]);
-    
+
   // printf("initial state: ");
   // //print_background_color();
   // unsigned int radius = 10;
