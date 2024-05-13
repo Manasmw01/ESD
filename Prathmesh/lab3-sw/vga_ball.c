@@ -173,7 +173,7 @@ static struct miscdevice vga_ball_misc_device = {
  * Initialization code: get resources (registers) and display
  * a welcome message
  */
-static int __init vga_ball_probe(struct platform_device *pdev)
+static int __init audio_probe(struct platform_device *pdev)
 {
     //     vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
 	// vga_ball_hv_t initial = {0x6, 0x6};
@@ -235,7 +235,7 @@ out_deregister:
 }
 
 /* Clean-up code: release resources */
-static int vga_ball_remove(struct platform_device *pdev)
+static int audio_remove(struct platform_device *pdev)
 {
 	iounmap(dev.virtbase);
 	release_mem_region(dev.res.start, resource_size(&dev.res));
@@ -254,31 +254,31 @@ MODULE_DEVICE_TABLE(of, vga_ball_of_match);
 #endif
 
 /* Information for registering ourselves as a "platform" driver */
-static struct platform_driver vga_ball_driver = {
+static struct platform_driver audio_driver = {
 	.driver	= {
 		.name	= DRIVER_NAME,
 		.owner	= THIS_MODULE,
-		.of_match_table = of_match_ptr(vga_ball_of_match),
+		.of_match_table = of_match_ptr(audio_of_match),
 	},
-	.remove	= __exit_p(vga_ball_remove),
+	.remove	= __exit_p(audio_remove),
 };
 
 /* Called when the module is loaded: set things up */
-static int __init vga_ball_init(void)
+static int __init audio_init(void)
 {
 	pr_info(DRIVER_NAME ": init\n");
-	return platform_driver_probe(&vga_ball_driver, vga_ball_probe);
+	return platform_driver_probe(&audio_driver, audio_probe);
 }
 
 /* Calball when the module is unloaded: release resources */
-static void __exit vga_ball_exit(void)
+static void __exit audio_exit(void)
 {
-	platform_driver_unregister(&vga_ball_driver);
+	platform_driver_unregister(&audio_driver);
 	pr_info(DRIVER_NAME ": exit\n");
 }
 
-module_init(vga_ball_init);
-module_exit(vga_ball_exit);
+module_init(audio_init);
+module_exit(audio_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Stephen A. Edwards, Columbia University");
