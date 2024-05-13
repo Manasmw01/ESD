@@ -108,8 +108,9 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 
 	switch (cmd) {
 		case AUDIO_READ_SAMPLES:
+			int g = 5
 			// Sleep the process until woken by the interrupt handler, and the data is ready
-			printk(KERN_EMERG "Message:\n", );
+			printk(KERN_EMERG "Message: %d\n",  g);
 			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
 
 			// The data is now ready, send them to the user space
