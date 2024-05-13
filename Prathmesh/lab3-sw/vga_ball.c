@@ -246,11 +246,11 @@ static int audio_remove(struct platform_device *pdev)
 
 /* Which "compatible" string(s) to search for in the Device Tree */
 #ifdef CONFIG_OF
-static const struct of_device_id vga_ball_of_match[] = {
-	{ .compatible = "csee4840,vga_ball-1.0" },
+static const struct of_device_id audio_of_match[] = {
+	{ .compatible = "csee4840,audio-1.0" },
 	{},
 };
-MODULE_DEVICE_TABLE(of, vga_ball_of_match);
+MODULE_DEVICE_TABLE(of, audio_of_match);
 #endif
 
 /* Information for registering ourselves as a "platform" driver */
