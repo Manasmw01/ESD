@@ -178,7 +178,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
     //     vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
 	// vga_ball_hv_t initial = {0x6, 0x6};
 	int ret;
-
+	printk("Hello");
 	/* Register ourselves as a misc device: creates /dev/vga_ball */
 	ret = misc_register(&vga_ball_misc_device);
 

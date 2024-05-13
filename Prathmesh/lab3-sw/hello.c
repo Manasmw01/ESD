@@ -88,7 +88,7 @@ int main()
   printf("sample read done, before write_wav");
   for (i = 100; i < 150; i++)
     printf("samp: %lu\n", buffer[i]);
-
+    
   // printf("initial state: ");
   // //print_background_color();
   // unsigned int radius = 10;
