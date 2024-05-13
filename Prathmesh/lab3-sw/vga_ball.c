@@ -39,6 +39,8 @@
 #define L_SAMPLES(x) (x)
 #define RESET_IRQ(x) ((x) + 4)
 
+DECLARE_WAIT_QUEUE_HEAD(wq);
+
 
 /*
  * Information about our device
