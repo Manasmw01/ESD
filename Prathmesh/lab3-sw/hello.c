@@ -15,6 +15,11 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
+
+#define S_RATE  (44100)
+#define REAL_S_RATE (44100)
+#define BUF_SIZE (S_RATE*5*2) /* 5 second buffer for L/R */
+ 
 int vga_ball_fd;
 long unsigned int buffer[BUF_SIZE];
 int idx;
@@ -31,7 +36,7 @@ int idx;
 // }
 
 void read_samples() {
-    audio_arg_t vla;
+    vga_ball_arg_t vla;
   
     if (ioctl(vga_ball_fd, AUDIO_READ_SAMPLES, &vla)) {
         perror("ioctl(AUDIO_READ_SAMPLES) failed");
@@ -68,22 +73,6 @@ int main()
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
-
-  static const vga_ball_color_t colors[] = {
-    { 0xff, 0x00, 0x00 }, /* Red */
-    { 0x00, 0xff, 0x00 }, /* Green */
-    { 0x00, 0x00, 0xff }, /* Blue */
-    { 0xff, 0xff, 0x00 }, /* Yellow */
-    { 0x00, 0xff, 0xff }, /* Cyan */
-    { 0xff, 0x00, 0xff }, /* Magenta */
-    { 0x80, 0x80, 0x80 }, /* Gray */
-    { 0x00, 0x00, 0x00 }, /* Black */
-    { 0xff, 0xff, 0xff }  /* White */
-  };
-
-  // vga_ball_hv_t hv_val = {0, 0};
-
-# define COLORS 9
 
   printf("VGA ball Userspace program started\n");
 
