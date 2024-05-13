@@ -73,7 +73,7 @@ int main()
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
-
+  idx = 0;
   printf("VGA ball Userspace program started\n");
 
   if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
@@ -86,7 +86,7 @@ int main()
   }
 
   printf("sample read done, before write_wav");
-  for (int i = 100; i < 150; i++)
+  for (i = 100; i < 150; i++)
     printf("samp: %lu\n", buffer[i]);
 
   // printf("initial state: ");
