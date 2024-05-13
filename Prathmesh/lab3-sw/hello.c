@@ -18,7 +18,7 @@
 
 #define S_RATE  (44100)
 #define REAL_S_RATE (44100)
-#define BUF_SIZE (5) /* 5 second buffer for L/R */
+#define BUF_SIZE (100) /* 5 second buffer for L/R */
  
 int vga_ball_fd;
 long unsigned int buffer[BUF_SIZE];
@@ -37,7 +37,6 @@ int idx;
 
 void read_samples() {
     vga_ball_arg_t vla;
-    printf("read samples\n");
     if (ioctl(vga_ball_fd, AUDIO_READ_SAMPLES, &vla)) {
         perror("ioctl(AUDIO_READ_SAMPLES) failed");
         return;
@@ -86,7 +85,7 @@ int main()
   }
 
   printf("sample read done, before write_wav");
-  for (i = 0; i < 5; i++)
+  for (i = 0; i < 100; i++)
     printf("samp: %lu\n", buffer[i]);
 
   // printf("initial state: ");
