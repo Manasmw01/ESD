@@ -188,14 +188,14 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -ENOENT;
 		goto out_deregister;
 	}
-	//printk("191\n");
+	printk("191\n");
 
 	/* Make sure we can use these registers */
-	if (request_mem_region(dev.res.start, resource_size(&dev.res),
-			       DRIVER_NAME) == NULL) {
-		ret = -EBUSY;
-		goto out_deregister;
-	}
+	// if (request_mem_region(dev.res.start, resource_size(&dev.res),
+	// 		       DRIVER_NAME) == NULL) {
+	// 	ret = -EBUSY;
+	// 	goto out_deregister;
+	// }
 	printk(KERN_ALERT "198\n");
 
 	/* Arrange access to our registers */
