@@ -104,11 +104,13 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
 static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;
-	printk("hello\n")
+	printk("hello\n");
 	switch (cmd) {
 		case AUDIO_READ_SAMPLES:
 			// Sleep the process until woken by the interrupt handler, and the data is ready
+				printk("111\n");
 			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
+				printk("113\n");
 
 			// The data is now ready, send them to the user space
 			vla.samples = dev.samples;
