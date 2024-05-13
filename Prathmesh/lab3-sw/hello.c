@@ -19,16 +19,16 @@ int vga_ball_fd;
 long unsigned int buffer[BUF_SIZE];
 int idx;
 /* Read and print the background color */
-void print_background_color() {
-  vga_ball_arg_t vla;
+// void print_background_color() {
+//   vga_ball_arg_t vla;
   
-  if (ioctl(vga_ball_fd, VGA_BALL_READ_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_READ_BACKGROUND) failed");
-      return;
-  }
-  printf("%02x %02x %02x\n",
-	 vla.background.red, vla.background.green, vla.background.blue);
-}
+//   if (ioctl(vga_ball_fd, VGA_BALL_READ_BACKGROUND, &vla)) {
+//       perror("ioctl(VGA_BALL_READ_BACKGROUND) failed");
+//       return;
+//   }
+//   printf("%02x %02x %02x\n",
+// 	 vla.background.red, vla.background.green, vla.background.blue);
+// }
 
 void read_samples() {
     audio_arg_t vla;
@@ -41,26 +41,26 @@ void read_samples() {
 		buffer[idx++] = vla.samples.l;
 }
 
-/* Set the background color */
-void set_background_color(const vga_ball_color_t *c)
-{
-  vga_ball_arg_t vla;
-  vla.background = *c;
-      if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
-      return;
-  }
-}
+// /* Set the background color */
+// void set_background_color(const vga_ball_color_t *c)
+// {
+//   vga_ball_arg_t vla;
+//   vla.background = *c;
+//       if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
+//       perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+//       return;
+//   }
+// }
 
-void set_hv(const vga_ball_hv_t *c)
-{
-  vga_ball_arg_t vla;
-  vla.hv = *c;
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_HV, &vla)) {
-      perror("ioctl(VGA_BALL_SET_HV) failed");
-      return;
-  }
-}
+// void set_hv(const vga_ball_hv_t *c)
+// {
+//   vga_ball_arg_t vla;
+//   vla.hv = *c;
+//   if (ioctl(vga_ball_fd, VGA_BALL_WRITE_HV, &vla)) {
+//       perror("ioctl(VGA_BALL_SET_HV) failed");
+//       return;
+//   }
+// }
 
 
 int main()
