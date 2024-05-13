@@ -5,6 +5,7 @@
         "complex": "c",
         "__config": "c",
         "chrono": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "memory_resource": "c"
     }
 }

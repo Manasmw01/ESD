@@ -188,7 +188,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -ENOENT;
 		goto out_deregister;
 	}
-	printk("191\n");
+	//printk("191\n");
 
 	/* Make sure we can use these registers */
 	if (request_mem_region(dev.res.start, resource_size(&dev.res),
@@ -196,7 +196,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		ret = -EBUSY;
 		goto out_deregister;
 	}
-	printk("198\n");
+	printk(KERN_ALERT "198\n");
 
 	/* Arrange access to our registers */
 	dev.virtbase = of_iomap(pdev->dev.of_node, 0);
