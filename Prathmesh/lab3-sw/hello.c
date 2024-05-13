@@ -79,7 +79,7 @@ int main()
     fprintf(stderr, "could not open %s\n", filename);
     return -1;
   }
-  printf(" Opened /dev/vga_ball\n ");
+  printf(" Opened /dev/audio\n ");
   while(idx < BUF_SIZE){
       read_samples();
   }
