@@ -41,7 +41,7 @@
 /* Device registers */
 #define L_SAMPLES(x) ((x)+8)
 
-//DECLARE_WAIT_QUEUE_HEAD(wq);
+DECLARE_WAIT_QUEUE_HEAD(wq);
 
 
 /*
