@@ -74,7 +74,7 @@ int main()
 {
   vga_ball_arg_t vla;
   int i;
-  static const char filename[] = "/dev/vga_ball";
+  static const char filename[] = "/dev/audio";
   idx = 0;
   printf("VGA ball Userspace program started\n");
 
@@ -82,7 +82,7 @@ int main()
     fprintf(stderr, "could not open %s\n", filename);
     return -1;
   }
-  printf(" Opened /dev/vga_ball\n ");
+  printf(" Opened /dev/audio\n ");
   audio_data_t data;
   data.write = 0b001;
   set_background_color(&data);
