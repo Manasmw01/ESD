@@ -39,7 +39,7 @@
 #define DRIVER_NAME "audio"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x))
+#define L_SAMPLES(x) ((x)+4)
 
 // DECLARE_WAIT_QUEUE_HEAD(wq);
 
