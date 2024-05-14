@@ -61,10 +61,10 @@ struct vga_ball_dev {
 } dev;
 static void read_samples(audio_samples_t *samples)
 {
-	int output_1 = ioread8(uint8_t*(dev.virtbase)+4);
-	int output_2 = ioread8(uint8_t*(dev.virtbase) + 5);
-	int output_3 = ioread8(uint8_t*(dev.virtbase)+6);
-	int output_4 = ioread8(uint8_t*(dev.virtbase)+7);
+	int output_1 = ioread8((uint8_t*)(dev.virtbase)+4);
+	int output_2 = ioread8((uint8_t*)(dev.virtbase) + 5);
+	int output_3 = ioread8((uint8_t*)(dev.virtbase)+6);
+	int output_4 = ioread8((uint8_t*)(dev.virtbase)+7);
 	samples->l = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24);
 	//ioread32(RESET_IRQ(dev.virtbase));
 	dev.samples = *samples;
@@ -72,10 +72,10 @@ static void read_samples(audio_samples_t *samples)
 
 static int read_samples_simple(void)
 {
-	int output_1 = ioread8(uint8_t*(dev.virtbase) + 4+4);
-	int output_2 = ioread8(uint8_t*(dev.virtbase) + 5+4);
-	int output_3 = ioread8(uint8_t*(dev.virtbase) + 6+4);
-	int output_4 = ioread8(uint8_t*(dev.virtbase) + 7+4);
+	int output_1 = ioread8((uint8_t*)(dev.virtbase) + 4+4);
+	int output_2 = ioread8((uint8_t*)(dev.virtbase) + 5+4);
+	int output_3 = ioread8((uint8_t*)(dev.virtbase) + 6+4);
+	int output_4 = ioread8((uint8_t*)(dev.virtbase) + 7+4);
 	int output = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24);
 	return output;
 }
