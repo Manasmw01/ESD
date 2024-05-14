@@ -18,7 +18,7 @@
 
 #define S_RATE  (44100)
 #define REAL_S_RATE (44100)
-#define BUF_SIZE (100) /* 5 second buffer for L/R */
+#define BUF_SIZE (2000) /* 5 second buffer for L/R */
  
 int vga_ball_fd;
 long unsigned int buffer[BUF_SIZE];
