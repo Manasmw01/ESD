@@ -84,7 +84,7 @@ int main()
   }
   printf(" Opened /dev/audio\n ");
   audio_data_t data;
-  data.write = 2; 
+  data.write = 0b0011;
   set_background_color(&data);
 
 
