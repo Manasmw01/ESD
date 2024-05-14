@@ -39,7 +39,7 @@
 #define DRIVER_NAME "audio"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x)+4)
+#define L_SAMPLES(x) ((x))
 
 // DECLARE_WAIT_QUEUE_HEAD(wq);
 
@@ -63,7 +63,7 @@ static void read_samples(audio_samples_t *samples)
 
 static uint8_t read_samples_simple(void)
 {
-	uint8_t output = ioread8(L_SAMPLES(dev.virtbase));
+	uint8_t output = ioread32(L_SAMPLES(dev.virtbase));
 	return output;
 }
 
