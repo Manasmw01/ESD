@@ -256,7 +256,7 @@ static int audio_remove(struct platform_device *pdev)
 {
 	iounmap(dev.virtbase);
 	release_mem_region(dev.res.start, resource_size(&dev.res));
-	//free_irq(dev.irq_num, NULL);
+	free_irq(dev.irq_num, NULL);
 	misc_deregister(&vga_ball_misc_device);
 	return 0;
 }
