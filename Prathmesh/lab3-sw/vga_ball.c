@@ -76,7 +76,7 @@ static int read_samples_simple(void)
 	int output_2 = ioread8(L_SAMPLES_2(dev.virtbase));
 	int output_3 = ioread8(L_SAMPLES_3(dev.virtbase));
 	int output_4 = ioread8(L_SAMPLES_4(dev.virtbase));
-	int output = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24)
+	int output = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24);
 	return output;
 }
 
