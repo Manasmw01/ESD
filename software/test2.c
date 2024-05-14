@@ -285,7 +285,7 @@ int main()
 		validleft = check_valid_region(sprites, 23);
 		validright = check_valid_region(sprites, validleft+1);
 		amt.data = get_aud_data(aud_fd);
-		printf("AUD DATA: %d", amt.data);
+		printf("AUD DATA: %d\n", amt.data);
 		if (sprites[validleft].y == 399) {
 		    combo_flag = 0;
 		    combo = 0;
