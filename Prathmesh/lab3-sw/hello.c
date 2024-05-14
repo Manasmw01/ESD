@@ -46,16 +46,18 @@ void read_samples() {
 		buffer[idx++] = vla.samples.l;
 }
 
+
+
 // /* Set the background color */
-// void set_background_color(const vga_ball_color_t *c)
-// {
-//   vga_ball_arg_t vla;
-//   vla.background = *c;
-//       if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
-//       perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
-//       return;
-//   }
-// }
+void set_background_color(const uint32_t *data)
+{
+  vga_ball_arg_t vla;
+  vla.write = *data;
+      if (ioctl(vga_ball_fd, WRITE_CONFIG, &vla)) {
+      perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+      return;
+  }
+}
 
 // void set_hv(const vga_ball_hv_t *c)
 // {
@@ -81,6 +83,11 @@ int main()
     return -1;
   }
   printf(" Opened /dev/audio\n ");
+  uint32_t data = 1;
+  set_background_color(&data);
+
+
+
   while(idx < BUF_SIZE){
       read_samples();
   }

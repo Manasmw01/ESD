@@ -39,7 +39,9 @@
 #define DRIVER_NAME "audio"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x)+4)
+#define L_SAMPLES(x) ((x))
+#define WRITE(x) ((x))
+
 
 // DECLARE_WAIT_QUEUE_HEAD(wq);
 
@@ -52,6 +54,7 @@ struct vga_ball_dev {
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
 	audio_samples_t samples;
 	audio_ready_t ready;
+	uint32_t write;
 	int irq_num;
 } dev;
 static void read_samples(audio_samples_t *samples)
@@ -95,6 +98,10 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
 // 	iowrite8(background->blue, BG_BLUE(dev.virtbase) );	
 // 	dev.background = *background;
 // }
+static void write_data(uint32_t* data){
+	iowrite32(*data, WRITE(dev.virtbase) );
+	dev.write = *data;
+}
 
 // static void write_hv(vga_ball_hv_t *hv){
 // 	iowrite16(hv->h, H(dev.virtbase));
@@ -138,12 +145,12 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 					}
 			break;
 
-	// case VGA_BALL_WRITE_BACKGROUND:
-	// 	if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-	// 			   sizeof(vga_ball_arg_t)))
-	// 		return -EACCES;
-	// 	write_background(&vla.background);
-	// 	break;
+		case WRITE_CONFIG:
+			if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+					sizeof(vga_ball_arg_t)))
+				return -EACCES;
+			write_data(&vla.write);
+			break;
 
 	// case VGA_BALL_READ_BACKGROUND:
 	//   	vla.background = dev.background;
