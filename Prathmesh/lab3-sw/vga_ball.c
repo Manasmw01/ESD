@@ -54,7 +54,7 @@ struct vga_ball_dev {
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
 	audio_samples_t samples;
 	audio_ready_t ready;
-	uint32_t write;
+	int write;
 	int irq_num;
 } dev;
 static void read_samples(audio_samples_t *samples)
