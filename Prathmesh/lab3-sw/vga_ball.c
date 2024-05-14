@@ -61,9 +61,9 @@ static void read_samples(audio_samples_t *samples)
 	dev.samples = *samples;
 }
 
-static int read_samples_simple(void)
+static uint8_t read_samples_simple(void)
 {
-	int output = ioread8(L_SAMPLES(dev.virtbase));
+	uint8_t output = ioread8(L_SAMPLES(dev.virtbase));
 	return output;
 }
 
