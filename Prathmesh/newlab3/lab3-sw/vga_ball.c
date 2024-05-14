@@ -65,10 +65,10 @@ static int read_samples_simple(void)
 {
 	// int output = ioread32(L_SAMPLES(dev.virtbase));
 
-	int output_1 = ioread8(((uint8_t*)dev.virtbase) + 0);
-	int output_2 = ioread8(((uint8_t*)dev.virtbase) + 1);
-	int output_3 = ioread8(((uint8_t*)dev.virtbase) + 2);
-	int output_4 = ioread8(((uint8_t*)dev.virtbase) + 3);
+	int output_1 = ioread8(((uint8_t*)dev.virtbase) + 4);
+	int output_2 = ioread8(((uint8_t*)dev.virtbase) + 5);
+	int output_3 = ioread8(((uint8_t*)dev.virtbase) + 6);
+	int output_4 = ioread8(((uint8_t*)dev.virtbase) + 7);
 	int output = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24);	
 	return output;
 }
