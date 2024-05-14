@@ -38,7 +38,7 @@ int idx;
 void read_samples() {
     vga_ball_arg_t vla;
     printf("read_samples\n");
-    if (ioctl(vga_ball_fd, AUDIO_READ_SAMPLES_X, &vla)) {
+    if (ioctl(vga_ball_fd, AUDIO_READ_SAMPLES, &vla)) {
         perror("ioctl(AUDIO_READ_SAMPLES) failed");
         return;
     }
