@@ -36,10 +36,14 @@
 #include <linux/of_irq.h>
 #include "vga_ball.h"
 
-#define DRIVER_NAME "audio"
+#define DRIVER_NAME "vga_ball"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x))
+#define L_SAMPLES_1(x) ((x)+4)
+#define L_SAMPLES_2(x) ((x)+5)
+#define L_SAMPLES_3(x) ((x)+6)
+#define L_SAMPLES_4(x) ((x)+7)
+#define WRITE(x) ((x))
 
 DECLARE_WAIT_QUEUE_HEAD(wq);
 
@@ -52,18 +56,27 @@ struct vga_ball_dev {
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
 	audio_samples_t samples;
 	audio_ready_t ready;
+	audio_data_t data;
 	int irq_num;
 } dev;
 static void read_samples(audio_samples_t *samples)
 {
-	samples->l = ioread32(L_SAMPLES(dev.virtbase));
+	int output_1 = ioread8((uint8_t*)(dev.virtbase)+4);
+	int output_2 = ioread8((uint8_t*)(dev.virtbase) + 5);
+	int output_3 = ioread8((uint8_t*)(dev.virtbase)+6);
+	int output_4 = ioread8((uint8_t*)(dev.virtbase)+7);
+	samples->l = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24);
 	//ioread32(RESET_IRQ(dev.virtbase));
 	dev.samples = *samples;
 }
 
 static int read_samples_simple(void)
 {
-	int output = ioread32(L_SAMPLES(dev.virtbase));
+	int output_1 = ioread8(((uint8_t*)dev.virtbase) + 8);
+	int output_2 = ioread8(((uint8_t*)dev.virtbase) + 9);
+	int output_3 = ioread8(((uint8_t*)dev.virtbase) + 10);
+	int output_4 = ioread8(((uint8_t*)dev.virtbase) + 11);
+	int output = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24);
 	return output;
 }
 
@@ -88,13 +101,11 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
  * Write segments of a single digit
  * Assumes digit is in range and the device information has been set up
  */
-// static void write_background(vga_ball_color_t *background)
-// {
-// 	iowrite8(background->red, BG_RED(dev.virtbase) );
-// 	iowrite8(background->green, BG_GREEN(dev.virtbase) );
-// 	iowrite8(background->blue, BG_BLUE(dev.virtbase) );	
-// 	dev.background = *background;
-// }
+static void write_background(audio_data_t* data)
+{
+	iowrite8(data->write, WRITE(dev.virtbase) );
+	dev.data = *data;
+}
 
 // static void write_hv(vga_ball_hv_t *hv){
 // 	iowrite16(hv->h, H(dev.virtbase));
@@ -138,12 +149,12 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 					}
 			break;
 
-	// case VGA_BALL_WRITE_BACKGROUND:
-	// 	if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-	// 			   sizeof(vga_ball_arg_t)))
-	// 		return -EACCES;
-	// 	write_background(&vla.background);
-	// 	break;
+	case VGA_BALL_WRITE_BACKGROUND:
+		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+				   sizeof(vga_ball_arg_t)))
+			return -EACCES;
+		write_background(&vla.data);
+		break;
 
 	// case VGA_BALL_READ_BACKGROUND:
 	//   	vla.background = dev.background;
@@ -235,7 +246,7 @@ static int __init audio_probe(struct platform_device *pdev)
 	// 	ret = -ENOENT;
 	// 	goto out_deregister;
 	// }
-		printk(KERN_EMERG "207\n");
+	// 	printk(KERN_EMERG "207\n");
 
         
 	/* Set an initial color */
@@ -256,7 +267,7 @@ static int audio_remove(struct platform_device *pdev)
 {
 	iounmap(dev.virtbase);
 	release_mem_region(dev.res.start, resource_size(&dev.res));
-	//free_irq(dev.irq_num, NULL);
+	free_irq(dev.irq_num, NULL);
 	misc_deregister(&vga_ball_misc_device);
 	return 0;
 }
@@ -264,7 +275,7 @@ static int audio_remove(struct platform_device *pdev)
 /* Which "compatible" string(s) to search for in the Device Tree */
 #ifdef CONFIG_OF
 static const struct of_device_id audio_of_match[] = {
-	{ .compatible = "csee4840,audios-1.0" },
+	{ .compatible = "csee4840,vga_ball-1.0" },
 	{},
 };
 MODULE_DEVICE_TABLE(of, audio_of_match);

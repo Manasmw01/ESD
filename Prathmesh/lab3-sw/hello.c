@@ -46,16 +46,18 @@ void read_samples() {
 		buffer[idx++] = vla.samples.l;
 }
 
+
+
 // /* Set the background color */
-// void set_background_color(const vga_ball_color_t *c)
-// {
-//   vga_ball_arg_t vla;
-//   vla.background = *c;
-//       if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
-//       perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
-//       return;
-//   }
-// }
+void set_background_color(const audio_data_t *data)
+{
+  vga_ball_arg_t vla;
+  vla.data = *data;
+      if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
+      perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+      return;
+  }
+}
 
 // void set_hv(const vga_ball_hv_t *c)
 // {
@@ -72,7 +74,7 @@ int main()
 {
   vga_ball_arg_t vla;
   int i;
-  static const char filename[] = "/dev/audio";
+  static const char filename[] = "/dev/vga_ball";
   idx = 0;
   printf("VGA ball Userspace program started\n");
 
@@ -80,10 +82,17 @@ int main()
     fprintf(stderr, "could not open %s\n", filename);
     return -1;
   }
-  printf(" Opened /dev/audio\n ");
+  printf(" Opened /dev/vga_ball\n ");
+  audio_data_t data;
+  data.write = 0b001;
+  set_background_color(&data);
+
+
+
   while(idx < BUF_SIZE){
       read_samples();
   }
+
 
 
     printf("sample read done, before write_wa\n");

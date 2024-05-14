@@ -11,9 +11,16 @@ typedef struct {
   int audio_ready;
 } audio_ready_t;
 
+
+typedef struct {
+  int write;
+} audio_data_t;
+
+
 typedef struct {
   audio_samples_t samples;
   audio_ready_t ready;
+  audio_data_t data;
 } vga_ball_arg_t;
 
 
