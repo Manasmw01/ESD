@@ -271,7 +271,7 @@ static int audio_remove(struct platform_device *pdev)
 /* Which "compatible" string(s) to search for in the Device Tree */
 #ifdef CONFIG_OF
 static const struct of_device_id audio_of_match[] = {
-	{ .compatible = "csee4840,audios-1.0" },
+	{ .compatible = "csee4840,audio-1.0" },
 	{},
 };
 MODULE_DEVICE_TABLE(of, audio_of_match);
