@@ -86,8 +86,12 @@ int main()
   }
 
   printf("sample read done, before write_wav");
-  for (i = 0; i < 100; i++)
-    printf("samp: %lu\n", buffer[i]);
+  for (int j = 0; j < 10; j++){
+    for (i = 0; i < 10; i++){
+      printf("samp: %lu\t", buffer[j*10+i]);
+    }
+    printf("\n");
+  }
 
   // printf("initial state: ");
   // //print_background_color();
