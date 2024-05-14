@@ -86,7 +86,7 @@ int main()
   }
 
   printf("sample read done, before write_wav");
-  for (int j = 0; j < 10; j++)
+  for (int j = 0; j < 10; j++){
     printf("samps:");
     for (i = 0; i < 10; i++){
       printf("%lu\t", buffer[j*10+i]);
