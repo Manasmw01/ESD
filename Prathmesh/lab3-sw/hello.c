@@ -53,7 +53,7 @@ void set_background_color(const audio_data_t *data)
 {
   vga_ball_arg_t vla;
   vla.data = *data;
-      if (ioctl(vga_ball_fd, WRITE_CONFIG, &vla)) {
+      if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
       perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
       return;
   }
