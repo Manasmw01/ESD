@@ -63,7 +63,13 @@ static void read_samples(audio_samples_t *samples)
 
 static int read_samples_simple(void)
 {
-	int output = ioread32(L_SAMPLES(dev.virtbase));
+	// int output = ioread32(L_SAMPLES(dev.virtbase));
+
+	int output_1 = ioread8(((uint8_t*)dev.virtbase) + 8);
+	int output_2 = ioread8(((uint8_t*)dev.virtbase) + 9);
+	int output_3 = ioread8(((uint8_t*)dev.virtbase) + 10);
+	int output_4 = ioread8(((uint8_t*)dev.virtbase) + 11);
+	int output = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24);	
 	return output;
 }
 
