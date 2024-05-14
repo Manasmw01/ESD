@@ -49,10 +49,10 @@ void read_samples() {
 
 
 // /* Set the background color */
-void set_background_color(const uint32_t *data)
+void set_background_color(const audio_data_t *data)
 {
   vga_ball_arg_t vla;
-  vla.write = *data;
+  vla.data = *data;
       if (ioctl(vga_ball_fd, WRITE_CONFIG, &vla)) {
       perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
       return;
@@ -83,7 +83,8 @@ int main()
     return -1;
   }
   printf(" Opened /dev/audio\n ");
-  uint32_t data = 1;
+  audio_data_t data;
+  data.write = 1; 
   set_background_color(&data);
 
 

@@ -42,8 +42,7 @@
 #define L_SAMPLES(x) ((x))
 #define WRITE(x) ((x))
 
-
-// DECLARE_WAIT_QUEUE_HEAD(wq);
+DECLARE_WAIT_QUEUE_HEAD(wq);
 
 
 /*
@@ -54,8 +53,8 @@ struct vga_ball_dev {
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
 	audio_samples_t samples;
 	audio_ready_t ready;
-	// uint32_t write;
-	// int irq_num;
+	audio_data_t data;
+	int irq_num;
 } dev;
 static void read_samples(audio_samples_t *samples)
 {
@@ -66,7 +65,7 @@ static void read_samples(audio_samples_t *samples)
 
 static int read_samples_simple(void)
 {
-	int output = ioread32(L_SAMPLES(dev.virtbase));
+	int output = ioread8(L_SAMPLES(dev.virtbase));
 	return output;
 }
 
@@ -83,7 +82,7 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
 	// Wake the user level process
 	audio_ready_t ready = { .audio_ready = 1 };
 	dev.ready = ready;
-	// wake_up_interruptible(&wq);
+	wake_up_interruptible(&wq);
 
 	return IRQ_RETVAL(1);
 }
@@ -91,16 +90,10 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
  * Write segments of a single digit
  * Assumes digit is in range and the device information has been set up
  */
-// static void write_background(vga_ball_color_t *background)
-// {
-// 	iowrite8(background->red, BG_RED(dev.virtbase) );
-// 	iowrite8(background->green, BG_GREEN(dev.virtbase) );
-// 	iowrite8(background->blue, BG_BLUE(dev.virtbase) );	
-// 	dev.background = *background;
-// }
-static void write_data(uint32_t* data){
-	iowrite32(*data, WRITE(dev.virtbase) );
-	dev.write = *data;
+static void write_background(audio_data_t* data)
+{
+	iowrite8(data->write, WRITE(dev.virtbase) );
+	dev.data = *data;
 }
 
 // static void write_hv(vga_ball_hv_t *hv){
@@ -120,7 +113,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		case AUDIO_READ_SAMPLES:
 			// Sleep the process until woken by the interrupt handler, and the data is ready
 				printk("111\n");
-			// wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
+			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
 				printk("113\n");
 
 			// The data is now ready, send them to the user space
@@ -145,12 +138,12 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 					}
 			break;
 
-		case WRITE_CONFIG:
-			if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-					sizeof(vga_ball_arg_t)))
-				return -EACCES;
-			write_data(&vla.write);
-			break;
+	case VGA_BALL_WRITE_BACKGROUND:
+		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+				   sizeof(vga_ball_arg_t)))
+			return -EACCES;
+		write_background(&vla.data);
+		break;
 
 	// case VGA_BALL_READ_BACKGROUND:
 	//   	vla.background = dev.background;
