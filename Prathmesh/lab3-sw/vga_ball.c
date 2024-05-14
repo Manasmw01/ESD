@@ -41,7 +41,7 @@
 /* Device registers */
 #define L_SAMPLES(x) ((x)+4)
 
-DECLARE_WAIT_QUEUE_HEAD(wq);
+// DECLARE_WAIT_QUEUE_HEAD(wq);
 
 
 /*
@@ -63,7 +63,7 @@ static void read_samples(audio_samples_t *samples)
 
 static int read_samples_simple(void)
 {
-	int output = ioread32(L_SAMPLES(dev.virtbase));
+	int output = ioread8(L_SAMPLES(dev.virtbase));
 	return output;
 }
 
@@ -113,7 +113,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		case AUDIO_READ_SAMPLES:
 			// Sleep the process until woken by the interrupt handler, and the data is ready
 				printk("111\n");
-			wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
+			// wait_event_interruptible_exclusive(wq, dev.ready.audio_ready);
 				printk("113\n");
 
 			// The data is now ready, send them to the user space
