@@ -39,7 +39,7 @@
 #define DRIVER_NAME "audio"
 
 /* Device registers */
-#define L_SAMPLES(x) ((x))
+#define L_SAMPLES(x) ((x)+8)
 #define WRITE(x) ((x))
 
 DECLARE_WAIT_QUEUE_HEAD(wq);
@@ -223,18 +223,18 @@ static int __init audio_probe(struct platform_device *pdev)
 	}
 	printk(KERN_EMERG "207\n");
 
-	// int irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
-	// dev.irq_num = irq;
-	// printk(KERN_EMERG  "211: %d\n", irq);
+	int irq = irq_of_parse_and_map(pdev->dev.of_node, 0);
+	dev.irq_num = irq;
+	printk(KERN_EMERG  "211: %d\n", irq);
 
-	// ret = request_irq(irq, (irq_handler_t) irq_handler, 0, "csee4840_audio", NULL);
-	// printk(KERN_EMERG "212: %d\n", ret);
+	ret = request_irq(irq, (irq_handler_t) irq_handler, 0, "csee4840_audio", NULL);
+	printk(KERN_EMERG "212: %d\n", ret);
 
-	// if (ret) {
-	// 	printk("request_irq err: %d", ret);
-	// 	ret = -ENOENT;
-	// 	goto out_deregister;
-	// }
+	if (ret) {
+		printk("request_irq err: %d", ret);
+		ret = -ENOENT;
+		goto out_deregister;
+	}
 		printk(KERN_EMERG "207\n");
 
         
