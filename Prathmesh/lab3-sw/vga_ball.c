@@ -80,7 +80,7 @@ irq_handler_t irq_handler(int irq, void *dev_id, struct pt_regs *reg)
 	// Wake the user level process
 	audio_ready_t ready = { .audio_ready = 1 };
 	dev.ready = ready;
-	wake_up_interruptible(&wq);
+	// wake_up_interruptible(&wq);
 
 	return IRQ_RETVAL(1);
 }
