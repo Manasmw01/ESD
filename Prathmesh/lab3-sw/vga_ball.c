@@ -61,7 +61,11 @@ struct vga_ball_dev {
 } dev;
 static void read_samples(audio_samples_t *samples)
 {
-	samples->l = ioread32(L_SAMPLES(dev.virtbase));
+	int output_1 = ioread8(L_SAMPLES_1(dev.virtbase));
+	int output_2 = ioread8(L_SAMPLES_2(dev.virtbase));
+	int output_3 = ioread8(L_SAMPLES_3(dev.virtbase));
+	int output_4 = ioread8(L_SAMPLES_4(dev.virtbase));
+	samples->l = (output_1) | (output_2<<8) |(output_3<<16) | (output_4<<24)
 	//ioread32(RESET_IRQ(dev.virtbase));
 	dev.samples = *samples;
 }
