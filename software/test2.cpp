@@ -609,9 +609,9 @@ int main()
 		//send package to hardware
 		send_sprite_positions(&vzdt, vga_zylo_fd);
 		//update spirtes x and y based on dx and dy on software side
-		for (int i = 0; i < SIZE; i++) {
-			updateBall(&sprites[i]);
-		}
+		// for (int i = 0; i < SIZE; i++) {
+		// 	updateBall(&sprites[i]);
+		// }
 		combo_flag = 1;
 		//pause to let hardware catch up
 		counter++;
