@@ -377,9 +377,9 @@ int main()
 	
 		if(buffer.size() == N){
 			printf("Buffer:\n");
-		for (int i = 0 ; i< 10; i++){
-			printf("%d\n",buffer[i]);
-		}
+			for (int i = 0 ; i< 10; i++){
+				printf("%d\n",buffer[i]);
+			}
 			//printf("buffer: %d\n", buffer[0]);
 			for (int i = 0; i < N; i++){
 				signal[i].real = buffer[i];
@@ -390,9 +390,9 @@ int main()
 				fft_output[i] = sqrt(signal[i].real * signal[i].real + signal[i].imag * signal[i].imag);
 			}
 
-			int max_value = fft_output[0];
+			int max_value = 0;
 			int peak_index = 0;
-			for (int i = 1; i < N; i++) {
+			for (int i = 0; i < N; i++) {
 				if (fft_output[i] > max_value) {
 					max_value = fft_output[i];
 					peak_index = i;
