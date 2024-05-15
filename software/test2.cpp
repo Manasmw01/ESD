@@ -227,7 +227,7 @@ void screen_refresh(sprite* sprites) {
 	}
 	return;
 }
-void addToBuffer(std::vector<uint32_t>& buffer, const uint32_t data) {
+void addToBuffer(std::vector<uint32_t>& buffer, const int data) {
      
 	// Check if buffer is not empty and the last element is equal to the new data
     if (!buffer.empty() && buffer.back() == data) {
@@ -250,7 +250,7 @@ int main()
 {
     
 	vga_zylo_arg_t vzat;
-	std::vector<unsigned int> buffer;
+	std::vector<int> buffer;
 	aud_arg_t aat;
 	aud_mem_t amt;
 
