@@ -377,7 +377,11 @@ int main()
 		amt.data = get_aud_data(aud_fd);
 		// printf("AUD DATA: %d\n", amt.data);
 		addToBuffer(buffer, amt.data);
-
+		int sum = 0;
+		for (int i = 0; i<N; i++){
+			sum += buffer[i];
+		}
+		printf("buffer: %d\n", sum);
 		if(buffer.size() == N){
 			
 			for (int i = 0; i <N; i++){
@@ -401,7 +405,7 @@ int main()
 
 			// Find the index of the nearest piano note
 			int note_index = find_nearest_note_index(frequency);
-			printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency, note_index + 1);
+			//printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency, note_index + 1);
     }
 
 		}
