@@ -1,0 +1,1 @@
+cmd_/root/SSH/ESD/software/vga_zylo.ko := ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /root/SSH/ESD/software/vga_zylo.ko /root/SSH/ESD/software/vga_zylo.o /root/SSH/ESD/software/vga_zylo.mod.o ;  true
