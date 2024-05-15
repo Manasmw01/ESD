@@ -227,7 +227,7 @@ void screen_refresh(sprite* sprites) {
 	}
 	return;
 }
-void addToBuffer(std::vector<uint32_t>& buffer, const int data) {
+void addToBuffer(std::vector<int>& buffer, const int data) {
      
 	// Check if buffer is not empty and the last element is equal to the new data
     if (!buffer.empty() && buffer.back() == data) {
