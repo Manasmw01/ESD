@@ -312,7 +312,7 @@ int main()
 
 		if(buffer.size() == N){
 			for (int i = 0; i <N; i++){
-				signal[i].real = resultArray[i];
+				signal[i].real = buffer[i];
         		signal[i].imag = 0;
 			}
 			FFT(signal, N);
