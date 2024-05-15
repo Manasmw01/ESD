@@ -29,6 +29,7 @@
 int vga_zylo_fd;
 int aud_fd;
 float frequency;
+ind done = 0;
 typedef struct {
     double real;
     double imag;
@@ -418,6 +419,7 @@ int main()
 		amt.data = get_aud_data(aud_fd);
 
 		//printf("AUD DATA: %d\n", amt.data);
+		done = 0;
 		addToBuffer(buffer, amt.data);
 	
 		if(buffer.size() == N){
@@ -447,11 +449,12 @@ int main()
 			//int note_index = find_nearest_note_index(frequency);
 			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
 			printf("%.2f Hz: \tNote: %d\n", frequency, score);
+			done = 1;
 		}
 
 		fprintf(fptr, "%d\n", amt.data);
 #ifdef SHOW_SPRITES
-		if (1) {
+		if (done == 1) {
 		// if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
 		    hitcount++;
 		    // sprites[validleft].y = 481;
@@ -595,8 +598,8 @@ int main()
  		//update_score(sprites, amt.data);
 		//update_combo(sprites, 1+(sprites[validleft].id-17)>>1);
 		update_score(sprites, score);
-		update_combo(sprites, combo);
-		update_max(sprites, max);
+		// update_combo(sprites, combo);
+		// update_max(sprites, max);
 	
 		//package the sprites together
 		for (int i = 0; i < SIZE; i++) {
