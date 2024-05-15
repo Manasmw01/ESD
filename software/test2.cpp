@@ -400,7 +400,8 @@ int main()
 
 			// Find the index of the nearest piano note
 			//int note_index = find_nearest_note_index(frequency);
-			printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
+			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
+			printf("%.2f Hz\n", frequency);
 		}
 		fprintf(fptr, "%d\n", amt.data);
 		iter++;
