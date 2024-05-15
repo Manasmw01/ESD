@@ -31,10 +31,6 @@ int vga_zylo_fd;
 int aud_fd;
 
 
-typedef struct {
-    double real;
-    double imag;
-} Complex;
 
 void updateBall(sprite *obj) {
 	obj->x += obj->dx;
