@@ -254,7 +254,7 @@ int main()
 {
     
 	vga_zylo_arg_t vzat;
-	std::vector<uint32_t> buffer;
+	std::vector<unsigned int> buffer;
 	aud_arg_t aat;
 	aud_mem_t amt;
 
