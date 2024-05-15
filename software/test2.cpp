@@ -372,11 +372,11 @@ int main()
 	
 	while (1) {
 		amt.data = get_aud_data(aud_fd);
-		// printf("AUD DATA: %d\n", amt.data);
+		//printf("AUD DATA: %d\n", amt.data);
 		addToBuffer(buffer, amt.data);
 	
 		if(buffer.size() == N){
-			printf("buffer: %d\n", buffer[0]);
+			//printf("buffer: %d\n", buffer[0]);
 			for (int i = 0; i < N; i++){
 				signal[i].real = buffer[i];
         		signal[i].imag = 0;
@@ -389,9 +389,10 @@ int main()
 			int max_value = fft_output[0];
 			int peak_index = 0;
 			for (int i = 1; i < N; i++) {
-			if (fft_output[i] > max_value) {
-				max_value = fft_output[i];
-				peak_index = i;
+				if (fft_output[i] > max_value) {
+					max_value = fft_output[i];
+					peak_index = i;
+				}
 			}
 			//printf("Max Value: %d\n", max_value);
 			float sample_rate = 48000; // Sample rate, change accordingly if your sample rate is different
@@ -400,8 +401,6 @@ int main()
 			// Find the index of the nearest piano note
 			int note_index = find_nearest_note_index(frequency);
 			printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency, note_index + 1);
-    }
-
 		}
 		fprintf(fptr, "%d\n", amt.data);
 		iter++;
