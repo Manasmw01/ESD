@@ -279,7 +279,7 @@ int main()
 	while (iter < 150000) {
 		amt.data = get_aud_data(aud_fd);
 		// printf("AUD DATA: %d\n", amt.data);
-		fprintf(fptr, "%d\n", (amt.data & 0x0000FFFF));
+		fprintf(fptr, "%d\n", amt.data);
 		iter++;
 	}
 		
