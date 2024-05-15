@@ -304,15 +304,15 @@ void addToBuffer(std::vector<int>& buffer, const int data) {
         //std::cout << "Data is same as the last data entered, not added.\n" << std::endl;
         return;
     }
-
+	buffer.push_back(data);
    // Check if buffer size exceeds the maximum size
-    if (buffer.size() >= N) {
+    if (buffer.size() > N) {
         // Remove the least recent data from the beginning
-        buffer.erase(buffer.begin());
+        buffer.clear();
+		buffer.push_back(data);
+
     }
 
-    // Add data to buffer
-    buffer.push_back(data);
 }
 // simple game of hitting random falling notes when they reach the green zone
 int main()
