@@ -268,74 +268,20 @@ int main()
     int max = 0;
     int hitcount = 0;
 	int noteCount = 0;  
-	int MAX_NOTE_COUNT = 100;    
-	while (noteCount < MAX_NOTE_COUNT + 5) {
-	   
-		if ((counter%10)==0) {
-		    gamecounter++;
-		    // printf("%d\n", gamecounter);
-		}
-
-		if ((counter%132)==0) {
-		    if(noteCount < MAX_NOTE_COUNT) 
-		    	spawnnote(sprites, (rand() % 5));
-		    noteCount++; 
-		}
-		
-		validleft = check_valid_region(sprites, 23);
-		validright = check_valid_region(sprites, validleft+1);
+	int MAX_NOTE_COUNT = 100;   
+	FILE *fptr;
+	fptr = fopen("sound.txt", "w");
+	if (fptr == NULL) {
+			printf("Unable to open file.\n");
+			return 1;
+	}
+	int iter = 0;
+	while (iter < 44100) {
 		amt.data = get_aud_data(aud_fd);
 		printf("AUD DATA: %d\n", amt.data);
-		if (sprites[validleft].y == 399) {
-		    combo_flag = 0;
-		    combo = 0;
-	    }
-	    
-		if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
-		    hitcount++;
-		    // sprites[validleft].y = 481;
-		    // sprites[validright].y = 481;
-		    if (hitcount == 8) {
-		        hitcount = 0;
-		        sprites[validleft].hit = 1;
-		        sprites[validright].hit = 1;
-		        sprites[validleft].dy = 0;
-		        sprites[validright].dy = 0;
-		        sprites[validleft].dx = 10;
-		        sprites[validright].dx = 10;
-		        
-		        if (combo_flag) {
-		            combo++;
-		            if (combo > max)
-		                max = combo;
-		        }
-		        score = score + 1 + combo/5;
-		    }
- 		}
- 	    else 
- 	        hitcount = 0;
- 		
- 		//update_score(sprites, amt.data);
-		//update_combo(sprites, 1+(sprites[validleft].id-17)>>1);
-		update_score(sprites, score);
-		update_combo(sprites, combo);
-		update_max(sprites, max);
-	
-		//package the sprites together
-		for (int i = 0; i < SIZE; i++) {
-			vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
-		}
-		//send package to hardware
-		send_sprite_positions(&vzdt, vga_zylo_fd);
-		//update spirtes x and y based on dx and dy on software side
-		for (int i = 0; i < SIZE; i++) {
-			updateBall(&sprites[i]);
-		}
-		combo_flag = 1;
-		//pause to let hardware catch up
-		counter++;
-		usleep(5000);
+		fprintf(fptr, "%d", amt.data);
+		iter++;
 	}
-	free (sprites);
+		
 	return 0;
 }
