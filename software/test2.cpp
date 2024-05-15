@@ -274,10 +274,10 @@ int main()
  	//FILE *fp = fopen("test.txt", "w");
 	//if (fp == NULL)	return -1;
 	
-	sprite *sprites = NULL;	
-	sprites = calloc(SIZE, sizeof(*sprites));
-	screen_refresh(sprites);
-	scorecombosetup(sprites);
+	// sprite *sprites = NULL;	
+	// sprites = calloc(SIZE, sizeof(*sprites));
+	// screen_refresh(sprites);
+	// scorecombosetup(sprites);
 	Complex signal[N];
 
 	int score = 0;
