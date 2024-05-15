@@ -395,7 +395,7 @@ int main()
 	
 	while (1) {
 
-#ifdef (SHOW_SPRITES)
+#ifdef SHOW_SPRITES
 		if ((counter%10)==0) {
 		    gamecounter++;
 		    // printf("%d\n", gamecounter);
@@ -451,7 +451,7 @@ int main()
 		}
 
 		fprintf(fptr, "%d\n", amt.data);
-#ifdef (SHOW_SPRITES)
+#ifdef SHOW_SPRITES
 		if (1) {
 		// if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
 		    hitcount++;
@@ -612,7 +612,7 @@ int main()
 		combo_flag = 1;
 		//pause to let hardware catch up
 		counter++;
-#ifdef (SHOW_SPRITES)
+#ifdef SHOW_SPRITES
 
 		iter++;
 	}
