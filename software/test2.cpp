@@ -371,6 +371,10 @@ int main()
 	int iter = 0;
 	
 	while (1) {
+		printf("Buffer:\n")
+		for (int i = 0 ; i< 10; i++){
+			printf("%d\n",buffer[i]);
+		}
 		amt.data = get_aud_data(aud_fd);
 		//printf("AUD DATA: %d\n", amt.data);
 		addToBuffer(buffer, amt.data);
