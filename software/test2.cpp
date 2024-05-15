@@ -346,7 +346,7 @@ int main()
 	sprite *sprites = NULL;	
 	// sprites = calloc(SIZE, sizeof(*sprites));
 
-	sprites = (char*)calloc(SIZE,sizeof(*sprites));
+	sprites = (sprite*)calloc(SIZE,sizeof(*sprites));
 
 	screen_refresh(sprites);
 	scorecombosetup(sprites);
