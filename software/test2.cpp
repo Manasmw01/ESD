@@ -598,7 +598,7 @@ int main()
  		
  		//update_score(sprites, amt.data);
 		//update_combo(sprites, 1+(sprites[validleft].id-17)>>1);
-		update_score(sprites, score);
+		//update_score(sprites, score);
 		// update_combo(sprites, combo);
 		// update_max(sprites, max);
 	
