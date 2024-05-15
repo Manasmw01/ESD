@@ -379,6 +379,7 @@ int main()
 		addToBuffer(buffer, amt.data);
 
 		if(buffer.size() == N){
+			
 			for (int i = 0; i <N; i++){
 				signal[i].real = buffer[i];
         		signal[i].imag = 0;
@@ -395,7 +396,7 @@ int main()
 				max_value = fft_output[i];
 				peak_index = i;
 			}
-			float sample_rate = 4800; // Sample rate, change accordingly if your sample rate is different
+			float sample_rate = 48000; // Sample rate, change accordingly if your sample rate is different
 			float frequency = (float)peak_index * sample_rate / N;
 
 			// Find the index of the nearest piano note
