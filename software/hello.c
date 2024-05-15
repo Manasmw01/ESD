@@ -167,7 +167,7 @@ int main()
 		updatesprite(&sprite_obj1);
 		updatesprite(&sprite_obj2);
 		updatesprite(&sprite_obj3);
-		print("AUD DATA: %d", get_aud_data());
+		print("AUD DATA: %d\n", get_aud_data());
 		usleep(20000);
 	}
 
