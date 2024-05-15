@@ -180,7 +180,7 @@ static int vga_zylo_remove(struct platform_device *pdev)
 /* Which "compatible" string(s) to search for in the Device Tree */
 #ifdef CONFIG_OF
 static const struct of_device_id vga_zylo_of_match[] = {
-	{ .compatible = "csee4840,vga_bird-1.2" },
+	{ .compatible = "csee4840,vga_bird-1.0" },
 	{},
 };
 MODULE_DEVICE_TABLE(of, vga_zylo_of_match);
