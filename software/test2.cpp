@@ -377,14 +377,10 @@ int main()
 		amt.data = get_aud_data(aud_fd);
 		// printf("AUD DATA: %d\n", amt.data);
 		addToBuffer(buffer, amt.data);
-		// int sum = 0;
-		// for (int i = 0; i<N; i++){
-		// 	sum += buffer[i];
-		// }
-		// printf("buffer: %d\n", sum);
+	
 		if(buffer.size() == N){
-			
-			for (int i = 0; i <N; i++){
+			printf("buffer: %d", buffer[0]);
+			for (int i = 0; i < N; i++){
 				signal[i].real = buffer[i];
         		signal[i].imag = 0;
 			}
