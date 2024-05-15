@@ -396,7 +396,7 @@ int main()
 				max_value = fft_output[i];
 				peak_index = i;
 			}
-			printf("Max Value: %d\n", max_value);
+			//printf("Max Value: %d\n", max_value);
 			float sample_rate = 48000; // Sample rate, change accordingly if your sample rate is different
 			float frequency = (float)peak_index * sample_rate / N;
 
