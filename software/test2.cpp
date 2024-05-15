@@ -392,7 +392,7 @@ int main()
 
 			int max_value = 0;
 			int peak_index = 0;
-			for (int i = 0; i < N; i++) {
+			for (int i = 0; i < 700; i++) {
 				if (fft_output[i] > max_value) {
 					max_value = fft_output[i];
 					peak_index = i;
