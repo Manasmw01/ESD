@@ -373,11 +373,11 @@ int main()
 	}
 	int iter = 0;
 	
-	while (noteCount < MAX_NOTE_COUNT + 5) {
+	while (1) {
 
 		if ((counter%10)==0) {
 		    gamecounter++;
-		    printf("%d\n", gamecounter);
+		    // printf("%d\n", gamecounter);
 		}
 
 		if ((counter%132)==0) {
@@ -425,11 +425,12 @@ int main()
 			// Find the index of the nearest piano note
 			//int note_index = find_nearest_note_index(frequency);
 			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
-			printf("%.2f Hz\n", frequency);
+			printf("%.2f Hz: \tNote: %d\n", frequency, score);
 		}
 
 		fprintf(fptr, "%d\n", amt.data);
-		if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
+		if (1) {
+		// if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
 		    hitcount++;
 		    // sprites[validleft].y = 481;
 		    // sprites[validright].y = 481;
@@ -447,7 +448,28 @@ int main()
 		            if (combo > max)
 		                max = combo;
 		        }
-		        score = score + 1 + combo/5;
+				// socre = frequency;
+				if(frequency < 200)
+					score = 1;
+				else if (frequency >= 200 && frequency <= 400)
+					score = 2;
+				else if (frequency >= 400 && frequency <= 600)
+					score = 3;
+				else if (frequency >= 600 && frequency <= 800)
+					score = 4;
+				else if (frequency >= 800 && frequency <= 1000)
+					score = 5;
+				else if (frequency >= 1000 && frequency <= 1200)
+					score = 6;
+				else if (frequency >= 1200 && frequency <= 1400)
+					score = 7;
+				else if (frequency >= 1400 && frequency <= 1600)
+					score = 8;
+				else if (frequency >= 1600 && frequency <= 1800)
+					score = 9;
+				else if (frequency >= 1800 && frequency <= 2000)
+					score = 10;
+		        // score = score + 1 + combo/5;
 		    }
  		}
  	    else 
