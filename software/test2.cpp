@@ -28,7 +28,7 @@
 #define N 8192
 int vga_zylo_fd;
 int aud_fd;
-
+float frequency;
 typedef struct {
     double real;
     double imag;
@@ -420,7 +420,7 @@ int main()
 			}
 			//printf("Max Value: %d\n", max_value);
 			float sample_rate = 48000; // Sample rate, change accordingly if your sample rate is different
-			float frequency = (float)peak_index * sample_rate / N;
+			frequency = (float)peak_index * sample_rate / N;
 
 			// Find the index of the nearest piano note
 			//int note_index = find_nearest_note_index(frequency);
