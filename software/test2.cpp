@@ -67,8 +67,8 @@ void FFT(Complex* input, int n) {
         return;
 
     // Divide
-    Complex *even = (Complex*)malloc(n / 2 * sizeof(Complex));
-    Complex *odd = (Complex*)malloc(n / 2 * sizeof(Complex));
+    Complex even[N/ 2];
+    Complex odd[N/ 2];
 
     for (int i = 0; i < n / 2; ++i) {
         even[i] = input[2 * i];
@@ -76,8 +76,8 @@ void FFT(Complex* input, int n) {
     }
 
     // Conquer
-    FFT(even, n / 2);
-    FFT(odd, n / 2);
+    FFT(even, N/ 2);
+    FFT(odd, N/ 2);
 
     // Combine
     for (int k = 0; k < n / 2; ++k) {
@@ -95,9 +95,6 @@ void FFT(Complex* input, int n) {
         input[k + n / 2].real = even[k].real - temp.real;
         input[k + n / 2].imag = even[k].imag - temp.imag;
     }
-
-    free(even);
-    free(odd);
 }
 
 
@@ -327,7 +324,7 @@ int main()
 	aud_mem_t amt;
 
 	srand(time(NULL));
-	float* fft_output = (float *)malloc(N * sizeof(float));
+	float fft_output[N];
 	static const char filename1[] = "/dev/vga_zylo";
 	static const char filename2[] = "/dev/aud";
 
