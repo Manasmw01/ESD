@@ -29,7 +29,7 @@
 int vga_zylo_fd;
 int aud_fd;
 float frequency;
-ind done = 0;
+int done = 0;
 typedef struct {
     double real;
     double imag;
