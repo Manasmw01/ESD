@@ -301,10 +301,10 @@ void addToBuffer(std::vector<int>& buffer, const int data) {
 	// Check if buffer is not empty and the last element is equal to the new data
     if ((!buffer.empty()) && (buffer.back() == data)) {
         // Data is same as the last data entered, don't add it
-		std::cout << "Buffer empty: " <<buffer.empty() << std::endl;
-		std::cout << "Buffer: " <<buffer.back() << std::endl;
-		std::cout << "Data: " <<data << std::endl;
-        std::cout << "Data is same as the last data entered, not added.\n" << std::endl;
+		// std::cout << "Buffer empty: " <<buffer.empty() << std::endl;
+		// std::cout << "Buffer: " <<buffer.back() << std::endl;
+		// std::cout << "Data: " <<data << std::endl;
+        //std::cout << "Data is same as the last data entered, not added.\n" << std::endl;
         return;
     }
 
@@ -379,6 +379,7 @@ int main()
 		addToBuffer(buffer, amt.data);
 
 		if(buffer.size() == N){
+			printf("HI\n");
 			for (int i = 0; i <N; i++){
 				signal[i].real = buffer[i];
         		signal[i].imag = 0;
