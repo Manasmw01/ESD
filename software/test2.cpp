@@ -6,7 +6,7 @@
  * Alex Yu, Rajat Tyagi, Sienna Brent, Riona Westphal
  * Columbia University
  */
-
+// #define SHOW_SPRITES
 #include <stdio.h>
 #include "interfaces.h"
 #include "vga_zylo.h"
@@ -395,6 +395,7 @@ int main()
 	
 	while (1) {
 
+#ifdef (SHOW_SPRITES)
 		if ((counter%10)==0) {
 		    gamecounter++;
 		    // printf("%d\n", gamecounter);
@@ -408,13 +409,14 @@ int main()
 		
 		validleft = check_valid_region(sprites, 23);
 		validright = check_valid_region(sprites, validleft+1);
-
-
-		amt.data = get_aud_data(aud_fd);
 		if (sprites[validleft].y == 399) {
 		    combo_flag = 0;
 		    combo = 0;
 	    }
+#endif
+
+
+		amt.data = get_aud_data(aud_fd);
 
 		//printf("AUD DATA: %d\n", amt.data);
 		addToBuffer(buffer, amt.data);
@@ -449,6 +451,7 @@ int main()
 		}
 
 		fprintf(fptr, "%d\n", amt.data);
+#ifdef (SHOW_SPRITES)
 		if (1) {
 		// if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
 		    hitcount++;
@@ -609,6 +612,7 @@ int main()
 		combo_flag = 1;
 		//pause to let hardware catch up
 		counter++;
+#ifdef (SHOW_SPRITES)
 
 		iter++;
 	}
