@@ -450,10 +450,8 @@ int main()
 			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
 			printf("%.2f Hz: \tNote: %d\n", frequency, score);
 			done = 1;
-		}
 
-		fprintf(fptr, "%d\n", amt.data);
-#ifdef SHOW_SPRITES
+
 		if (done == 1) {
 		// if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
 		    hitcount++;
@@ -593,7 +591,10 @@ int main()
     		}
 		    }
  		}
- 
+		}
+
+		fprintf(fptr, "%d\n", amt.data);
+#ifdef SHOW_SPRITES
  		
  		//update_score(sprites, amt.data);
 		//update_combo(sprites, 1+(sprites[validleft].id-17)>>1);
