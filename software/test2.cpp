@@ -379,7 +379,6 @@ int main()
 		addToBuffer(buffer, amt.data);
 
 		if(buffer.size() == N){
-			printf("HI\n");
 			for (int i = 0; i <N; i++){
 				signal[i].real = buffer[i];
         		signal[i].imag = 0;
