@@ -373,7 +373,7 @@ int main()
 	}
 	int iter = 0;
 	
-	while (1) {
+	while (noteCount < MAX_NOTE_COUNT + 5) {
 
 		if ((counter%10)==0) {
 		    gamecounter++;
