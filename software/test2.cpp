@@ -373,7 +373,7 @@ int main()
 	}
 	int iter = 0;
 	
-	while (iter < 1200000) {
+	while (1) {
 		amt.data = get_aud_data(aud_fd);
 		// printf("AUD DATA: %d\n", amt.data);
 		addToBuffer(buffer, amt.data);
