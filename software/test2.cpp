@@ -612,7 +612,7 @@ int main()
 		combo_flag = 1;
 		//pause to let hardware catch up
 		counter++;
-#ifdef SHOW_SPRITES
+#endif
 
 		iter++;
 	}
