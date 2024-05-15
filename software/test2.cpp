@@ -376,10 +376,6 @@ int main()
 		addToBuffer(buffer, amt.data);
 	
 		if(buffer.size() == N){
-			printf("Buffer:\n");
-			for (int i = 0 ; i< 10; i++){
-				printf("%d\n",buffer[i]);
-			}
 			//printf("buffer: %d\n", buffer[0]);
 			for (int i = 0; i < N; i++){
 				signal[i].real = buffer[i];
