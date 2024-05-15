@@ -603,16 +603,16 @@ int main()
 		// update_max(sprites, max);
 	
 		//package the sprites together
-		// for (int i = 0; i < SIZE; i++) {
-		// 	vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
-		// }
+		for (int i = 0; i < SIZE; i++) {
+			vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
+		}
 		//send package to hardware
-		//send_sprite_positions(&vzdt, vga_zylo_fd);
+		send_score(&vzdt, vga_zylo_fd);
 		//update spirtes x and y based on dx and dy on software side
 		// for (int i = 0; i < SIZE; i++) {
 		// 	updateBall(&sprites[i]);
 		// }
-		combo_flag = 1;
+		//combo_flag = 1;
 		//pause to let hardware catch up
 		counter++;
 #endif
