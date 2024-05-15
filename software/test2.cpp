@@ -6,7 +6,7 @@
  * Alex Yu, Rajat Tyagi, Sienna Brent, Riona Westphal
  * Columbia University
  */
-// #define SHOW_SPRITES
+#define SHOW_SPRITES
 #include <stdio.h>
 #include "interfaces.h"
 #include "vga_zylo.h"
@@ -391,28 +391,27 @@ int main()
 			printf("Unable to open file.\n");
 			return 1;
 	}
-	int iter = 0;
 	
 	while (1) {
 
 #ifdef SHOW_SPRITES
 		if ((counter%10)==0) {
-		    gamecounter++;
+		    // gamecounter++;
 		    // printf("%d\n", gamecounter);
 		}
 
-		if ((counter%132)==0) {
-		    if(noteCount < MAX_NOTE_COUNT) 
-		    	spawnnote(sprites, (rand() % 5));
-		    noteCount++; 
-		}
+		// if ((counter%132)==0) {
+		//     if(noteCount < MAX_NOTE_COUNT) 
+		//     	spawnnote(sprites, (rand() % 5));
+		//     noteCount++; 
+		// }
 		
 		validleft = check_valid_region(sprites, 23);
 		validright = check_valid_region(sprites, validleft+1);
-		if (sprites[validleft].y == 399) {
-		    combo_flag = 0;
-		    combo = 0;
-	    }
+		// if (sprites[validleft].y == 399) {
+		    // combo_flag = 0;
+		    // combo = 0;
+	    // }
 #endif
 
 
@@ -614,7 +613,6 @@ int main()
 		counter++;
 #endif
 
-		iter++;
 	}
 		
 	return 0;
