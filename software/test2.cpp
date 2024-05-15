@@ -598,7 +598,7 @@ int main()
  		
  		//update_score(sprites, amt.data);
 		//update_combo(sprites, 1+(sprites[validleft].id-17)>>1);
-		//update_score(sprites, score);
+		update_score(sprites, score);
 		// update_combo(sprites, combo);
 		// update_max(sprites, max);
 	
@@ -607,7 +607,7 @@ int main()
 		// 	vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
 		// }
 		//send package to hardware
-		// send_sprite_positions(&vzdt, vga_zylo_fd);
+		//send_sprite_positions(&vzdt, vga_zylo_fd);
 		//update spirtes x and y based on dx and dy on software side
 		// for (int i = 0; i < SIZE; i++) {
 		// 	updateBall(&sprites[i]);
