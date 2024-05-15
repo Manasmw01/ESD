@@ -67,8 +67,8 @@ void FFT(Complex* input, int n) {
         return;
 
     // Divide
-    Complex even[N/ 2];
-    Complex odd[N/ 2];
+    Complex even[n/ 2];
+    Complex odd[n/ 2];
 
     for (int i = 0; i < n / 2; ++i) {
         even[i] = input[2 * i];
@@ -76,8 +76,8 @@ void FFT(Complex* input, int n) {
     }
 
     // Conquer
-    FFT(even, N/ 2);
-    FFT(odd, N/ 2);
+    FFT(even, n/ 2);
+    FFT(odd, n/ 2);
 
     // Combine
     for (int k = 0; k < n / 2; ++k) {
