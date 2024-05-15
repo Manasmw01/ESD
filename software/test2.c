@@ -276,9 +276,9 @@ int main()
 			return 1;
 	}
 	int iter = 0;
-	while (iter < 3000) {
+	while (iter < 50000) {
 		amt.data = get_aud_data(aud_fd);
-		printf("AUD DATA: %d\n", amt.data);
+		// printf("AUD DATA: %d\n", amt.data);
 		fprintf(fptr, "%d\n", amt.data);
 		iter++;
 	}
