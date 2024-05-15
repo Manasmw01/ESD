@@ -312,13 +312,13 @@ int main()
         		signal[i].imag = 0;
 			}
 			FFT(signal, N);
-			for (i = 0; i < N; i++) {
+			for (int i = 0; i < N; i++) {
 				fft_output[i] = sqrt(signal[i].real * signal[i].real + signal[i].imag * signal[i].imag);
 			}
 
 			int max_value = fft_output[0];
 			int peak_index = 0;
-			for (i = 1; i < N; i++) {
+			for (int i = 1; i < N; i++) {
 			if (fft_output[i] > max_value) {
 				max_value = fft_output[i];
 				peak_index = i;
