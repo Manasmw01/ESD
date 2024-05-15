@@ -301,7 +301,8 @@ void addToBuffer(std::vector<int>& buffer, const int data) {
 	// Check if buffer is not empty and the last element is equal to the new data
     if ((!buffer.empty()) && (buffer.back() == data)) {
         // Data is same as the last data entered, don't add it
-		std::cout << data << std::endl;
+		std::cout << "Buffer: " <<buffer.back()ata << std::endl;
+		std::cout << "Data: " <<data << std::endl;
         std::cout << "Data is same as the last data entered, not added.\n" << std::endl;
         return;
     }
