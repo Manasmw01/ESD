@@ -344,7 +344,10 @@ int main()
 	//if (fp == NULL)	return -1;
 	
 	sprite *sprites = NULL;	
-	sprites = calloc(SIZE, sizeof(*sprites));
+	// sprites = calloc(SIZE, sizeof(*sprites));
+
+	sprites = (char*)calloc(SIZE,sizeof(*sprites));
+
 	screen_refresh(sprites);
 	scorecombosetup(sprites);
 	Complex signal[N];
