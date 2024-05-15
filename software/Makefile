@@ -17,7 +17,7 @@ hello: hello.c
 test: test.c
 	gcc -o test test.c interfaces.c interfaces.h
 test2: test2.c
-	gcc -o test2 test2.c interfaces.c interfaces.h
+	g++ -o test2 test2.cpp interfaces.c interfaces.h note.c fft.c 
 module:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
 
