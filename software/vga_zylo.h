@@ -9,7 +9,7 @@
 typedef struct {
   int data[SIZE];
   int score;
-  int combo
+  int combo;
 } vga_zylo_data_t;
   
 typedef struct {
