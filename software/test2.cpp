@@ -168,55 +168,6 @@ void scorecombosetup(sprite *sprites) {
 		sprites[i].index = i;
 	}
 
-	//'COMBO'
-	sprites[9].id =  12; //C
-	sprites[10].id = 15; //O
-	sprites[11].id = 14; //M
-	sprites[12].id = 11; //B
-	sprites[13].id = 15; //O
-	for (int i = 9; i < 14; i++) {
-		sprites[i].x = 480+32*(i-9); 
-		sprites[i].y = 140;
-		sprites[i].dx = 0;  
-		sprites[i].dy = 0; 
-		sprites[i].hit = 1;
-		sprites[i].index = i;
-	}
-	sprites[14].id = 10; //0
-	sprites[15].id = 10; //0
-	sprites[16].id = 10; //0
-	for (int i = 14; i < 17; i++) {
-		sprites[i].x = 480+32+32*(i-14); 
-		sprites[i].y = 190;
-		sprites[i].dx = 0;  
-		sprites[i].dy = 0; 
-		sprites[i].hit = 1;
-		sprites[i].index = i;
-	}
-	
-	//'MAX'
-	sprites[17].id = 14; //M
-	sprites[18].id = 26; //A
-	sprites[19].id = 27; //X
-	for (int i = 17; i < 20; i++) {
-		sprites[i].x = 480+32+32*(i-17); 
-		sprites[i].y = 240;
-		sprites[i].dx = 0;  
-		sprites[i].dy = 0; 
-		sprites[i].hit = 1;
-		sprites[i].index = i;
-	}
-	sprites[20].id = 10; //0
-	sprites[21].id = 10; //0
-	sprites[22].id = 10; //0
-	for (int i = 20; i < 23; i++) {
-		sprites[i].x = 480+32+32*(i-20); 
-		sprites[i].y = 290;
-		sprites[i].dx = 0;  
-		sprites[i].dy = 0; 
-		sprites[i].hit = 1;
-		sprites[i].index = i;
-	}
 }
 
 void update_combo(sprite *sprites, const int combo) {
