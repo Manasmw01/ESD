@@ -71,9 +71,9 @@ const float midpoints[] = {
 // Function to find index of the nearest piano note to a given frequency
 int find_nearest_note_index(float frequency) {
     int index = 0;
-    float min_diff = fabs(frequency - midpoints[0]);
-    for (int i = 1; i < sizeof(piano_notes) / sizeof(midpoints[0]); i++) {
-        float diff = fabs(frequency - midpoints[i]);
+    float min_diff = fabs(frequency - piano_notes[0]);
+    for (int i = 1; i < sizeof(piano_notes) / sizeof(piano_notes[0]); i++) {
+        float diff = fabs(frequency - piano_notes[i]);
         if (diff < min_diff) {
             min_diff = diff;
             index = i;
@@ -255,7 +255,7 @@ int check_valid_region(sprite* sprites, int start) {
 
 void screen_refresh(sprite* sprites) {
     for (int i = 1; i < SIZE; i++) {
-		sprites[i].x = 630; 
+		sprites[i].x = 670; 
 		sprites[i].y = 470;
 		sprites[i].dx = 0;  
 		sprites[i].dy = 0; 
