@@ -22,7 +22,7 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
-#define SAMPLING_RATE 48000
+#define SAMPLING_RATE 30000
 #define X_MAX 639 
 #define Y_MAX 479
 #define N 8192
