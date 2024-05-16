@@ -149,7 +149,7 @@ void scorecombosetup(sprite *sprites) {
 	sprites[4].id = 15; //E
 	for (int i = 1; i < 5; i++) {
 		sprites[i].x = 250+32*(i-1); 
-		sprites[i].y = 40;
+		sprites[i].y = 90;
 		sprites[i].dx = 0;  
 		sprites[i].dy = 0; 
 		sprites[i].hit = 1;
@@ -159,7 +159,7 @@ void scorecombosetup(sprite *sprites) {
 	sprites[6].id = 10;
 	for (int i = 5; i < 7; i++) {
 		sprites[i].x = 250+32+32*(i-5); 
-		sprites[i].y = 90;
+		sprites[i].y = 160;
 		sprites[i].dx = 0;  
 		sprites[i].dy = 0; 
 		sprites[i].hit = 1;
@@ -172,7 +172,7 @@ void scorecombosetup(sprite *sprites) {
 	sprites[10].id = 10;		
 	for (int i = 7; i < 11; i++) {
 		sprites[i].x = 250+32+32*(i-8); 
-		sprites[i].y = 140;
+		sprites[i].y = 190;
 		sprites[i].dx = 0;  
 		sprites[i].dy = 0; 
 		sprites[i].hit = 1;
