@@ -444,156 +444,152 @@ int main()
 			//printf("Max Value: %d\n", max_value);
 			float sample_rate = 36000; // Sample rate, change accordingly if your sample rate is different
 			frequency = (float)peak_index * sample_rate / N;
-
+			int score = find_nearest_note_index(frequency);
 			// Find the index of the nearest piano note
 			//int note_index = find_nearest_note_index(frequency);
 			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
 			printf("%.2f Hz: \tNote: %d\n", frequency, score);
-			done = 1;
 
-
-		if (done == 1) {
 		// if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
-		    hitcount++;
-		    // sprites[validleft].y = 481;
-		    // sprites[validright].y = 481;
-		    if (hitcount == 8) {
-		        hitcount = 0;
-		        sprites[validleft].hit = 1;
-		        sprites[validright].hit = 1;
-		        sprites[validleft].dy = 0;
-		        sprites[validright].dy = 0;
-		        sprites[validleft].dx = 10;
-		        sprites[validright].dx = 10;
+		    // hitcount++;
+		    // // sprites[validleft].y = 481;
+		    // // sprites[validright].y = 481;
+		    // if (hitcount == 8) {
+		    //     hitcount = 0;
+		    //     sprites[validleft].hit = 1;
+		    //     sprites[validright].hit = 1;
+		    //     sprites[validleft].dy = 0;
+		    //     sprites[validright].dy = 0;
+		    //     sprites[validleft].dx = 10;
+		    //     sprites[validright].dx = 10;
 		        
-		        if (combo_flag) {
-		            combo++;
-		            if (combo > max)
-		                max = combo;
-		        }
-				// socre = frequency;
-			if (frequency < midpoints[0]) {
-        		score = 0;
-    		} else if (frequency >= midpoints[0] && frequency < midpoints[1]) {
-        		score = 1;
-    		} else if (frequency >= midpoints[1] && frequency < midpoints[2]) {
-        		score = 2;
-   		 	} else if (frequency >= midpoints[2] && frequency < midpoints[3]) {
-        		score = 3;
-    		} else if (frequency >= midpoints[3] && frequency < midpoints[4]) {
-        		score = 4;
-    		} else if (frequency >= midpoints[4] && frequency < midpoints[5]) {
-        		score = 5;
-    		} else if (frequency >= midpoints[5] && frequency < midpoints[6]) {
-        		score = 6;
-    		} else if (frequency >= midpoints[6] && frequency < midpoints[7]) {
-        		score = 7;
-    		} else if (frequency >= midpoints[7] && frequency < midpoints[8]) {
-        		score = 8;
-    		} else if (frequency >= midpoints[8] && frequency < midpoints[9]) {
-        		score = 9;
-    		} else if (frequency >= midpoints[9] && frequency < midpoints[10]) {
-        		score = 10;
-    		} else if (frequency >= midpoints[10] && frequency < midpoints[11]) {
-        		score = 11;
-    		} else if (frequency >= midpoints[11] && frequency < midpoints[12]) {
-        		score = 12;
-    		} else if (frequency >= midpoints[12] && frequency < midpoints[13]) {
-        		score = 13;
-		    } else if (frequency >= midpoints[13] && frequency < midpoints[14]) {
-        		score = 14;
-		    } else if (frequency >= midpoints[14] && frequency < midpoints[15]) {
-        		score = 15;
-		    } else if (frequency >= midpoints[15] && frequency < midpoints[16]) {
-        		score = 16;
-		    } else if (frequency >= midpoints[16] && frequency < midpoints[17]) {
-        		score = 17;
-		    } else if (frequency >= midpoints[17] && frequency < midpoints[18]) {
-        		score = 18;
-		    } else if (frequency >= midpoints[18] && frequency < midpoints[19]) {
-        		score = 19;
-		    } else if (frequency >= midpoints[19] && frequency < midpoints[20]) {
-        		score = 20;
-		    } else if (frequency >= midpoints[20] && frequency < midpoints[21]) {
-        		score = 21;
-		    } else if (frequency >= midpoints[21] && frequency < midpoints[22]) {
-        		score = 22;
-		    } else if (frequency >= midpoints[22] && frequency < midpoints[23]) {
-        		score = 23;
-		    } else if (frequency >= midpoints[23] && frequency < midpoints[24]) {
-        		score = 24;
-		    } else if (frequency >= midpoints[24] && frequency < midpoints[25]) {
-        		score = 25;
-		    } else if (frequency >= midpoints[25] && frequency < midpoints[26]) {
-        		score = 26;
-		    } else if (frequency >= midpoints[26] && frequency < midpoints[27]) {
-        		score = 27;
-		    } else if (frequency >= midpoints[27] && frequency < midpoints[28]) {
-        		score = 28;
-		    } else if (frequency >= midpoints[28] && frequency < midpoints[29]) {
-        		score = 29;
-		    } else if (frequency >= midpoints[29] && frequency < midpoints[30]) {
-        		score = 30;
-		    } else if (frequency >= midpoints[30] && frequency < midpoints[31]) {
-        		score = 31;
-		    } else if (frequency >= midpoints[31] && frequency < midpoints[32]) {
-        		score = 32;
-		    } else if (frequency >= midpoints[32] && frequency < midpoints[33]) {
-        		score = 33;
-		    } else if (frequency >= midpoints[33] && frequency < midpoints[34]) {
-        		score = 34;
-		    } else if (frequency >= midpoints[34] && frequency < midpoints[35]) {
-        		score = 35;
-		    } else if (frequency >= midpoints[35] && frequency < midpoints[36]) {
-        		score = 36;
-		    } else if (frequency >= midpoints[36] && frequency < midpoints[37]) {
-        		score = 37;
-		    } else if (frequency >= midpoints[37] && frequency < midpoints[38]) {
-        		score = 38;
-		    } else if (frequency >= midpoints[38] && frequency < midpoints[39]) {
-        		score = 39;
-		    } else if (frequency >= midpoints[39] && frequency < midpoints[40]) {
-        		score = 40;
-		    } else if (frequency >= midpoints[40] && frequency < midpoints[41]) {
-        		score = 41;
-		    } else if (frequency >= midpoints[41] && frequency < midpoints[42]) {
-        		score = 42;
-		    } else if (frequency >= midpoints[42] && frequency < midpoints[43]) {
-        		score = 43;
-		    } else if (frequency >= midpoints[43] && frequency < midpoints[44]) {
-        		score = 44;
-    		} else if (frequency >= midpoints[44] && frequency < midpoints[45]) {
-        		score = 45;
-		    } else if (frequency >= midpoints[45] && frequency < midpoints[46]) {
-        		score = 46;
-		    } else if (frequency >= midpoints[46] && frequency < midpoints[47]) {
-        		score = 47;
-		    } else if (frequency >= midpoints[47] && frequency < midpoints[48]) {
-        		score = 48;
-		    } else if (frequency >= midpoints[48] && frequency < midpoints[49]) {
-        		score = 49;
-		    } else if (frequency >= midpoints[49] && frequency < midpoints[50]) {
-        		score = 50;
-		    } else if (frequency >= midpoints[50] && frequency < midpoints[51]) {
-        		score = 51;
-		    } else if (frequency >= midpoints[51] && frequency < midpoints[52]) {
-        		score = 52;
-		    } else if (frequency >= midpoints[52] && frequency < midpoints[53]) {
-        		score = 53;
-		    } else if (frequency >= midpoints[53] && frequency < midpoints[54]) {
-        		score = 54;
-		    } else if (frequency >= midpoints[54] && frequency < midpoints[55]) {
-        		score = 55;
-		    } else if (frequency >= midpoints[55] && frequency < midpoints[56]) {
-        		score = 56;
-    		} else {	
-        		hitcount = 0;
-    		}
-		    }
- 		}
+		    //     if (combo_flag) {
+		    //         combo++;
+		    //         if (combo > max)
+		    //             max = combo;
+		    //     }
+			// 	// socre = frequency;
+			// if (frequency < midpoints[0]) {
+        	// 	score = 0;
+    		// } else if (frequency >= midpoints[0] && frequency < midpoints[1]) {
+        	// 	score = 1;
+    		// } else if (frequency >= midpoints[1] && frequency < midpoints[2]) {
+        	// 	score = 2;
+   		 	// } else if (frequency >= midpoints[2] && frequency < midpoints[3]) {
+        	// 	score = 3;
+    		// } else if (frequency >= midpoints[3] && frequency < midpoints[4]) {
+        	// 	score = 4;
+    		// } else if (frequency >= midpoints[4] && frequency < midpoints[5]) {
+        	// 	score = 5;
+    		// } else if (frequency >= midpoints[5] && frequency < midpoints[6]) {
+        	// 	score = 6;
+    		// } else if (frequency >= midpoints[6] && frequency < midpoints[7]) {
+        	// 	score = 7;
+    		// } else if (frequency >= midpoints[7] && frequency < midpoints[8]) {
+        	// 	score = 8;
+    		// } else if (frequency >= midpoints[8] && frequency < midpoints[9]) {
+        	// 	score = 9;
+    		// } else if (frequency >= midpoints[9] && frequency < midpoints[10]) {
+        	// 	score = 10;
+    		// } else if (frequency >= midpoints[10] && frequency < midpoints[11]) {
+        	// 	score = 11;
+    		// } else if (frequency >= midpoints[11] && frequency < midpoints[12]) {
+        	// 	score = 12;
+    		// } else if (frequency >= midpoints[12] && frequency < midpoints[13]) {
+        	// 	score = 13;
+		    // } else if (frequency >= midpoints[13] && frequency < midpoints[14]) {
+        	// 	score = 14;
+		    // } else if (frequency >= midpoints[14] && frequency < midpoints[15]) {
+        	// 	score = 15;
+		    // } else if (frequency >= midpoints[15] && frequency < midpoints[16]) {
+        	// 	score = 16;
+		    // } else if (frequency >= midpoints[16] && frequency < midpoints[17]) {
+        	// 	score = 17;
+		    // } else if (frequency >= midpoints[17] && frequency < midpoints[18]) {
+        	// 	score = 18;
+		    // } else if (frequency >= midpoints[18] && frequency < midpoints[19]) {
+        	// 	score = 19;
+		    // } else if (frequency >= midpoints[19] && frequency < midpoints[20]) {
+        	// 	score = 20;
+		    // } else if (frequency >= midpoints[20] && frequency < midpoints[21]) {
+        	// 	score = 21;
+		    // } else if (frequency >= midpoints[21] && frequency < midpoints[22]) {
+        	// 	score = 22;
+		    // } else if (frequency >= midpoints[22] && frequency < midpoints[23]) {
+        	// 	score = 23;
+		    // } else if (frequency >= midpoints[23] && frequency < midpoints[24]) {
+        	// 	score = 24;
+		    // } else if (frequency >= midpoints[24] && frequency < midpoints[25]) {
+        	// 	score = 25;
+		    // } else if (frequency >= midpoints[25] && frequency < midpoints[26]) {
+        	// 	score = 26;
+		    // } else if (frequency >= midpoints[26] && frequency < midpoints[27]) {
+        	// 	score = 27;
+		    // } else if (frequency >= midpoints[27] && frequency < midpoints[28]) {
+        	// 	score = 28;
+		    // } else if (frequency >= midpoints[28] && frequency < midpoints[29]) {
+        	// 	score = 29;
+		    // } else if (frequency >= midpoints[29] && frequency < midpoints[30]) {
+        	// 	score = 30;
+		    // } else if (frequency >= midpoints[30] && frequency < midpoints[31]) {
+        	// 	score = 31;
+		    // } else if (frequency >= midpoints[31] && frequency < midpoints[32]) {
+        	// 	score = 32;
+		    // } else if (frequency >= midpoints[32] && frequency < midpoints[33]) {
+        	// 	score = 33;
+		    // } else if (frequency >= midpoints[33] && frequency < midpoints[34]) {
+        	// 	score = 34;
+		    // } else if (frequency >= midpoints[34] && frequency < midpoints[35]) {
+        	// 	score = 35;
+		    // } else if (frequency >= midpoints[35] && frequency < midpoints[36]) {
+        	// 	score = 36;
+		    // } else if (frequency >= midpoints[36] && frequency < midpoints[37]) {
+        	// 	score = 37;
+		    // } else if (frequency >= midpoints[37] && frequency < midpoints[38]) {
+        	// 	score = 38;
+		    // } else if (frequency >= midpoints[38] && frequency < midpoints[39]) {
+        	// 	score = 39;
+		    // } else if (frequency >= midpoints[39] && frequency < midpoints[40]) {
+        	// 	score = 40;
+		    // } else if (frequency >= midpoints[40] && frequency < midpoints[41]) {
+        	// 	score = 41;
+		    // } else if (frequency >= midpoints[41] && frequency < midpoints[42]) {
+        	// 	score = 42;
+		    // } else if (frequency >= midpoints[42] && frequency < midpoints[43]) {
+        	// 	score = 43;
+		    // } else if (frequency >= midpoints[43] && frequency < midpoints[44]) {
+        	// 	score = 44;
+    		// } else if (frequency >= midpoints[44] && frequency < midpoints[45]) {
+        	// 	score = 45;
+		    // } else if (frequency >= midpoints[45] && frequency < midpoints[46]) {
+        	// 	score = 46;
+		    // } else if (frequency >= midpoints[46] && frequency < midpoints[47]) {
+        	// 	score = 47;
+		    // } else if (frequency >= midpoints[47] && frequency < midpoints[48]) {
+        	// 	score = 48;
+		    // } else if (frequency >= midpoints[48] && frequency < midpoints[49]) {
+        	// 	score = 49;
+		    // } else if (frequency >= midpoints[49] && frequency < midpoints[50]) {
+        	// 	score = 50;
+		    // } else if (frequency >= midpoints[50] && frequency < midpoints[51]) {
+        	// 	score = 51;
+		    // } else if (frequency >= midpoints[51] && frequency < midpoints[52]) {
+        	// 	score = 52;
+		    // } else if (frequency >= midpoints[52] && frequency < midpoints[53]) {
+        	// 	score = 53;
+		    // } else if (frequency >= midpoints[53] && frequency < midpoints[54]) {
+        	// 	score = 54;
+		    // } else if (frequency >= midpoints[54] && frequency < midpoints[55]) {
+        	// 	score = 55;
+		    // } else if (frequency >= midpoints[55] && frequency < midpoints[56]) {
+        	// 	score = 56;
+    		// } else {	
+        	// 	hitcount = 0;
+    		// }
+		    
 		}
 
-		fprintf(fptr, "%d\n", amt.data);
+		//fprintf(fptr, "%d\n", amt.data);
 #ifdef SHOW_SPRITES
  		
  		//update_score(sprites, amt.data);
