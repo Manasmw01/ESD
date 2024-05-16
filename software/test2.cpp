@@ -186,7 +186,17 @@ void scorecombosetup(sprite *sprites) {
 	sprites[12].id = 20; //O
 	sprites[13].id = 21; //T
 	sprites[14].id = 15; //E
-	for (int i = 11; i < 15; i++) {
+
+	sprites[15].id = 14; //D
+	sprites[16].id = 15; //E
+	sprites[17].id = 21; //T
+	sprites[18].id = 15; //E
+	sprites[19].id = 13; //C
+	sprites[20].id = 21; //T
+	sprites[21].id = 20; //O
+	sprites[22].id = 18; //R
+
+	for (int i = 11; i < 23; i++) {
 		sprites[i].x = 100+32*(i-1); 
 		sprites[i].y = 20;
 		sprites[i].dx = 0;  
