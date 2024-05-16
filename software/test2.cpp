@@ -255,7 +255,7 @@ int check_valid_region(sprite* sprites, int start) {
 
 void screen_refresh(sprite* sprites) {
     for (int i = 1; i < SIZE; i++) {
-		sprites[i].x = 670; 
+		sprites[i].x = 630; 
 		sprites[i].y = 470;
 		sprites[i].dx = 0;  
 		sprites[i].dy = 0; 
