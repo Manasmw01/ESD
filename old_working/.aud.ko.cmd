@@ -1,0 +1,1 @@
+cmd_/root/SSH/ESD/software/aud.ko := ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /root/SSH/ESD/software/aud.ko /root/SSH/ESD/software/aud.o /root/SSH/ESD/software/aud.mod.o ;  true
