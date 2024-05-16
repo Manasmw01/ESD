@@ -148,7 +148,7 @@ void scorecombosetup(sprite *sprites) {
 	sprites[3].id = 21; //T
 	sprites[4].id = 15; //E
 	for (int i = 1; i < 5; i++) {
-		sprites[i].x = 200+32*(i-1); 
+		sprites[i].x = 250+32*(i-1); 
 		sprites[i].y = 40;
 		sprites[i].dx = 0;  
 		sprites[i].dy = 0; 
@@ -158,8 +158,21 @@ void scorecombosetup(sprite *sprites) {
 	sprites[5].id = 11;
 	sprites[6].id = 10;
 	for (int i = 5; i < 7; i++) {
-		sprites[i].x = 200+32+32*(i-5); 
+		sprites[i].x = 250+32+32*(i-5); 
 		sprites[i].y = 90;
+		sprites[i].dx = 0;  
+		sprites[i].dy = 0; 
+		sprites[i].hit = 1;
+		sprites[i].index = i;
+	}
+
+	sprites[7].id = 10;
+	sprites[8].id = 10;
+	sprites[9].id = 10;
+	sprites[10].id = 10;		
+	for (int i = 7; i < 11; i++) {
+		sprites[i].x = 250+32+32*(i-7); 
+		sprites[i].y = 140;
 		sprites[i].dx = 0;  
 		sprites[i].dy = 0; 
 		sprites[i].hit = 1;
@@ -169,15 +182,17 @@ void scorecombosetup(sprite *sprites) {
 }
 
 void update_combo(sprite *sprites, const int combo) {
+	int thous = (int)combo/1000;
 	int huds = (int)combo/100;
 	int tens = (int)(combo - huds*100)/10;
 	int ones = combo - huds*100 - tens*10;
 	if (huds == 0) huds = 10;
 	if (tens == 0) tens = 10;
 	if (ones == 0) ones = 10;
-	sprites[14].id = huds; //100s	
-	sprites[15].id = tens; //10s
-	sprites[16].id = ones; //1s
+	sprites[7].id = huds;
+	sprites[8].id = huds; //100s	
+	sprites[9].id = tens; //10s
+	sprites[10].id = ones; //1s
 	return;
 }
 
@@ -385,6 +400,7 @@ int main()
 			//int note_index = find_nearest_note_index(frequency);
 			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
 			printf("%.2f Hz: \tNote: %d\n", frequency, score);
+			update_combo(sprites, frequency);
 			update_score(sprites, score);
 			for (int i = 0; i < SIZE; i++) {
 				vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
