@@ -179,6 +179,21 @@ void scorecombosetup(sprite *sprites) {
 		sprites[i].index = i;
 	}
 
+
+
+
+	sprites[11].id = 19; //N
+	sprites[12].id = 20; //O
+	sprites[13].id = 21; //T
+	sprites[14].id = 15; //E
+	for (int i = 11; i < 15; i++) {
+		sprites[i].x = 100+32*(i-1); 
+		sprites[i].y = 20;
+		sprites[i].dx = 0;  
+		sprites[i].dy = 0; 
+		sprites[i].hit = 1;
+		sprites[i].index = i;
+	}
 }
 
 void update_combo(sprite *sprites, const int combo) {
