@@ -37,13 +37,13 @@ typedef struct {
 
 
 const float piano_notes[] = {
-        27.50, 30.87, 32.70, 36.71, 38.89, 43.65, 46.25, 51.91, 
-        55.00, 61.74, 65.41, 73.42, 77.78, 87.31, 92.50, 103.83, 
-        110.00, 123.47, 130.81, 146.83, 155.56, 174.61, 185.00, 207.65, 
-        220.00, 246.94, 261.63, 293.66, 311.13, 349.23, 369.99, 415.30, 
-        440.00, 493.88, 523.25, 587.33, 622.25, 698.46, 783.99, 830.61, 
-        880.00, 987.77, 1046.50, 1174.66, 1244.51, 1396.91, 1567.98, 1661.22, 
-        1760.00, 1975.53, 2093.00, 2349.32, 2489.02, 2793.83, 3135.96, 3322.44, 
+        27.50, 30.87, 32.70, 36.71, 41.20, 43.65, 48.99, 
+        55.00, 61.74, 65.41, 73.42, 82.40, 87.31, 97.99, 
+        110.00, 123.47, 130.81, 146.83, 164.81, 174.61, 195.99,
+        220.00, 246.94, 261.63, 293.66, 329.62, 349.23, 391.99, 
+        440.00, 493.88, 523.25, 587.33, 659.25, 698.46, 783.99, 
+        880.00, 987.77, 1046.50, 1174.66, 1318.51, 1396.91, 1567.98, 
+        1760.00, 1975.53, 2093.00, 2349.32, 2637.02, 2793.83, 3135.96, 
         3520.00, 3951.07, 4186.01
     };
 
@@ -143,12 +143,11 @@ void updateBall(sprite *obj) {
 void scorecombosetup(sprite *sprites) {
 	//index 0 acts strangly
 	//'SCORE'
-	sprites[1].id = 17; //S
-	sprites[2].id = 12; //C
-	sprites[3].id = 15; //O
-	sprites[4].id = 16; //R
-	sprites[5].id = 13; //E
-	for (int i = 1; i < 6; i++) {
+	sprites[1].id = 19; //N
+	sprites[2].id = 20; //O
+	sprites[3].id = 21; //T
+	sprites[4].id = 15; //E
+	for (int i = 1; i < 5; i++) {
 		sprites[i].x = 200+32*(i-1); 
 		sprites[i].y = 40;
 		sprites[i].dx = 0;  
@@ -346,27 +345,6 @@ int main()
 	
 	while (1) {
 
-#ifdef SHOW_SPRITES
-		if ((counter%10)==0) {
-		    // gamecounter++;
-		    // printf("%d\n", gamecounter);
-		}
-
-		// if ((counter%132)==0) {
-		//     if(noteCount < MAX_NOTE_COUNT) 
-		//     	spawnnote(sprites, (rand() % 5));
-		//     noteCount++; 
-		// }
-		
-		validleft = check_valid_region(sprites, 23);
-		validright = check_valid_region(sprites, validleft+1);
-		// if (sprites[validleft].y == 399) {
-		    // combo_flag = 0;
-		    // combo = 0;
-	    // }
-#endif
-
-
 		amt.data = get_aud_data(aud_fd);
 
 		//printf("AUD DATA: %d\n", amt.data);
@@ -400,174 +378,13 @@ int main()
 			//int note_index = find_nearest_note_index(frequency);
 			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
 			printf("%.2f Hz: \tNote: %d\n", frequency, score);
-
-		// if ((amt.data == (1+(sprites[validleft].id-17)>>1)) && (sprites[validleft].id!=0)) {
-		    // hitcount++;
-		    // // sprites[validleft].y = 481;
-		    // // sprites[validright].y = 481;
-		    // if (hitcount == 8) {
-		    //     hitcount = 0;
-		    //     sprites[validleft].hit = 1;
-		    //     sprites[validright].hit = 1;
-		    //     sprites[validleft].dy = 0;
-		    //     sprites[validright].dy = 0;
-		    //     sprites[validleft].dx = 10;
-		    //     sprites[validright].dx = 10;
-		        
-		    //     if (combo_flag) {
-		    //         combo++;
-		    //         if (combo > max)
-		    //             max = combo;
-		    //     }
-			// 	// socre = frequency;
-			// if (frequency < midpoints[0]) {
-        	// 	score = 0;
-    		// } else if (frequency >= midpoints[0] && frequency < midpoints[1]) {
-        	// 	score = 1;
-    		// } else if (frequency >= midpoints[1] && frequency < midpoints[2]) {
-        	// 	score = 2;
-   		 	// } else if (frequency >= midpoints[2] && frequency < midpoints[3]) {
-        	// 	score = 3;
-    		// } else if (frequency >= midpoints[3] && frequency < midpoints[4]) {
-        	// 	score = 4;
-    		// } else if (frequency >= midpoints[4] && frequency < midpoints[5]) {
-        	// 	score = 5;
-    		// } else if (frequency >= midpoints[5] && frequency < midpoints[6]) {
-        	// 	score = 6;
-    		// } else if (frequency >= midpoints[6] && frequency < midpoints[7]) {
-        	// 	score = 7;
-    		// } else if (frequency >= midpoints[7] && frequency < midpoints[8]) {
-        	// 	score = 8;
-    		// } else if (frequency >= midpoints[8] && frequency < midpoints[9]) {
-        	// 	score = 9;
-    		// } else if (frequency >= midpoints[9] && frequency < midpoints[10]) {
-        	// 	score = 10;
-    		// } else if (frequency >= midpoints[10] && frequency < midpoints[11]) {
-        	// 	score = 11;
-    		// } else if (frequency >= midpoints[11] && frequency < midpoints[12]) {
-        	// 	score = 12;
-    		// } else if (frequency >= midpoints[12] && frequency < midpoints[13]) {
-        	// 	score = 13;
-		    // } else if (frequency >= midpoints[13] && frequency < midpoints[14]) {
-        	// 	score = 14;
-		    // } else if (frequency >= midpoints[14] && frequency < midpoints[15]) {
-        	// 	score = 15;
-		    // } else if (frequency >= midpoints[15] && frequency < midpoints[16]) {
-        	// 	score = 16;
-		    // } else if (frequency >= midpoints[16] && frequency < midpoints[17]) {
-        	// 	score = 17;
-		    // } else if (frequency >= midpoints[17] && frequency < midpoints[18]) {
-        	// 	score = 18;
-		    // } else if (frequency >= midpoints[18] && frequency < midpoints[19]) {
-        	// 	score = 19;
-		    // } else if (frequency >= midpoints[19] && frequency < midpoints[20]) {
-        	// 	score = 20;
-		    // } else if (frequency >= midpoints[20] && frequency < midpoints[21]) {
-        	// 	score = 21;
-		    // } else if (frequency >= midpoints[21] && frequency < midpoints[22]) {
-        	// 	score = 22;
-		    // } else if (frequency >= midpoints[22] && frequency < midpoints[23]) {
-        	// 	score = 23;
-		    // } else if (frequency >= midpoints[23] && frequency < midpoints[24]) {
-        	// 	score = 24;
-		    // } else if (frequency >= midpoints[24] && frequency < midpoints[25]) {
-        	// 	score = 25;
-		    // } else if (frequency >= midpoints[25] && frequency < midpoints[26]) {
-        	// 	score = 26;
-		    // } else if (frequency >= midpoints[26] && frequency < midpoints[27]) {
-        	// 	score = 27;
-		    // } else if (frequency >= midpoints[27] && frequency < midpoints[28]) {
-        	// 	score = 28;
-		    // } else if (frequency >= midpoints[28] && frequency < midpoints[29]) {
-        	// 	score = 29;
-		    // } else if (frequency >= midpoints[29] && frequency < midpoints[30]) {
-        	// 	score = 30;
-		    // } else if (frequency >= midpoints[30] && frequency < midpoints[31]) {
-        	// 	score = 31;
-		    // } else if (frequency >= midpoints[31] && frequency < midpoints[32]) {
-        	// 	score = 32;
-		    // } else if (frequency >= midpoints[32] && frequency < midpoints[33]) {
-        	// 	score = 33;
-		    // } else if (frequency >= midpoints[33] && frequency < midpoints[34]) {
-        	// 	score = 34;
-		    // } else if (frequency >= midpoints[34] && frequency < midpoints[35]) {
-        	// 	score = 35;
-		    // } else if (frequency >= midpoints[35] && frequency < midpoints[36]) {
-        	// 	score = 36;
-		    // } else if (frequency >= midpoints[36] && frequency < midpoints[37]) {
-        	// 	score = 37;
-		    // } else if (frequency >= midpoints[37] && frequency < midpoints[38]) {
-        	// 	score = 38;
-		    // } else if (frequency >= midpoints[38] && frequency < midpoints[39]) {
-        	// 	score = 39;
-		    // } else if (frequency >= midpoints[39] && frequency < midpoints[40]) {
-        	// 	score = 40;
-		    // } else if (frequency >= midpoints[40] && frequency < midpoints[41]) {
-        	// 	score = 41;
-		    // } else if (frequency >= midpoints[41] && frequency < midpoints[42]) {
-        	// 	score = 42;
-		    // } else if (frequency >= midpoints[42] && frequency < midpoints[43]) {
-        	// 	score = 43;
-		    // } else if (frequency >= midpoints[43] && frequency < midpoints[44]) {
-        	// 	score = 44;
-    		// } else if (frequency >= midpoints[44] && frequency < midpoints[45]) {
-        	// 	score = 45;
-		    // } else if (frequency >= midpoints[45] && frequency < midpoints[46]) {
-        	// 	score = 46;
-		    // } else if (frequency >= midpoints[46] && frequency < midpoints[47]) {
-        	// 	score = 47;
-		    // } else if (frequency >= midpoints[47] && frequency < midpoints[48]) {
-        	// 	score = 48;
-		    // } else if (frequency >= midpoints[48] && frequency < midpoints[49]) {
-        	// 	score = 49;
-		    // } else if (frequency >= midpoints[49] && frequency < midpoints[50]) {
-        	// 	score = 50;
-		    // } else if (frequency >= midpoints[50] && frequency < midpoints[51]) {
-        	// 	score = 51;
-		    // } else if (frequency >= midpoints[51] && frequency < midpoints[52]) {
-        	// 	score = 52;
-		    // } else if (frequency >= midpoints[52] && frequency < midpoints[53]) {
-        	// 	score = 53;
-		    // } else if (frequency >= midpoints[53] && frequency < midpoints[54]) {
-        	// 	score = 54;
-		    // } else if (frequency >= midpoints[54] && frequency < midpoints[55]) {
-        	// 	score = 55;
-		    // } else if (frequency >= midpoints[55] && frequency < midpoints[56]) {
-        	// 	score = 56;
-    		// } else {	
-        	// 	hitcount = 0;
-    		// }
 			update_score(sprites, score);
 			for (int i = 0; i < SIZE; i++) {
-			vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
-		}
-		send_sprite_positions(&vzdt, vga_zylo_fd);
+				vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
+			}
+			send_sprite_positions(&vzdt, vga_zylo_fd);
 		    
 		}
-
-		//fprintf(fptr, "%d\n", amt.data);
-#ifdef SHOW_SPRITES
- 		
- 		//update_score(sprites, amt.data);
-		//update_combo(sprites, 1+(sprites[validleft].id-17)>>1);
-		//update_score(sprites, score);
-		// update_combo(sprites, combo);
-		// update_max(sprites, max);
-	
-		//package the sprites together
-		// for (int i = 0; i < SIZE; i++) {
-		// 	vzdt.data[i] = (sprites[i].index<<26) + (sprites[i].id<<20) + (sprites[i].y<<10) + (sprites[i].x<<0);
-		// }
-		//send package to hardware
-		// send_sprite_positions(&vzdt, vga_zylo_fd);
-		//update spirtes x and y based on dx and dy on software side
-		// for (int i = 0; i < SIZE; i++) {
-		// 	updateBall(&sprites[i]);
-		// }
-		//combo_flag = 1;
-		//pause to let hardware catch up
-		// counter++;
-#endif
 
 	}
 		
