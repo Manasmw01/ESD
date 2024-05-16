@@ -183,9 +183,10 @@ void scorecombosetup(sprite *sprites) {
 
 void update_combo(sprite *sprites, const int combo) {
 	int thous = (int)combo/1000;
-	int huds = (int)combo/100;
-	int tens = (int)(combo - huds*100)/10;
-	int ones = combo - huds*100 - tens*10;
+	int huds = (int)(combo - thous*1000)/100;
+	int tens = (int)(combo - huds*100- thous*1000)/10;
+	int ones = combo - huds*100 - tens*10 - thous*1000;
+	if (thous == 0) thous = 10;
 	if (huds == 0) huds = 10;
 	if (tens == 0) tens = 10;
 	if (ones == 0) ones = 10;
