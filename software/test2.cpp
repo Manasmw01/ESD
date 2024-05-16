@@ -155,10 +155,8 @@ void scorecombosetup(sprite *sprites) {
 		sprites[i].hit = 1;
 		sprites[i].index = i;
 	}
-	sprites[6].id = 10; //0
-	sprites[7].id = 10; //0
-	sprites[8].id = 10; //0
-	for (int i = 6; i < 9; i++) {
+	sprites[5].id = 11;
+	for (int i = 5; i < 6; i++) {
 		sprites[i].x = 200+32+32*(i-6); 
 		sprites[i].y = 90;
 		sprites[i].dx = 0;  
@@ -183,15 +181,17 @@ void update_combo(sprite *sprites, const int combo) {
 }
 
 void update_score(sprite *sprites, const int score) {
-	int huds = (int)score/100;
-	int tens = (int)(score - huds*100)/10;
-	int ones = score - huds*100 - tens*10;
-	if (huds == 0) huds = 10;
-	if (tens == 0) tens = 10;
-	if (ones == 0) ones = 10;
-	sprites[6].id = huds; //100s	
-	sprites[7].id = tens; //10s
-	sprites[8].id = ones; //1s
+	int note = score %7;
+	sprites[5].id = note+11; //note
+	// int huds = (int)score/100;
+	// int tens = (int)(score - huds*100)/10;
+	// int ones = score - huds*100 - tens*10;
+	// if (huds == 0) huds = 10;
+	// if (tens == 0) tens = 10;
+	// if (ones == 0) ones = 10;
+	// sprites[6].id = huds; //100s	
+	// sprites[7].id = tens; //10s
+	// sprites[8].id = ones; //1s
 	return;
 }
 
