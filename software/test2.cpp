@@ -421,7 +421,7 @@ int main()
 		//printf("AUD DATA: %d\n", amt.data);
 		done = 0;
 		addToBuffer(buffer, amt.data);
-	
+		int score = 0;
 		if(buffer.size() == N){
 			//printf("buffer: %d\n", buffer[0]);
 			for (int i = 0; i < N; i++){
@@ -444,7 +444,7 @@ int main()
 			//printf("Max Value: %d\n", max_value);
 			float sample_rate = 36000; // Sample rate, change accordingly if your sample rate is different
 			frequency = (float)peak_index * sample_rate / N;
-			int score = find_nearest_note_index(frequency);
+			score = find_nearest_note_index(frequency);
 			// Find the index of the nearest piano note
 			//int note_index = find_nearest_note_index(frequency);
 			// printf("The note played is: %.2f Hz, which is approximately %dth note on a piano.\n", frequency);
