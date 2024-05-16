@@ -442,7 +442,7 @@ int main()
 				}
 			}
 			//printf("Max Value: %d\n", max_value);
-			float sample_rate = 30000; // Sample rate, change accordingly if your sample rate is different
+			float sample_rate = 35000; // Sample rate, change accordingly if your sample rate is different
 			frequency = (float)peak_index * sample_rate / N;
 
 			// Find the index of the nearest piano note
